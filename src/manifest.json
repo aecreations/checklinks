@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDesc__",
+  "version": "0.1",
+  "author": "AE Creations",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "checklinks@aecreations.github.io",
+      "strict_min_version": "128.0"
+    }
+  },
+
+  "icons": {
+    "48": "img/icon.png"
+  },
+
+  "permissions": [
+    "compose",
+    "storage"
+  ],
+  
+  "background": {
+    "scripts": ["background.js"],
+    "type": "module"
+  },
+
+  "compose_action": {
+    "type": "button",
+    "default_label": "",
+    "default_title": "__MSG_extName__",
+    "default_icon": {
+      "16": "img/addon-default-32.png"
+    },
+    "default_area": "maintoolbar"
+  },
+
+  "default_locale": "en"
+}

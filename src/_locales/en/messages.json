@@ -1,0 +1,11 @@
+{
+  "extName": {
+    "message": "Check Links",
+    "description": "Name of the extension"
+  },
+
+  "extDesc": {
+    "message": "Check all links in a draft message.",
+    "description": "Description of the extension"
+  }
+}
