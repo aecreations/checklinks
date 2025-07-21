@@ -74,7 +74,13 @@ export async function startLinkChecking(aComposeTabID)
 }
 
 
-async function updateComposeLinks(aComposeTabID, aUpdatedLinksData)
+export function getComposeLinks()
+{
+  return mLinksTblData;
+}
+
+
+export async function updateComposeLinks(aComposeTabID, aUpdatedLinksData)
 {
   let comp = await messenger.compose.getComposeDetails(aComposeTabID);
 
@@ -123,24 +129,6 @@ function processLinkPlaceholders(aComposeHTMLSrc, aPlaceholderDelim)
 
   return rv;
 }
-
-
-//
-// Event handler
-//
-
-messenger.runtime.onMessage.addListener(aMessage => {
-  log(`aeCheckLinks.js: Received message "${aMessage.id}"`);
-
-  if (aMessage.id == "get-table-view-data") {
-    return Promise.resolve(mLinksTblData);
-  }
-  else if (aMessage.id == "update-compose-links") {
-    return Promise.resolve(
-      updateComposeLinks(aMessage.compTabID, aMessage.updatedLinksData)
-    );
-  }
-});
 
 
 //

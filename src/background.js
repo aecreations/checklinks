@@ -31,6 +31,20 @@ messenger.composeAction.onClicked.addListener(aTab => {
 });
 
 
+messenger.runtime.onMessage.addListener(aMessage => {
+  log(`Check Links: Received message "${aMessage.id}"`);
+
+  if (aMessage.id == "get-table-view-data") {
+    return Promise.resolve(aeCheckLinks.getComposeLinks());
+  }
+  else if (aMessage.id == "update-compose-links") {
+    return Promise.resolve(
+      aeCheckLinks.updateComposeLinks(aMessage.compTabID, aMessage.updatedLinksData)
+    );
+  }
+});
+
+
 //
 // Error reporting and debugging output
 //
