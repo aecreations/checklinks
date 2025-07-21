@@ -1,7 +1,7 @@
 # Makefile
 
 EXT_VER=`./getver.py`
-DIST_FILE=clippings-tb-$(EXT_VER).xpi
+DIST_FILE=checklinks-$(EXT_VER).xpi
 EXCLUDE = \*~ *\.py Makefile
 
 
