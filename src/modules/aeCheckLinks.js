@@ -63,7 +63,7 @@ export async function startLinkChecking(aComposeTabID)
   let wndInfo = {
     url,
     type: "popup",
-    width: 550,
+    width: 560,
     height: 256,
   };
   let wnd = await messenger.windows.create(wndInfo);

@@ -1,0 +1,50 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url("../style/dialog.css");
+@import url("../lib/wunderbaum/wunderbaum.css");
+
+
+#link-table-grid {
+    height: 150px;
+    overflow-y: scroll;
+
+    font: caption;
+    font-size: 13px;
+}
+
+/* Wunderbaum grid style overrides */
+div.wunderbaum {
+    border: 1px solid #d7d7db;
+    border-radius: 0;
+    color: black;
+}
+
+div.wunderbaum div.wb-header {
+    border-bottom: 1px solid #d4d4d4;
+    background-color: #eee;
+}
+
+div.wunderbaum div.wb-header span.wb-col {
+    font-weight: revert;
+}
+
+div.wunderbaum div.wb-header span.wb-col-resizer {
+    border-right: 1px solid #d4d4d4;
+}
+
+div.wunderbaum.wb-grid.wb-cell-mode div.wb-header div.wb-row span.wb-col.wb-active,
+div.wunderbaum.wb-grid.wb-cell-mode:focus-within div.wb-row:not(.wb-colspan):not(.wb-selected) span.wb-col.wb-active {
+    background-color: revert;
+}
+
+.wunderbaum .wb-node-list > .wb-row > .wb-node > .wb-expander,
+.wunderbaum .wb-node-list > .wb-row > .wb-node > .wb-icon {
+    display: none;
+}
+
+.wunderbaum .wb-node-list > .wb-row > .wb-col > input[type="text"] {
+    padding-left: 1px;
+    padding-right: 1px;
+}

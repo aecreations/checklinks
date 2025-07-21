@@ -36,7 +36,7 @@ async function init()
       {
 	id: "href",
 	title: "link address (url)",
-	width: "250px"
+	width: "259px"
       },
     ],
     source: linksTblData,
