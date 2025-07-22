@@ -5,13 +5,15 @@
 
 import {aeConst} from "./aeConst.js";
 import {aePrefs} from "./aePrefs.js";
-import * as aeWindow from "./aeWindow.js";
+import {aeWindow} from "./aeWindow.js";
 
 let mLinksTblData = [];
 
 
 export async function startLinkChecking(aComposeTabID)
 {
+  let win = new aeWindow(aComposeTabID);
+  
   // Reset links data.
   mLinksTblData = [];
   
@@ -19,7 +21,7 @@ export async function startLinkChecking(aComposeTabID)
 
   if (comp.isPlainText) {
     info("aeCheckLinks.startLinkChecking(): Link checking is not available for plain-text messages.");
-    aeWindow.alert("msgPlainTxt", aComposeTabID);
+    win.alert("msgPlainTxt");
     return;
   }
 
@@ -63,7 +65,7 @@ export async function startLinkChecking(aComposeTabID)
     width: 560,
     height: 256,
   };
-  await aeWindow.openDialog(url, "clListView", wndPpty, aComposeTabID);
+  await win.openDialog(url, "clListView", wndPpty, aComposeTabID);
 }
 
 
