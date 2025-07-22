@@ -18,7 +18,7 @@ async function init()
 
   log("Check Links::linksTable.js: Initializing table view dialog for compose tab " + mCompTabID);
 
-  let linksTblData = await messenger.runtime.sendMessage({id: "get-table-view-data"});
+  let linksTblData = await messenger.runtime.sendMessage({id: "get-compose-links"});
   mUpdatedTblData = linksTblData.slice();
 
   log("Check Links::linksTable.js: Links table data:");

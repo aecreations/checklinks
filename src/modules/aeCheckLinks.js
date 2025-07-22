@@ -7,7 +7,7 @@ import {aeConst} from "./aeConst.js";
 import {aePrefs} from "./aePrefs.js";
 import {aeWindow} from "./aeWindow.js";
 
-let mLinksTblData = [];
+let mLinks = [];
 
 
 export async function startLinkChecking(aComposeTabID)
@@ -15,7 +15,7 @@ export async function startLinkChecking(aComposeTabID)
   let win = new aeWindow(aComposeTabID);
   
   // Reset links data.
-  mLinksTblData = [];
+  mLinks = [];
   
   let comp = await messenger.compose.getComposeDetails(aComposeTabID);
 
@@ -51,7 +51,7 @@ export async function startLinkChecking(aComposeTabID)
   }
 
   for (let link of links) {
-    mLinksTblData.push({
+    mLinks.push({
       title: link.innerHTML,
       href: link.href,
     });
@@ -71,7 +71,7 @@ export async function startLinkChecking(aComposeTabID)
 
 export function getComposeLinks()
 {
-  return mLinksTblData;
+  return mLinks;
 }
 
 
