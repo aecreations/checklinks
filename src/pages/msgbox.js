@@ -66,9 +66,10 @@ function dismiss()
 
 
 document.addEventListener("DOMContentLoaded", async (aEvent) => { init() });
-
+/***
 document.addEventListener("keydown", aEvent => {
   aeInterxn.suppressBrowserShortcuts(aEvent, false);
 });
+***/
 
 document.addEventListener("contextmenu", aEvent => { aEvent.preventDefault() });
