@@ -8,6 +8,9 @@ import {aePrefs} from "./aePrefs.js";
 
 export class aeWindow
 {
+  WND_SIZE_ADJ_LINUX = 60;
+
+  
   constructor(aComposeTabID)
   {
     this._compTabID = aComposeTabID;
@@ -41,9 +44,14 @@ export class aeWindow
       }
     }
 
+    let os = await this.#getOS();
     let width = aWndPpty.width;
     let height = aWndPpty.height;
     let left, top, wndGeom;
+
+    if (os == "linux") {
+      height += this.WND_SIZE_ADJ_LINUX;
+    }
 
     if (prefs.autoAdjustWndPos) {
       ({left, top} = await aeWndPos.calcPopupWndCoords(width, height, aWndPpty.topOffset, aeWndPos.WND_MSG_COMPOSE));
@@ -90,11 +98,11 @@ export class aeWindow
     let wndGeom = null;
     let width = 520;
     let height = 170;
-    let platform = await messenger.runtime.getPlatformInfo();
+    let os = await this.#getOS();
 
-    if (platform.os == "linux") {
-      width += WND_SIZE_ADJ_LINUX;
-      height += WND_SIZE_ADJ_LINUX;
+    if (os == "linux") {
+      width += this.WND_SIZE_ADJ_LINUX;
+      height += this.WND_SIZE_ADJ_LINUX;
     }
 
     // Default popup window coords.  Unless replaced by window geometry calcs,
@@ -105,7 +113,7 @@ export class aeWindow
 
     let prefs = await aePrefs.getAllPrefs();
     if (prefs.autoAdjustWndPos) {
-      wndGeom = await this._getWndGeometryFromComposeTab();
+      wndGeom = await this.#getComposeTabGeometry();
 
       if (wndGeom) {
 	if (wndGeom.w < width) {
@@ -139,24 +147,37 @@ export class aeWindow
     }
   }
 
-  async _getWndGeometryFromComposeTab()
+  async getComposeWndGeometry()
   {
-    let rv = null;
+    return aeWndPos.getComposerWndGeom();
+  }
 
-    let [tab] = await messenger.tabs.query({active: true, currentWindow: true});
-    if (!tab || tab.type != "messageCompose") {
-      // Handle dangling window reference.
-      return rv;
+
+  //
+  // Private helper methods
+  //
+
+  async #getOS()
+  {
+    if (!this._os) {
+      let platform = await messenger.runtime.getPlatformInfo();
+      this._os = platform.os;
     }
 
+    return this._os;
+  }
+
+  async #getComposeTabGeometry()
+  {
+    let rv = null;
+    let tab = await messenger.tabs.get(this._compTabID);
     let wnd = await messenger.windows.get(tab.windowId);
-    let wndGeom = {
+    rv = {
       w: tab.width,
       h: tab.height,
       x: wnd.left,
       y: wnd.top,
     };
-    rv = wndGeom;
 
     return rv;
   }
