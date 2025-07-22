@@ -18,8 +18,8 @@ export async function startLinkChecking(aComposeTabID)
   let comp = await messenger.compose.getComposeDetails(aComposeTabID);
 
   if (comp.isPlainText) {
-    // TO DO: Show a message box with this message.
     info("aeCheckLinks.startLinkChecking(): Link checking is not available for plain-text messages.");
+    aeWindow.alert("msgPlainTxt", aComposeTabID);
     return;
   }
 

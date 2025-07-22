@@ -72,6 +72,89 @@ export async function openDialog(aURL, aWndKey, aWndPpty, aComposeTabID)
 }
 
 
+export async function alert(aMessageKey, aComposeTabID)
+{
+  let message = messenger.i18n.getMessage(aMessageKey);
+  let url = "pages/msgbox.html?msgid=" + aMessageKey;
+
+  // Center the common message box popup within originating composer window,
+  // both horizontally and vertically.
+  let wndGeom = null;
+  let width = 520;
+  let height = 170;
+  let platform = await messenger.runtime.getPlatformInfo();
+
+  if (platform.os == "linux") {
+    width += WND_SIZE_ADJ_LINUX;
+    height += WND_SIZE_ADJ_LINUX;
+  }
+
+  // Default popup window coords.  Unless replaced by window geometry calcs,
+  // these coords will be ignored - popup window will always be centered
+  // on screen due to a WebExtension API bug; see next comment.
+  let left = 256;
+  let top = 64;
+
+  let prefs = await aePrefs.getAllPrefs();
+  if (prefs.autoAdjustWndPos) {
+    wndGeom = await getWndGeometryFromComposeTab();
+
+    if (wndGeom) {
+      if (wndGeom.w < width) {
+        left = null;
+      }
+      else {
+        left = Math.ceil((wndGeom.w - width) / 2) + wndGeom.x;
+      }
+
+      if ((wndGeom.h) < height) {
+        top = null;
+      }
+      else {
+        top = Math.ceil((wndGeom.h - height) / 2) + wndGeom.y;
+      }
+    }
+  }
+
+  let wnd = await messenger.windows.create({
+    url,
+    type: "popup",
+    width, height,
+    left, top,
+  });
+
+  // Workaround to bug where window position isn't correctly set when calling
+  // `browser.windows.create()`. If unable to get window geometry, then default
+  // to centering on screen.
+  if (wndGeom) {
+    messenger.windows.update(wnd.id, {left, top});
+  }
+}
+
+
+async function getWndGeometryFromComposeTab()
+{
+  let rv = null;
+
+  let [tab] = await messenger.tabs.query({active: true, currentWindow: true});
+  if (!tab || tab.type != "messageCompose") {
+    // Handle dangling window reference.
+    return rv;
+  }
+
+  let wnd = await messenger.windows.get(tab.windowId);
+  let wndGeom = {
+    w: tab.width,
+    h: tab.height,
+    x: wnd.left,
+    y: wnd.top,
+  };
+  rv = wndGeom;
+
+  return rv;
+}
+
+
 let aeWndPos = function () {
   let TOP_OFFSET = 200;
   

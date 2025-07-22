@@ -7,5 +7,22 @@
   "extDesc": {
     "message": "Check all links in a draft message.",
     "description": "Description of the extension"
+  },
+
+  "btnOK": {
+    "message": "OK"
+  },
+
+  "btnCancel": {
+    "message": "Cancel"
+  },
+
+  "msgUnavail": {
+    "message": "The selected action is not available right now."
+  },
+
+  "msgPlainTxt": {
+    "message": "Link checking is not available for plain-text messages.",
+    "description": "Error message when Check Links invoked on a plain-text message"
   }
 }
