@@ -5,6 +5,7 @@
 
 import {aeConst} from "./aeConst.js";
 import {aePrefs} from "./aePrefs.js";
+import * as aeWindow from "./aeWindow.js";
 
 let mLinksTblData = [];
 
@@ -54,23 +55,15 @@ export async function startLinkChecking(aComposeTabID)
     });
   }
 
-  // TO DO: If a link checking window is already open for this compose window,
-  // focus it.
-
   let url = messenger.runtime.getURL("../pages/linksTable.html");
   url += `?compTabID=${aComposeTabID}`;
 
-  let wndInfo = {
-    url,
+  let wndPpty = {
     type: "popup",
     width: 560,
     height: 256,
   };
-  let wnd = await messenger.windows.create(wndInfo);
-
-  let compsChkLnkWndMap = await aePrefs.getPref("compsChkLnkWndMap");
-  compsChkLnkWndMap[aComposeTabID] = wnd.id;
-  aePrefs.setPrefs({compsChkLnkWndMap});
+  await aeWindow.openDialog(url, "clListView", wndPpty, aComposeTabID);
 }
 
 

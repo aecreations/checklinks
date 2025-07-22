@@ -103,9 +103,10 @@ function cancel(aEvent)
 
 async function closeDlg()
 {
-  let compsChkLnkWndMap = await aePrefs.getPref("compsChkLnkWndMap");
-  delete compsChkLnkWndMap[mCompTabID];
-  await aePrefs.setPrefs({compsChkLnkWndMap});
+  let compWndIDs = await aePrefs.getPref("_compWndIDs");
+  let openWnds = compWndIDs[mCompTabID];
+  delete openWnds["clListView"];
+  await aePrefs.setPrefs({_compWndIDs: compWndIDs});
 
   messenger.windows.remove(messenger.windows.WINDOW_ID_CURRENT);
 }

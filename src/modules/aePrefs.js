@@ -6,13 +6,14 @@
 export let aePrefs = {
   // Background script state persistence
   _defaultBkgdState: {
-    compsChkLnkWndMap: {},
+    _compWndIDs: {},
   },
   
   // User preferences and customizations
   _defaultPrefs: {
     checkLinkPlchldrs: true,
     plchldrDelim: "::",
+    autoAdjustWndPos: true,
   },
   
   getPrefKeys()
@@ -55,6 +56,7 @@ export let aePrefs = {
     let prefs = {
       checkLinkPlchldrs: true,
       plchldrDelim: "::",
+      autoAdjustWndPos: true,
     };
     await this._addPrefs(aPrefs, prefs);
   },
