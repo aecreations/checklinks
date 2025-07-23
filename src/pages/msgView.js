@@ -9,6 +9,7 @@ import {aePrefs} from "../modules/aePrefs.js";
 
 let mCompTabID, mOrigLinks, mLinkElts, mCurrLinkIdx;
 let mUpdatedLinks = [];
+let mIsDone = false;
 
 
 async function init()
@@ -67,6 +68,7 @@ function nextLink()
       .forEach(btn => btn.disabled = true);
     document.querySelector("#btn-replace").classList.remove("default");
     document.querySelector("#btn-close").classList.add("default");
+    mIsDone = true;
     
     log("Check Links::msgView.js: Updated link data:");
     log(mUpdatedLinks);
@@ -94,6 +96,25 @@ function replace()
   mUpdatedLinks[mCurrLinkIdx].href = newHref;
   
   nextLink();
+}
+
+
+function restart()
+{
+  deselectLink(mLinkElts[mCurrLinkIdx]);
+  document.querySelector("#link-title").value = '';
+  document.querySelector("#link-href").value = '';
+
+  if (mIsDone) {
+    document.querySelectorAll("#btn-replace, #btn-next")
+      .forEach(btn => btn.disabled = false);
+    document.querySelector("#btn-close").classList.remove("default");
+    document.querySelector("#btn-replace").classList.add("default");
+    mIsDone = false;
+  }
+
+  mCurrLinkIdx = 0;
+  selectLink(mCurrLinkIdx);  
 }
 
 
@@ -126,6 +147,10 @@ document.querySelector("#btn-next").addEventListener("click", aEvent => {
 
 document.querySelector("#btn-replace").addEventListener("click", aEvent => {
   replace();
+});
+
+document.querySelector("#btn-restart").addEventListener("click", aEvent => {
+  restart();
 });
 
 document.querySelector("#btn-close").addEventListener("click", aEvent => {
