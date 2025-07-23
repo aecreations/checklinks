@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>check links</title>
+
+    <link rel="stylesheet" href="msgView.css">
+  </head>
+  <body>
+    <div id="dlg-body">
+      <div id="msg-subject">
+        <label>subject:</label>
+        <input type="text" id="msg-subj-line" readonly>
+      </div>
+     
+      <iframe id="msg-content" src="preview.html"></iframe>
+
+      <div id="ctrl-panel">
+        <div id="ctrl-panel-cntr">
+	  <div id="ctrl-panel-left">
+	    <div class="row">
+	      <label>link text:</label>
+	    </div>
+	    <div class="row">
+	      <input type="text" id="link-title" readonly>
+	    </div>
+	    <div class="row">
+	      <label>link location (url):</label>
+	    </div>
+	    <div class="row">
+	      <input type="text" id="link-href">
+	    </div>
+	  </div>
+
+	  <div id="ctrl-panel-right">
+            <button id="btn-replace" class="default">replace</button>
+            <button id="btn-next">ignore</button>
+            <button id="btn-restart">start over</button>
+            <button id="btn-close">close</button>
+	  </div>
+        </div>
+      </div>  <!-- /ctrl-panel -->
+    </div>  <!-- /dlg-body -->
+
+    <script type="module" src="msgView.js"></script>
+  </body>
+</html>

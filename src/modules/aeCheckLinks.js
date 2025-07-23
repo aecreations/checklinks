@@ -8,6 +8,7 @@ import {aePrefs} from "./aePrefs.js";
 import {aeWindow} from "./aeWindow.js";
 
 let mLinks = [];
+let mSubject, mMsgBody;
 
 
 export async function startLinkChecking(aComposeTabID)
@@ -18,6 +19,7 @@ export async function startLinkChecking(aComposeTabID)
   mLinks = [];
   
   let comp = await messenger.compose.getComposeDetails(aComposeTabID);
+  mSubject = comp.subject;
 
   if (comp.isPlainText) {
     info("aeCheckLinks.startLinkChecking(): Link checking is not available for plain-text messages.");
@@ -57,21 +59,46 @@ export async function startLinkChecking(aComposeTabID)
     });
   }
 
-  let url = messenger.runtime.getURL("../pages/linksTable.html");
+  mMsgBody = doc.body.innerHTML;
+
+  let url, wndKey;
+  let wndPpty = {type: "popup"};
+  if (prefs.dlgMode == aeConst.DLG_TABLE_VIEW) {
+    wndKey = "clListView";
+    url = messenger.runtime.getURL("../pages/linksTable.html");
+    wndPpty.width = 560;
+    wndPpty.height = 256;
+  }
+  else {
+    wndKey = "clMsgView";
+    url = messenger.runtime.getURL("../pages/msgView.html");
+
+    let compWndGeom = await win.getComposeWndGeometry();
+    wndPpty.width = compWndGeom.w;
+    wndPpty.height = compWndGeom.h;
+    wndPpty.left = compWndGeom.x;
+    wndPpty.top = compWndGeom.y;
+    wndPpty.topOffset = 0;
+  }
   url += `?compTabID=${aComposeTabID}`;
 
-  let wndPpty = {
-    type: "popup",
-    width: 560,
-    height: 256,
-  };
-  await win.openDialog(url, "clListView", wndPpty, aComposeTabID);
+  await win.openDialog(url, wndKey, wndPpty, aComposeTabID);
 }
 
 
 export function getComposeLinks()
 {
   return mLinks;
+}
+
+
+export function getComposeData()
+{
+  let rv = {
+    subj: mSubject,
+    msgBody: mMsgBody,
+  }
+  return rv;
 }
 
 

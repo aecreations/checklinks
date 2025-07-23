@@ -37,6 +37,9 @@ messenger.runtime.onMessage.addListener(aMessage => {
   if (aMessage.id == "get-compose-links") {
     return Promise.resolve(aeCheckLinks.getComposeLinks());
   }
+  else if (aMessage.id == "get-compose-data") {
+    return Promise.resolve(aeCheckLinks.getComposeData());
+  }
   else if (aMessage.id == "update-compose-links") {
     return Promise.resolve(
       aeCheckLinks.updateComposeLinks(aMessage.compTabID, aMessage.updatedLinksData)
