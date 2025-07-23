@@ -86,3 +86,28 @@ html, body {
     margin-top: 24px;
     margin-bottom: 0 !important;
 }
+
+#ctrl-panel-btns {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#ctrl-panel-btns-left {
+    order: 1;
+    flex: 1 1 auto;
+    margin-bottom: 23px;
+}
+
+#ctrl-panel-btns-right {
+    order: 2;
+    flex: 0 1 auto;
+    margin-bottom: 23px;
+}
+
+#ctrl-panel-btns button {
+    width: 128px;
+}

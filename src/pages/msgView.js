@@ -58,6 +58,15 @@ function selectLink(aLinkIndex)
 }
 
 
+function deselectLink(aLinkElt)
+{
+  aLinkElt.classList.remove("ae-selected-link");
+  if (aLinkElt.classList.length == 0) {
+    aLinkElt.removeAttribute("class");
+  }
+}
+
+
 function nextLink()
 {
   if (mCurrLinkIdx == (mLinkElts.length - 1)) {
@@ -77,15 +86,6 @@ function nextLink()
   }
 
   selectLink(++mCurrLinkIdx);
-}
-
-
-function deselectLink(aLinkElt)
-{
-  aLinkElt.classList.remove("ae-selected-link");
-  if (aLinkElt.classList.length == 0) {
-    aLinkElt.removeAttribute("class");
-  }
 }
 
 
@@ -115,6 +115,23 @@ function restart()
 
   mCurrLinkIdx = 0;
   selectLink(mCurrLinkIdx);  
+}
+
+
+async function revert()
+{
+  restart();
+
+  mUpdatedLinks = mOrigLinks.slice();
+
+  let msg = await messenger.runtime.sendMessage({id: "get-compose-data"});
+  let msgPreview = document.querySelector("#msg-content");
+  msgPreview.contentDocument.body.innerHTML = msg.msgBody;
+
+  mLinkElts = msgPreview.contentDocument.body.querySelectorAll("a");
+
+  // Reselect the first <a> element after reloading the message body.
+  selectLink(mCurrLinkIdx);
 }
 
 
@@ -151,6 +168,10 @@ document.querySelector("#btn-replace").addEventListener("click", aEvent => {
 
 document.querySelector("#btn-restart").addEventListener("click", aEvent => {
   restart();
+});
+
+document.querySelector("#btn-revert").addEventListener("click", aEvent => {
+  revert();
 });
 
 document.querySelector("#btn-close").addEventListener("click", aEvent => {
