@@ -1,5 +1,5 @@
 # Check Links
-### Check all links in a draft message.
+### Review the web addresses of all links in a draft message.
 
 _NEW Thunderbird extension!_
 
