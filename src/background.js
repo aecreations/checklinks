@@ -45,6 +45,11 @@ messenger.runtime.onMessage.addListener(aMessage => {
       aeCheckLinks.updateComposeLinks(aMessage.compTabID, aMessage.updatedLinksData)
     );
   }
+  else if (aMessage.id == "switch-dlg-mode") {
+    return Promise.resolve(
+      aeCheckLinks.switchDlgMode(aMessage.dlgMode, aMessage.updatedLinksData, aMessage.compTabID)
+    );
+  }
 });
 
 

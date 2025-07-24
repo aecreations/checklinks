@@ -112,6 +112,19 @@ async function closeDlg()
 }
 
 
+async function switchDlgMode()
+{
+  await messenger.runtime.sendMessage({
+    id: "switch-dlg-mode",
+    dlgMode: aeConst.DLG_MESSAGE_VIEW,
+    updatedLinksData: mUpdatedTblData,
+    compTabID: mCompTabID,
+  });
+
+  closeDlg();
+}
+
+
 //
 // Event handlers
 //
@@ -124,6 +137,10 @@ document.querySelector("#btn-accept").addEventListener("click", aEvent => {
 
 document.querySelector("#btn-cancel").addEventListener("click", aEvent => {
   cancel(aEvent);
+});
+
+document.querySelector("#btn-switch-view").addEventListener("click", aEvent => {
+  switchDlgMode();
 });
 
 

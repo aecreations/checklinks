@@ -7,6 +7,10 @@ import {aeConst} from "./aeConst.js";
 import {aePrefs} from "./aePrefs.js";
 import {aeWindow} from "./aeWindow.js";
 
+// This module is executed in a background script context, which may be
+// suspended after a period of inactivity.
+// These module-scoped variables are used only briefly or during
+// initialization, so they don't need to be saved to extension storage.
 let mLinks = [];
 let mSubject, mMsgBody;
 
@@ -21,6 +25,10 @@ export async function startLinkChecking(aComposeTabID)
   let comp = await messenger.compose.getComposeDetails(aComposeTabID);
   mSubject = comp.subject;
 
+  // Clone the message body string so that in-progress link checking doesn't
+  // immediately overwrite it.
+  let msgBody = comp.body.slice();
+
   if (comp.isPlainText) {
     info("aeCheckLinks.startLinkChecking(): Link checking is not available for plain-text messages.");
     win.alert("msgPlainTxt");
@@ -28,7 +36,7 @@ export async function startLinkChecking(aComposeTabID)
   }
 
   let dp = new DOMParser();
-  let doc = dp.parseFromString(comp.body, "text/html");
+  let doc = dp.parseFromString(msgBody, "text/html");
 
   if (doc.body.innerText == '') {
     info("aeCheckLinks.startLinkChecking(): Message is empty.");
@@ -61,9 +69,15 @@ export async function startLinkChecking(aComposeTabID)
 
   mMsgBody = doc.body.innerHTML;
 
+  await openCheckLinksDlg(win, prefs.dlgMode, aComposeTabID);
+}
+
+
+async function openCheckLinksDlg(aWindow, aDlgMode, aComposeTabID)
+{
   let url, wndKey;
   let wndPpty = {type: "popup"};
-  if (prefs.dlgMode == aeConst.DLG_TABLE_VIEW) {
+  if (aDlgMode == aeConst.DLG_TABLE_VIEW) {
     wndKey = "clListView";
     url = messenger.runtime.getURL("../pages/linksTable.html");
     wndPpty.width = 560;
@@ -73,7 +87,7 @@ export async function startLinkChecking(aComposeTabID)
     wndKey = "clMsgView";
     url = messenger.runtime.getURL("../pages/msgView.html");
 
-    let compWndGeom = await win.getComposeWndGeometry();
+    let compWndGeom = await aWindow.getComposeWndGeometry();
     wndPpty.width = compWndGeom.w;
     wndPpty.height = compWndGeom.h;
     wndPpty.left = compWndGeom.x;
@@ -82,7 +96,7 @@ export async function startLinkChecking(aComposeTabID)
   }
   url += `?compTabID=${aComposeTabID}`;
 
-  await win.openDialog(url, wndKey, wndPpty, aComposeTabID);
+  await aWindow.openDialog(url, wndKey, wndPpty, aComposeTabID); 
 }
 
 
@@ -115,7 +129,6 @@ export async function updateComposeLinks(aComposeTabID, aUpdatedLinksData)
   // TO DO: Check if user had edited the draft message while the Check Links
   // dialog was opened.  If it was edited, then display a warning to the user
   // and exit.
-  // - Is there a way to temporarily make a draft read-only via the MailExtensions API?
 
   // Process link placeholders.
   let prefs = await aePrefs.getAllPrefs();
@@ -137,6 +150,49 @@ export async function updateComposeLinks(aComposeTabID, aUpdatedLinksData)
     body: doc.body.innerHTML,
     isModified: true,
   });
+
+  return true;
+}
+
+
+export async function switchDlgMode(aDlgMode, aUpdatedLinksData, aComposeTabID)
+{
+  let comp = await messenger.compose.getComposeDetails(aComposeTabID);
+  mSubject = comp.subject;
+
+  // Clone the message body string so that in-progress link checking doesn't
+  // immediately overwrite it.
+  let msgBody = comp.body.slice();
+  let dp = new DOMParser();
+  let doc = dp.parseFromString(msgBody, "text/html");
+
+  // Process link placeholders.
+  let prefs = await aePrefs.getAllPrefs();
+  if (prefs.checkLinkPlchldrs) {
+    let processedHTML = processLinkPlaceholders(doc.body.innerHTML, prefs.plchldrDelim);
+    doc = dp.parseFromString(processedHTML, "text/html");
+  }
+
+  // Update links in saved message body.
+  let currLinks = doc.body.querySelectorAll("a"); 
+  for (let i = 0; i < aUpdatedLinksData.length; i++) {
+    currLinks[i].href = aUpdatedLinksData[i].href;
+  }
+  mMsgBody = doc.body.innerHTML;
+  mLinks = aUpdatedLinksData;
+  
+  await aePrefs.setPrefs({dlgMode: aDlgMode});
+
+  log("Check Links::aeCheckLinks.switchDlgMode(): Updated links data:");
+  log(mLinks);
+
+  // After the old dialog is closed, open the new dialog.
+  // HACK!! - Need to focus the composer window first in order to calculate its
+  // window geometry which is needed when opening the dialog.
+  let compTab = await messenger.tabs.get(aComposeTabID);
+  await messenger.windows.update(compTab.windowId, {focused: true});
+  let win = new aeWindow(aComposeTabID);
+  await openCheckLinksDlg(win, aDlgMode, aComposeTabID);
 
   return true;
 }

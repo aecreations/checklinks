@@ -14,6 +14,16 @@
     font-size: 13px;
 }
 
+#more-btns {
+    position: absolute;
+    bottom: 18px;
+    left: 16px;
+}
+
+#btn-switch-view {
+    width: 128px;
+}
+
 /* Wunderbaum grid style overrides */
 div.wunderbaum {
     border: 1px solid #d7d7db;
