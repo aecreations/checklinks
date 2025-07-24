@@ -12,7 +12,8 @@ import {aeWindow} from "./aeWindow.js";
 // These module-scoped variables are used only briefly or during
 // initialization, so they don't need to be saved to extension storage.
 let mLinks = [];
-let mSubject, mMsgBody;
+let mSubject = null;
+let mMsgBody = null;
 
 
 export async function startLinkChecking(aComposeTabID)
@@ -102,12 +103,19 @@ async function openCheckLinksDlg(aWindow, aDlgMode, aComposeTabID)
 
 export function getComposeLinks()
 {
+  if (!mLinks) {
+    throw new ReferenceError("aeCheckLinks: mLinks is not defined");
+  }
   return mLinks;
 }
 
 
 export function getComposeData()
 {
+  if (mSubject === null || mMsgBody === null) {
+    throw new ReferenceError("aeCheckLinks: mSubject and/or mMsgBody not defined");
+  }
+
   let rv = {
     subj: mSubject,
     msgBody: mMsgBody,
