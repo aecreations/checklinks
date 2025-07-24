@@ -135,7 +135,7 @@ async function revert()
 }
 
 
-async function closeDlg()
+async function accept()
 {
   await messenger.runtime.sendMessage({
     id: "update-compose-links",
@@ -143,6 +143,12 @@ async function closeDlg()
     updatedLinksData: mUpdatedLinks,
   });
 
+  closeDlg();
+}
+
+
+async function closeDlg()
+{
   let compWndIDs = await aePrefs.getPref("_compWndIDs");
   let openWnds = compWndIDs[mCompTabID];
   delete openWnds["clMsgView"];
@@ -188,7 +194,7 @@ document.querySelector("#btn-revert").addEventListener("click", aEvent => {
 });
 
 document.querySelector("#btn-close").addEventListener("click", aEvent => {
-  closeDlg();
+  accept();
 });
 
 document.querySelector("#btn-switch-view").addEventListener("click", aEvent => {
