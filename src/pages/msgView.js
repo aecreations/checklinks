@@ -20,7 +20,7 @@ async function init()
   log("Check Links::linksTable.js: Initializing message view dialog for compose tab " + mCompTabID);
 
   mOrigLinks = await messenger.runtime.sendMessage({id: "get-compose-links"});
-  mUpdatedLinks = mOrigLinks.slice();
+  mUpdatedLinks = structuredClone(mOrigLinks);
 
   log("Check Links::msgView.js: Original links data:");
   log(mOrigLinks);
@@ -122,16 +122,28 @@ async function revert()
 {
   restart();
 
-  mUpdatedLinks = mOrigLinks.slice();
+  log("Check Links::msgView.js: revert(): Original links data:");
+  log(mOrigLinks);
 
-  let msg = await messenger.runtime.sendMessage({id: "get-compose-data"});
+  mUpdatedLinks = structuredClone(mOrigLinks);
+
+  // Get original message content, with link placeholders substituted
+  // (if applicable).
+  let msgBody = await messenger.runtime.sendMessage({
+    id: "get-original-msg-body",
+    compTabID: mCompTabID,
+  });
+
   let msgPreview = document.querySelector("#msg-content");
-  msgPreview.contentDocument.body.innerHTML = msg.msgBody;
+  msgPreview.contentDocument.body.innerHTML = msgBody;
 
   mLinkElts = msgPreview.contentDocument.body.querySelectorAll("a");
 
   // Reselect the first <a> element after reloading the message body.
   selectLink(mCurrLinkIdx);
+
+  log("Check Links::msgView.js: revert(): Updated links (should be reverted to original links):");
+  log(mUpdatedLinks);
 }
 
 

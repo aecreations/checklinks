@@ -183,9 +183,6 @@ export async function switchDlgMode(aDlgMode, aUpdatedLinksData, aComposeTabID)
   
   await aePrefs.setPrefs({dlgMode: aDlgMode});
 
-  log("Check Links::aeCheckLinks.switchDlgMode(): Updated links data:");
-  log(mLinks);
-
   // After the old dialog is closed, open the new dialog.
   // HACK!! - Need to focus the composer window first in order to calculate its
   // window geometry which is needed when opening the dialog.
@@ -195,6 +192,26 @@ export async function switchDlgMode(aDlgMode, aUpdatedLinksData, aComposeTabID)
   await openCheckLinksDlg(win, aDlgMode, aComposeTabID);
 
   return true;
+}
+
+
+export async function getOriginalMessageBody(aComposeTabID)
+{
+  let rv;
+
+  let comp = await messenger.compose.getComposeDetails(aComposeTabID);
+  let msgBody = comp.body.slice();
+  let prefs = await aePrefs.getAllPrefs();
+
+  if (prefs.checkLinkPlchldrs) {
+    let dp = new DOMParser();
+    let processedHTML = processLinkPlaceholders(msgBody, prefs.plchldrDelim);
+    let doc = dp.parseFromString(processedHTML, "text/html");
+    msgBody = doc.body.innerHTML;
+  }
+  rv = msgBody;
+  
+  return rv;
 }
 
 
