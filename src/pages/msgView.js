@@ -6,6 +6,7 @@
 import DOMPurify from "../lib/purify.es.mjs";
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
+import "../modules/aeI18n.js";
 
 let mCompTabID, mOrigLinks, mLinkElts, mCurrLinkIdx;
 let mUpdatedLinks = [];

@@ -7,6 +7,7 @@ import DOMPurify from "../lib/purify.es.mjs";
 import {Wunderbaum} from "../lib/wunderbaum/wunderbaum.esm.min.js";
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
+import "../modules/aeI18n.js";
 
 let mCompTabID, mUpdatedTblData;
 
