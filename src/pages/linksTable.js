@@ -143,6 +143,12 @@ document.querySelector("#btn-switch-view").addEventListener("click", aEvent => {
   switchDlgMode();
 });
 
+document.addEventListener("contextmenu", aEvent => {
+  if (aEvent.target.tagName != "INPUT" && aEvent.target.getAttribute("type") != "text") {
+    aEvent.preventDefault();
+  }
+});
+
 
 //
 // Error reporting and debugging output
