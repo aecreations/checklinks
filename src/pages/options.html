@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>check links options</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+
+  <body>
+    <main>
+      <div id="pref-logo">
+        <img id="addon-icon" src="../img/icon.png">
+        <p id="hdr-ext-name" data-i18n="extName"></p>
+      </div>
+      <div id="pref-body">
+	<h2 id="pref-hdg">options</h2>
+	<button id="about-btn">about...</button>
+
+        <fieldset id="dlg-mode-opts">
+          <div class="row browser-style">
+            <input type="radio" id="dlg-mode-msg-vw" name="dlg-mode" value="1"><label for="dlg-mode-msg-vw">message view</label>
+          </div>
+          <div class="row indent desc">show links in a message preview, where you can review them one at a time.</div>
+          <div class="row browser-style">
+            <input type="radio" id="dlg-mode-tbl-vw" name="dlg-mode" value="2"><label for="dlg-mode-tbl-vw">table view</label>
+          </div>
+          <div class="row indent desc">show links in a table, where you can review all of them at a glance.</div>
+	</fieldset>
+
+	<div class="row browser-style">
+          <input type="checkbox" id="link-plchldrs"><label for="link-plchldrs">check for link placeholders</label>
+	</div>
+        <div class="indent">
+	  <div class="row">
+	    <label>placeholder delimiter:</label>
+	    <select id="plchldr-delim-opts" class="browser-style">
+	      <option>::</option>
+	      <option>**</option>
+	    </select>
+	  </div>
+	  <div id="plchldr-delim-eg" class="row desc">example usage: Visit ::the website:: to learn more.</div>
+        </div>
+      </div>  <!-- /pref-body -->
+    </main>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

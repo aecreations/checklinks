@@ -36,5 +36,10 @@
     "default_area": "maintoolbar"
   },
 
+  "options_ui": {
+    "page": "pages/options.html",
+    "open_in_tab": true
+  },
+
   "default_locale": "en"
 }

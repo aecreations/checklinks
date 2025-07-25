@@ -1,0 +1,106 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+@import "../style/laf.css";
+
+
+body {
+    background-color: #ededf0;
+    font: caption;
+    font-size: 13px;
+}
+
+main {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: 640px;
+    margin: 24px auto 0 auto;
+    background-color: #fff;
+}
+
+h2 {
+    display: inline-block;
+    margin-top: 8px;
+    margin-right: 6px;
+    font-size: 28px;
+    font-weight: 200;
+    letter-spacing: -0.2px;
+}
+
+#pref-logo {
+    order: 1;
+    flex: 0 1 auto;
+    min-width: 180px;
+    margin-top: 24px;
+    text-align: center;
+}
+
+#pref-body {
+    order: 2;
+    flex: 1 1 auto;
+    border-left: 1px solid #ededf0;
+    padding: 16px 16px 16px 16px;
+    background-color: #fefefe;
+    font-size: 15px;
+}
+
+#addon-icon {
+    width: 96px;
+    height: 96px;
+}
+
+#hdr-ext-name {
+    margin-top: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+}
+
+#about-btn {
+    float: right;
+    height: unset;
+    font-size: 11px;
+}
+
+#dlg-mode-opts {
+    margin-bottom: 18px;
+    padding-left: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #b1b1b1;
+}
+
+.desc {
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.indent {
+    margin-left: 28px;
+}
+
+.row {
+    margin-left: 8px;
+}
+
+.row.indent.desc {
+    margin-left: 23px;
+}
+
+.indent .row {
+    margin-left: 7px;
+}
+
+fieldset .row {
+    margin-left: 0;
+}
+
+fieldset input[type="radio"] {
+    margin-left: 0;
+}
