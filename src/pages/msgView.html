@@ -9,8 +9,10 @@
   <body>
     <div id="dlg-body">
       <div id="msg-subject">
-        <label>subject:</label>
-        <input type="text" id="msg-subj-line" readonly>
+        <div id="msg-subject-cntr">
+         <label id="msg-subj-lbl">subject:</label>
+         <input type="text" id="msg-subj-line" readonly>
+        </div>
       </div>
      
       <iframe id="msg-content" src="preview.html"></iframe>
@@ -19,13 +21,13 @@
         <div id="ctrl-panel-cntr">
 	  <div id="ctrl-panel-left">
 	    <div class="row">
-	      <label>link text:</label>
+	      <label id="link-title-lbl">link text:</label>
 	    </div>
 	    <div class="row">
 	      <input type="text" id="link-title" readonly>
 	    </div>
 	    <div class="row">
-	      <label>link location (url):</label>
+	      <label id="link-href-lbl">link location (url):</label>
 	    </div>
 	    <div class="row">
 	      <input type="text" id="link-href">

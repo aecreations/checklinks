@@ -74,8 +74,12 @@ function nextLink()
     alert("link checking is complete.");
     deselectLink(mLinkElts[mCurrLinkIdx]);
 
-    document.querySelectorAll("#btn-replace, #btn-next")
-      .forEach(btn => btn.disabled = true);
+    document.querySelectorAll("#link-title-lbl, #link-href-lbl")
+      .forEach(aElt => aElt.classList.add("disabled"));
+    document.querySelectorAll("#link-title, #link-href, #btn-replace, #btn-next")
+      .forEach(aElt => aElt.disabled = true);    
+    document.querySelector("#link-title").value = '';
+    document.querySelector("#link-href").value = '';
     document.querySelector("#btn-replace").classList.remove("default");
     document.querySelector("#btn-close").classList.add("default");
     mIsDone = true;
@@ -107,8 +111,10 @@ function restart()
   document.querySelector("#link-href").value = '';
 
   if (mIsDone) {
-    document.querySelectorAll("#btn-replace, #btn-next")
-      .forEach(btn => btn.disabled = false);
+    document.querySelectorAll("#link-title-lbl, #link-href-lbl")
+      .forEach(aElt => aElt.classList.remove("disabled"));
+    document.querySelectorAll("#link-title, #link-href, #btn-replace, #btn-next")
+      .forEach(aElt => aElt.disabled = false);
     document.querySelector("#btn-close").classList.remove("default");
     document.querySelector("#btn-replace").classList.add("default");
     mIsDone = false;
