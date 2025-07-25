@@ -3,7 +3,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import DOMPurify from "../lib/purify.es.mjs";
 import {Wunderbaum} from "../lib/wunderbaum/wunderbaum.esm.min.js";
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
@@ -37,7 +36,7 @@ async function init()
       {
 	id: "href",
 	title: "link address (url)",
-	width: "340px"
+	width: "400px"
       },
     ],
     source: linksTblData,

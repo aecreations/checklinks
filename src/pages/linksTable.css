@@ -7,7 +7,7 @@
 
 
 #link-table-grid {
-    height: 150px;
+    height: 200px;
     overflow-y: scroll;
 
     font: caption;
@@ -21,7 +21,7 @@
 }
 
 #btn-switch-view {
-    width: 128px;
+    width: 140px;
 }
 
 /* Wunderbaum grid style overrides */
