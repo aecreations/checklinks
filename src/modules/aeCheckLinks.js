@@ -3,6 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import DOMPurify from "../lib/purify.es.mjs";
 import {aeConst} from "./aeConst.js";
 import {aePrefs} from "./aePrefs.js";
 import {aeWindow} from "./aeWindow.js";
@@ -154,8 +155,9 @@ export async function updateComposeLinks(aComposeTabID, aUpdatedLinksData)
   log("aeCheckLinks.updateComposeLinks(): Updated links in composer:");
   log(links);
 
+  let body = DOMPurify.sanitize(doc.body.innerHTML);
   await messenger.compose.setComposeDetails(aComposeTabID, {
-    body: doc.body.innerHTML,
+    body,
     isModified: true,
   });
 
