@@ -3,7 +3,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import DOMPurify from "../lib/purify.es.mjs";
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
 import "../modules/aeI18n.js";
@@ -54,7 +53,7 @@ function selectLink(aLinkIndex)
   
   mLinkElts[aLinkIndex].classList.add("ae-selected-link");
 
-  document.querySelector("#link-title").value = mLinkElts[aLinkIndex].innerHTML;
+  document.querySelector("#link-title").value = mLinkElts[aLinkIndex].innerText;
   document.querySelector("#link-href").value = mLinkElts[aLinkIndex].href;
 }
 

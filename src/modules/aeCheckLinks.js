@@ -64,7 +64,7 @@ export async function startLinkChecking(aComposeTabID)
 
   for (let link of links) {
     mLinks.push({
-      title: link.innerHTML,
+      title: link.innerText,
       href: link.href,
     });
   }
