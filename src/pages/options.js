@@ -13,7 +13,7 @@ async function init()
 {
   let prefs = await aePrefs.getAllPrefs();
 
-  setSelectedDlgModeRadioBtn();
+  setSelectedDlgModeRadioBtn(prefs);
   let dlgModesRadioBtns = document.querySelectorAll(`input[name="dlg-mode"]`);
   dlgModesRadioBtns.forEach(aElt => {
     aElt.addEventListener("click", aEvent => {
@@ -42,9 +42,16 @@ async function init()
 }
 
 
-async function setSelectedDlgModeRadioBtn()
+async function setSelectedDlgModeRadioBtn(aPrefs=null)
 {
-  let dlgMode = await aePrefs.getPref("dlgMode");
+  let dlgMode;
+  if (aPrefs) {
+    dlgMode = aPrefs.dlgMode;
+  }
+  else {
+    dlgMode = await aePrefs.getPref("dlgMode");
+  }
+  
   let dlgModeRadioBtns = Array.from(document.getElementsByName("dlg-mode"));
   let dlgModeOpt = dlgModeRadioBtns.find(aRadioOpt => aRadioOpt.value == dlgMode);
   dlgModeOpt.checked = true;
