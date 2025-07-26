@@ -52,6 +52,7 @@ function selectLink(aLinkIndex)
   }
   
   mLinkElts[aLinkIndex].classList.add("ae-selected-link");
+  mLinkElts[aLinkIndex].scrollIntoView({block: "end", inline: "nearest"});
 
   document.querySelector("#link-title").value = mLinkElts[aLinkIndex].innerText;
   document.querySelector("#link-href").value = mLinkElts[aLinkIndex].href;
