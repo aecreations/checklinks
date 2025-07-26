@@ -13,10 +13,7 @@ async function init()
 {
   let prefs = await aePrefs.getAllPrefs();
 
-  let dlgModes = Array.from(document.getElementsByName("dlg-mode"));
-  let dlgModesRadio = dlgModes.find(aRadioOpt => aRadioOpt.value == prefs.dlgMode);
-  dlgModesRadio.checked = true;
-
+  setSelectedDlgModeRadioBtn();
   let dlgModesRadioBtns = document.querySelectorAll(`input[name="dlg-mode"]`);
   dlgModesRadioBtns.forEach(aElt => {
     aElt.addEventListener("click", aEvent => {
@@ -45,6 +42,15 @@ async function init()
 }
 
 
+async function setSelectedDlgModeRadioBtn()
+{
+  let dlgMode = await aePrefs.getPref("dlgMode");
+  let dlgModeRadioBtns = Array.from(document.getElementsByName("dlg-mode"));
+  let dlgModeOpt = dlgModeRadioBtns.find(aRadioOpt => aRadioOpt.value == dlgMode);
+  dlgModeOpt.checked = true;
+}
+
+
 //
 // Event handlers
 //
@@ -55,6 +61,8 @@ document.querySelector("#about-btn").addEventListener("click", aEvent => {
   let manifest = messenger.runtime.getManifest();
   alert(`${manifest.name}\nVersion ${manifest.version}\n\n${manifest.description}`);
 });
+
+window.addEventListener("focus", aEvent => { setSelectedDlgModeRadioBtn() });
 
 document.addEventListener("contextmenu", aEvent => {
   if (!aeConst.DEBUG) {
