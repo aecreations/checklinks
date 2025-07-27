@@ -17,6 +17,7 @@ export let aePrefs = {
     checkLinkPlchldrs: true,
     plchldrDelim: "::",
     autoAdjustWndPos: true,
+    defDlgBtnFollowsFocus: false,
   },
   
   getPrefKeys()
@@ -61,6 +62,7 @@ export let aePrefs = {
       checkLinkPlchldrs: true,
       plchldrDelim: "::",
       autoAdjustWndPos: true,
+      defDlgBtnFollowsFocus: false,
     };
     await this._addPrefs(aPrefs, prefs);
   },

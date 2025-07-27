@@ -6,6 +6,7 @@
 import {Wunderbaum} from "../lib/wunderbaum/wunderbaum.esm.min.js";
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
+import {aeInterxn} from "../modules/aeInterxn.js";
 import "../modules/aeI18n.js";
 
 let mCompTabID, mUpdatedTblData;
@@ -13,6 +14,10 @@ let mCompTabID, mUpdatedTblData;
 
 async function init()
 {
+  let platform = await messenger.runtime.getPlatformInfo();
+  document.body.dataset.os = platform.os;
+  aeInterxn.init(platform.os);
+
   let params = new URLSearchParams(window.location.search);
   mCompTabID = Number(params.get("compTabID"));
 
@@ -77,6 +82,11 @@ async function init()
 
     debugLevel: 0,
   });
+
+  let defDlgBtnFollowsFocus = await aePrefs.getPref("defDlgBtnFollowsFocus");
+  if (defDlgBtnFollowsFocus) {
+    aeInterxn.initDialogButtonFocusHandlers();
+  }
 }
 
 

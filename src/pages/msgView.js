@@ -5,6 +5,7 @@
 
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
+import {aeInterxn} from "../modules/aeInterxn.js";
 import "../modules/aeI18n.js";
 
 let mCompTabID, mOrigLinks, mLinkElts, mCurrLinkIdx;
@@ -14,6 +15,10 @@ let mIsDone = false;
 
 async function init()
 {
+  let platform = await messenger.runtime.getPlatformInfo();
+  document.body.dataset.os = platform.os;
+  aeInterxn.init(platform.os);
+
   let params = new URLSearchParams(window.location.search);
   mCompTabID = Number(params.get("compTabID"));
 
@@ -40,6 +45,11 @@ async function init()
 
   mCurrLinkIdx = 0;
   selectLink(mCurrLinkIdx);
+
+  let defDlgBtnFollowsFocus = await aePrefs.getPref("defDlgBtnFollowsFocus");
+  if (defDlgBtnFollowsFocus) {
+    aeInterxn.initDialogButtonFocusHandlers();
+  }
 }
 
 
@@ -76,11 +86,11 @@ function nextLink()
 
     document.querySelectorAll("#link-title-lbl, #link-href-lbl")
       .forEach(aElt => aElt.classList.add("disabled"));
-    document.querySelectorAll("#link-title, #link-href, #btn-replace, #btn-next")
+    document.querySelectorAll("#link-title, #link-href, #btn-accept, #btn-next")
       .forEach(aElt => aElt.disabled = true);    
     document.querySelector("#link-title").value = '';
     document.querySelector("#link-href").value = '';
-    document.querySelector("#btn-replace").classList.remove("default");
+    document.querySelector("#btn-accept").classList.remove("default");
     document.querySelector("#btn-close").classList.add("default");
     mIsDone = true;
     
@@ -113,10 +123,10 @@ function restart()
   if (mIsDone) {
     document.querySelectorAll("#link-title-lbl, #link-href-lbl")
       .forEach(aElt => aElt.classList.remove("disabled"));
-    document.querySelectorAll("#link-title, #link-href, #btn-replace, #btn-next")
+    document.querySelectorAll("#link-title, #link-href, #btn-accept, #btn-next")
       .forEach(aElt => aElt.disabled = false);
     document.querySelector("#btn-close").classList.remove("default");
-    document.querySelector("#btn-replace").classList.add("default");
+    document.querySelector("#btn-accept").classList.add("default");
     mIsDone = false;
   }
 
@@ -200,7 +210,7 @@ document.querySelector("#btn-next").addEventListener("click", aEvent => {
   nextLink();
 });
 
-document.querySelector("#btn-replace").addEventListener("click", aEvent => {
+document.querySelector("#btn-accept").addEventListener("click", aEvent => {
   replace();
 });
 

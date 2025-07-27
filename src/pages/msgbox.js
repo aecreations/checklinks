@@ -3,6 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import {aeInterxn} from "../modules/aeInterxn.js";
 import "../modules/aeI18n.js";
 
 const MSG_UNKNOWN = "msgUnavail";
@@ -26,7 +27,7 @@ async function init()
 
   let platform = await messenger.runtime.getPlatformInfo();
   document.body.dataset.os = platform.os;
-  //aeInterxn.init(platform.os);
+  aeInterxn.init(platform.os);
 
   window.addEventListener("keydown", aEvent => {
     if (aEvent.key == "Enter" || aEvent.key == "Escape") {
@@ -66,10 +67,9 @@ function dismiss()
 
 
 document.addEventListener("DOMContentLoaded", async (aEvent) => { init() });
-/***
+
 document.addEventListener("keydown", aEvent => {
   aeInterxn.suppressBrowserShortcuts(aEvent, false);
 });
-***/
 
 document.addEventListener("contextmenu", aEvent => { aEvent.preventDefault() });
