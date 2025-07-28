@@ -6,11 +6,13 @@
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
 import {aeInterxn} from "../modules/aeInterxn.js";
+import {aeDialog} from "../modules/aeDialog.js";
 import "../modules/aeI18n.js";
 
 let mCompTabID, mOrigLinks, mLinkElts, mCurrLinkIdx;
 let mUpdatedLinks = [];
 let mIsDone = false;
+let mConfirmMsgBox;
 
 
 async function init()
@@ -46,10 +48,35 @@ async function init()
   mCurrLinkIdx = 0;
   selectLink(mCurrLinkIdx);
 
+  initDialogs();
+
   let defDlgBtnFollowsFocus = await aePrefs.getPref("defDlgBtnFollowsFocus");
   if (defDlgBtnFollowsFocus) {
     aeInterxn.initDialogButtonFocusHandlers();
   }
+}
+
+
+function initDialogs()
+{
+  mConfirmMsgBox = new aeDialog("#finished-msgbox");
+  mConfirmMsgBox.onAfterAccept = function ()
+  {
+    deselectLink(mLinkElts[mCurrLinkIdx]);
+
+    document.querySelectorAll("#link-title-lbl, #link-href-lbl")
+      .forEach(aElt => aElt.classList.add("disabled"));
+    document.querySelectorAll("#link-title, #link-href, #btn-accept, #btn-next")
+      .forEach(aElt => aElt.disabled = true);    
+    document.querySelector("#link-title").value = '';
+    document.querySelector("#link-href").value = '';
+    document.querySelector("#btn-accept").classList.remove("default");
+    document.querySelector("#btn-close").classList.add("default");
+    mIsDone = true;
+    
+    log("Check Links::msgView.js: mConfirmMsgBox.onAfterAccept(): Updated link data:");
+    log(mUpdatedLinks);
+  };  
 }
 
 
@@ -81,22 +108,7 @@ function deselectLink(aLinkElt)
 function nextLink()
 {
   if (mCurrLinkIdx == (mLinkElts.length - 1)) {
-    alert("link checking is complete.");
-    deselectLink(mLinkElts[mCurrLinkIdx]);
-
-    document.querySelectorAll("#link-title-lbl, #link-href-lbl")
-      .forEach(aElt => aElt.classList.add("disabled"));
-    document.querySelectorAll("#link-title, #link-href, #btn-accept, #btn-next")
-      .forEach(aElt => aElt.disabled = true);    
-    document.querySelector("#link-title").value = '';
-    document.querySelector("#link-href").value = '';
-    document.querySelector("#btn-accept").classList.remove("default");
-    document.querySelector("#btn-close").classList.add("default");
-    mIsDone = true;
-    
-    log("Check Links::msgView.js: Updated link data:");
-    log(mUpdatedLinks);
-
+    mConfirmMsgBox.showModal();
     return;
   }
 

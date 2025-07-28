@@ -4,6 +4,7 @@
 
 
 @import "../style/dialog.css";
+@import "../style/lightbox.css";
 
 
 html, body {
@@ -150,4 +151,30 @@ input[type="text"][readonly] {
 
 #ctrl-panel-btns button {
     width: 128px;
+}
+
+.lightbox {
+    font-size: 15px;
+}
+
+.lightbox .msgbox-icon {
+    float: left;
+    width: 48px;
+    height: 48px;
+    margin-top: 4px;
+    margin-right: 12px;
+
+    background-image: url("../img/warning-64.png");
+    background-size: contain;
+}
+
+.lightbox > .dlg-btns > button {
+    min-width: 96px;
+    height: 32px;
+    font-size: 15px !important;
+}
+
+#finished-msgbox {
+    --width: 320px;
+    --height: 150px;
 }
