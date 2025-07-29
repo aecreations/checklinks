@@ -10,7 +10,7 @@
     <div id="dlg-body">
       <div id="msg-subject">
         <div id="msg-subject-cntr">
-         <label id="msg-subj-lbl">subject:</label>
+         <label id="msg-subj-lbl" data-i18n="lblSubj"></label>
          <input type="text" id="msg-subj-line" readonly>
         </div>
       </div>
@@ -21,32 +21,32 @@
         <div id="ctrl-panel-cntr">
 	  <div id="ctrl-panel-left">
 	    <div class="row">
-	      <label id="link-title-lbl">link text:</label>
+	      <label id="link-title-lbl" data-i18n="lblLnkTxt"></label>
 	    </div>
 	    <div class="row">
 	      <input type="text" id="link-title" readonly>
 	    </div>
 	    <div class="row">
-	      <label id="link-href-lbl">link address (url):</label>
+	      <label id="link-href-lbl" data-i18n="lblLnkUrl"></label>
 	    </div>
 	    <div class="row">
 	      <input type="text" id="link-href">
 	    </div>
 	    <div id="ctrl-panel-btns" class="row">
               <div id="ctrl-panel-btns-left">
-                <button id="btn-switch-view" class="btn">table view</button>
+                <button id="btn-switch-view" class="btn" data-i18n="btnTblVw"></button>
               </div>
               <div id="ctrl-panel-btns-right">
-                <button id="btn-revert" class="btn">revert</button>
+                <button id="btn-revert" class="btn" data-i18n="btnRevert"></button>
               </div>
 	    </div>
 	  </div>
 
 	  <div id="ctrl-panel-right">
-            <button id="btn-accept" class="default btn">replace</button>
-            <button id="btn-next" class="btn">ignore</button>
-            <button id="btn-restart" class="btn">start over</button>
-            <button id="btn-close" class="btn">close</button>
+            <button id="btn-accept" class="default btn" data-i18n="btnReplace"></button>
+            <button id="btn-next" class="btn" data-i18n="btnIgnore"></button>
+            <button id="btn-restart" class="btn" data-i18n="btnRestart"></button>
+            <button id="btn-close" class="btn" data-i18n="btnClose"></button>
 	  </div>
         </div>
       </div>  <!-- /ctrl-panel -->
@@ -54,7 +54,7 @@
 
     <div id="finished-msgbox" class="lightbox" role="alertdialog">
       <div class="msgbox-icon" role="presentation"></div>
-      <p class="msgbox-content">link checking is complete</p>
+      <p class="msgbox-content" data-i18n="msgLnkChkConf"></p>
       <div class="dlg-btns">
 	<button class="dlg-accept default" data-i18n="btnOK"></button>
       </div>

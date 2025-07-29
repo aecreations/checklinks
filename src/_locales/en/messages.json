@@ -24,5 +24,125 @@
   "msgPlainTxt": {
     "message": "Link checking is not available for plain-text messages.",
     "description": "Error message when Check Links invoked on a plain-text message"
+  },
+
+  "lblSubj": {
+    "message": "Subject:",
+    "description": ""
+  },
+
+  "lblLnkTxt": {
+    "message": "Link text:",
+    "description": ""
+  },
+
+  "lblLnkUrl": {
+    "message": "Link address (URL):",
+    "description": ""
+  },
+
+  "thLnkTxt": {
+    "message": "Link Text",
+    "description": ""
+  },
+
+  "thLnkUrl": {
+    "message": "Link Address (URL)",
+    "description": ""
+  },
+
+  "btnUpdate": {
+    "message": "Update",
+    "description": ""
+  },
+
+  "btnReplace": {
+    "message": "Replace",
+    "description": ""
+  },
+
+  "btnIgnore": {
+    "message": "Ignore",
+    "description": ""
+  },
+
+  "btnRestart": {
+    "message": "Start Over",
+    "description": ""
+  },
+
+  "btnClose": {
+    "message": "Close",
+    "description": ""
+  },
+
+  "btnRevert": {
+    "message": "Revert",
+    "description": ""
+  },
+
+  "btnMsgVw": {
+    "message": "Message View",
+    "description": "Button in Check Links dialog for switching to message view"
+  },
+
+  "btnTblVw": {
+    "message": "Table View",
+    "description": "Button in Check Links dialog for switching to table view"
+  },
+
+  "msgLnkChkConf": {
+    "message": "Link checking is complete.",
+    "description": ""
+  },
+
+  "prefsTitle": {
+    "message": "Check Links Options",
+    "description": "Extension preferences page title"
+  },
+
+  "prefsHdg": {
+    "message": "Options",
+    "description": "Extension preferences page heading"
+  },
+
+  "msgView": {
+    "message": "Message view",
+    "description": "User-selectable option in extension preferences page"
+  },
+
+  "msgViewDesc": {
+    "message": "Show links in a message preview, where you can review them one at a time.",
+    "description": "Description of message view"
+  },
+  
+  "tblView": {
+    "message": "Table view",
+    "description": "User-selectable option in extension preferences page"
+  },
+
+  "tblViewDesc": {
+    "message": "Show links in a table, where you can review all of them at a glance.",
+    "description": "Description of table view"
+  },
+
+  "cbLnkPlchldrs": {
+    "message": "Check for link placeholders",
+    "description": ""
+  },
+  
+  "plchldrDelim": {
+    "message": "Placeholder delimiter:",
+    "description": ""
+  },
+
+  "plchdlrEx": {
+    "message": "Example usage: Visit $1the website$2 to learn more.",
+    "description": ""
+  },
+
+  "aboutBtn": {
+    "message": "About…",
+    "description": "Button in the extension preferences page"
   }
 }

@@ -35,12 +35,12 @@ async function init()
     columns: [
       {
 	id: "*",
-	title: "link text",
+	title: messenger.i18n.getMessage("thLnkTxt"),
 	width: "250px"
       },
       {
 	id: "href",
-	title: "link address (url)",
+	title: messenger.i18n.getMessage("thLnkUrl"),
 	width: "400px"
       },
     ],
