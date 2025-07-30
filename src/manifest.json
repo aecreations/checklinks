@@ -4,6 +4,7 @@
   "description": "__MSG_extDesc__",
   "version": "0.7",
   "author": "AE Creations",
+  "homepage_url": "https://aecreations.io/",
 
   "browser_specific_settings": {
     "gecko": {

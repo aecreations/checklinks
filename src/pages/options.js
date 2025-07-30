@@ -6,7 +6,10 @@
 
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
+import {aeDialog} from "../modules/aeDialog.js";
 import "../modules/aeI18n.js";
+
+let mAboutDlg;
 
 
 async function init()
@@ -39,6 +42,52 @@ async function init()
     let plchldrDelim = aEvent.target.selectedOptions[0].value;
     aePrefs.setPrefs({plchldrDelim});
   });
+
+  initDialogs();
+
+  document.querySelector("#about-btn").addEventListener("click", aEvent => {
+    mAboutDlg.showModal();
+  });
+
+  let links = document.querySelectorAll(".hyperlink");
+  for (let link of links) {
+    link.addEventListener("click", aEvent => {
+      aEvent.preventDefault();
+      gotoURL(aEvent.target.href, ("openInTbWnd" in aEvent.target.dataset));
+    });
+  }
+}
+
+
+function initDialogs()
+{
+  mAboutDlg = new aeDialog("#about-dlg");
+  mAboutDlg.setProps({
+    extInfo: null,
+  });
+  mAboutDlg.onFirstInit = function ()
+  {
+    function $(aID) {
+      return document.querySelector(aID);
+    }
+
+    if (!this.extInfo) {
+      let extManifest = messenger.runtime.getManifest();
+      this.extInfo = {
+        name: extManifest.name,
+        version: extManifest.version,
+        description: extManifest.description,
+        homePgURL: extManifest.homepage_url,
+      };
+    }
+
+    $("#ext-name").append(this.extInfo.name);
+    $("#ext-ver").append(messenger.i18n.getMessage("aboutExtVer", this.extInfo.version));
+    $("#ext-desc").append(this.extInfo.description);
+    $("#ext-home-pg-link").setAttribute("href", this.extInfo.homePgURL);
+
+    // TO DO: User contribution CTA
+  };
 }
 
 
@@ -58,16 +107,22 @@ async function setSelectedDlgModeRadioBtn(aPrefs=null)
 }
 
 
+function gotoURL(aURL, aOpenInTbWnd)
+{
+  if (aOpenInTbWnd) {
+    messenger.tabs.create({url: aURL});
+  }
+  else {
+    messenger.windows.openDefaultBrowser(aURL);
+  }
+}
+
+
 //
 // Event handlers
 //
 
 document.addEventListener("DOMContentLoaded", aEvent => { init() });
-
-document.querySelector("#about-btn").addEventListener("click", aEvent => {
-  let manifest = messenger.runtime.getManifest();
-  alert(`${manifest.name}\nVersion ${manifest.version}\n\n${manifest.description}`);
-});
 
 window.addEventListener("focus", aEvent => { setSelectedDlgModeRadioBtn() });
 

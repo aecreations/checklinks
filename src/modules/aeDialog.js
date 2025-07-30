@@ -12,6 +12,8 @@ export class aeDialog
 
     this._dlgElt = document.querySelector(`${aDlgEltSelector}`);
     this._dlgEltStor = aDlgEltSelector;
+    this._isInitialized = false;
+    this._fnFirstInit = function () {};
     this._fnInit = function () {};
     this._fnDlgShow = function () {};
     this._fnUnload = function () {};
@@ -73,6 +75,11 @@ export class aeDialog
     this._fnInit = aFnInit;
   }
 
+  set onFirstInit(aFnInit)
+  {
+    this._fnFirstInit = aFnInit;
+  }
+
   set onUnload(aFnUnload)
   {
     this._fnUnload = aFnUnload;
@@ -98,8 +105,20 @@ export class aeDialog
     this._fnDlgCancel = aFnCancel;    
   }
 
+  setProps(aProperties)
+  {
+    for (let prop in aProperties) {
+      this[prop] = aProperties[prop];
+    }
+  }
+
   showModal()
   {
+    if (! this._isInitialized) {
+      this._fnFirstInit();
+      this._isInitialized = true;
+    }
+
     this._fnInit();
     document.querySelector("#lightbox-bkgrd-ovl").classList.add("lightbox-show");
     document.querySelector(`${this._dlgEltStor}`).classList.add("lightbox-show");
