@@ -14,7 +14,7 @@
   },
 
   "icons": {
-    "48": "img/icon.png"
+    "48": "img/icon.svg"
   },
 
   "permissions": [
@@ -32,7 +32,7 @@
     "default_label": "",
     "default_title": "__MSG_extName__",
     "default_icon": {
-      "16": "img/addon-default-32.png"
+      "16": "img/composeAction16.svg"
     },
     "default_area": "maintoolbar"
   },

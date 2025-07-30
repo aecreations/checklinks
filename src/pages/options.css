@@ -123,7 +123,7 @@ fieldset input[type="radio"] {
     height: 48px;
     margin-top: 8px;
     margin-right: 12px;
-    background-image: url("../img/icon.png");
+    background-image: url("../img/icon.svg");
     background-size: contain;
 }
 
