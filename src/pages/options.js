@@ -7,6 +7,7 @@
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
 import {aeDialog} from "../modules/aeDialog.js";
+import {aeInterxn} from "../modules/aeInterxn.js";
 import "../modules/aeI18n.js";
 
 let mAboutDlg;
@@ -14,6 +15,10 @@ let mAboutDlg;
 
 async function init()
 {
+  let platform = await messenger.runtime.getPlatformInfo();
+  document.body.dataset.os = platform.os;
+  aeInterxn.init(platform.os);
+
   let prefs = await aePrefs.getAllPrefs();
 
   if (prefs.useAccentColor) {
@@ -137,4 +142,8 @@ document.addEventListener("contextmenu", aEvent => {
   if (!aeConst.DEBUG) {
     aEvent.preventDefault();
   }
+});
+
+document.addEventListener("keydown", aEvent => {
+  aeInterxn.suppressBrowserShortcuts(aEvent, false);
 });
