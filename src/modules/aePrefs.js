@@ -19,6 +19,7 @@ export let aePrefs = {
     autoAdjustWndPos: true,
     defDlgBtnFollowsFocus: false,
     useAccentColor: true,
+    showCxtMenu: true,
   },
   
   getPrefKeys()
@@ -65,6 +66,7 @@ export let aePrefs = {
       autoAdjustWndPos: true,
       defDlgBtnFollowsFocus: false,
       useAccentColor: true,
+      showCxtMenu: true,
     };
     await this._addPrefs(aPrefs, prefs);
   },
