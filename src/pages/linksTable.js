@@ -83,6 +83,18 @@ async function init()
     debugLevel: 0,
   });
 
+  document.querySelector("#btn-accept").addEventListener("click", aEvent => {
+    accept(aEvent);
+  });
+
+  document.querySelector("#btn-cancel").addEventListener("click", aEvent => {
+    cancel(aEvent);
+  });
+
+  document.querySelector("#btn-switch-view").addEventListener("click", aEvent => {
+    switchDlgMode();
+  });
+
   let defDlgBtnFollowsFocus = await aePrefs.getPref("defDlgBtnFollowsFocus");
   if (defDlgBtnFollowsFocus) {
     aeInterxn.initDialogButtonFocusHandlers();
@@ -141,22 +153,14 @@ async function switchDlgMode()
 
 window.addEventListener("DOMContentLoaded", aEvent => { init() });
 
-document.querySelector("#btn-accept").addEventListener("click", aEvent => {
-  accept(aEvent);
-});
-
-document.querySelector("#btn-cancel").addEventListener("click", aEvent => {
-  cancel(aEvent);
-});
-
-document.querySelector("#btn-switch-view").addEventListener("click", aEvent => {
-  switchDlgMode();
-});
-
 document.addEventListener("contextmenu", aEvent => {
   if (aEvent.target.tagName != "INPUT" && aEvent.target.getAttribute("type") != "text") {
     aEvent.preventDefault();
   }
+});
+
+document.addEventListener("keydown", aEvent => {
+  aeInterxn.suppressBrowserShortcuts(aEvent, false);
 });
 
 

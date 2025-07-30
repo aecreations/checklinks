@@ -50,6 +50,30 @@ async function init()
 
   initDialogs();
 
+  document.querySelector("#btn-next").addEventListener("click", aEvent => {
+    nextLink();
+  });
+
+  document.querySelector("#btn-accept").addEventListener("click", aEvent => {
+    replace();
+  });
+
+  document.querySelector("#btn-restart").addEventListener("click", aEvent => {
+    restart();
+  });
+
+  document.querySelector("#btn-revert").addEventListener("click", aEvent => {
+    revert();
+  });
+
+  document.querySelector("#btn-close").addEventListener("click", aEvent => {
+    accept();
+  });
+
+  document.querySelector("#btn-switch-view").addEventListener("click", aEvent => {
+    switchDlgMode();
+  });
+
   let defDlgBtnFollowsFocus = await aePrefs.getPref("defDlgBtnFollowsFocus");
   if (defDlgBtnFollowsFocus) {
     aeInterxn.initDialogButtonFocusHandlers();
@@ -218,34 +242,14 @@ async function switchDlgMode()
 
 window.addEventListener("DOMContentLoaded", aEvent => { init() });
 
-document.querySelector("#btn-next").addEventListener("click", aEvent => {
-  nextLink();
-});
-
-document.querySelector("#btn-accept").addEventListener("click", aEvent => {
-  replace();
-});
-
-document.querySelector("#btn-restart").addEventListener("click", aEvent => {
-  restart();
-});
-
-document.querySelector("#btn-revert").addEventListener("click", aEvent => {
-  revert();
-});
-
-document.querySelector("#btn-close").addEventListener("click", aEvent => {
-  accept();
-});
-
-document.querySelector("#btn-switch-view").addEventListener("click", aEvent => {
-  switchDlgMode();
-});
-
 document.addEventListener("contextmenu", aEvent => {
   if (aEvent.target.tagName != "INPUT" && aEvent.target.getAttribute("type") != "text") {
     aEvent.preventDefault();
   }
+});
+
+document.addEventListener("keydown", aEvent => {
+  aeInterxn.suppressBrowserShortcuts(aEvent, false);
 });
 
 
