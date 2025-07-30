@@ -23,7 +23,12 @@
 
   "msgPlainTxt": {
     "message": "Link checking is not available for plain-text messages.",
-    "description": "Error message when Check Links invoked on a plain-text message"
+    "description": "Message that appears when Check Links invoked on a plain-text message"
+  },
+
+  "msgNoLnks": {
+    "message": "Link checking is complete. No links were found.",
+    "description": "Message that appears when Check Links invoked on a message with zero hyperlinks"
   },
 
   "lblSubj": {
