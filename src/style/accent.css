@@ -1,0 +1,74 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+:root {
+    --accent-color-hover-bkgd: hsl(from accentcolor h s calc(l - 8));
+    --accent-color-active-bkgd: hsl(from accentcolor h s calc(l - 16));
+    --accent-color-border: hsl(from accentcolor h s calc(l - 12));
+    --accent-color-hover-border: hsl(from accentcolor h s calc(l - 20));
+    --accent-color-active-border: hsl(from accentcolor h s calc(l - 32));
+}
+
+button.default {
+    border: 1px solid accentcolor;
+    background-color: accentcolor;
+}
+
+button.default:hover {
+    border: 1px solid transparent;
+    background-color: var(--accent-color-hover-bkgd);
+}
+
+button.default:active {
+    border: 1px solid transparent;
+    background-color: var(--accent-color-active-bkgd);
+}
+
+.browser-style > input[type="checkbox"]:checked {
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iMTYiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDQ4IDE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIzMy4zMzMlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iLjU3NzM1Ii8+PHBhdGggZD0ibTcuNyAxMi45Yy0wLjMgMC40LTAuOSAwLjUtMS4zIDAuMWwtMy4yLTMuMmMtMC40LTAuNC0wLjQtMS4yIDAtMS42czEuMi0wLjQgMS42IDBsMi4xIDIuMSA0LjItNS45YzAuNC0wLjUgMS4xLTAuNiAxLjYtMC4zIDAuNSAwLjQgMC42IDEuMSAwLjMgMS42eiIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjE2IiB3aWR0aD0iMzMuMzMzJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9Ii41NzczNSIvPjxyZWN0IHg9IjMyIiB3aWR0aD0iMzMuMzMzJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9Ii41NzczNSIvPjxwYXRoIGQ9Im0yMy43IDEyLjljLTAuMyAwLjQtMC45IDAuNS0xLjMgMC4xbC0zLjItMy4yYy0wLjQtMC40LTAuNC0xLjIgMC0xLjZzMS4yLTAuNCAxLjYgMGwyLjEgMi4xIDQuMi01LjljMC40LTAuNSAxLjEtMC42IDEuNi0wLjMgMC41IDAuNCAwLjYgMS4xIDAuMyAxLjZ6IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0ibTM5LjcgMTIuOWMtMC4zIDAuNC0wLjkgMC41LTEuMyAwLjFsLTMuMi0zLjJjLTAuNC0wLjQtMC40LTEuMiAwLTEuNnMxLjItMC40IDEuNiAwbDIuMSAyLjEgNC4yLTUuOWMwLjQtMC41IDEuMS0wLjYgMS42LTAuMyAwLjUgMC40IDAuNiAxLjEgMC4zIDEuNnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=");
+    border: 1px solid var(--accent-color-border);
+    background-color: accentcolor;
+}
+
+.browser-style > input[type="checkbox"]:checked:hover,
+.browser-style.hover > input[type="checkbox"]:checked:not(:active) {    
+    background-color: var(--accent-color-hover-bkgd);
+}
+
+.browser-style > input[type="checkbox"]:checked:hover:not(:disabled) {
+    border-color: var(--accent-color-hover-border);
+}
+
+.browser-style > input[type="checkbox"]:checked:hover:active,
+.browser-style.pressed > input[type="checkbox"]:checked:not(:active) {
+    background-color: var(--accent-color-active-bkgd);
+}
+
+.browser-style > input[type="checkbox"]:checked:hover:active:not(:disabled) {
+    border-color: var(--accent-color-active-border);
+}
+
+.browser-style > input[type="radio"]:checked {
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iMTYiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDQ4IDE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxjaXJjbGUgY3g9IjgiIGN5PSI4IiByPSI4IiBmaWxsPSJub25lIi8+PGNpcmNsZSBjeD0iOCIgY3k9IjgiIHI9IjQiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjgiIHI9IjgiIGZpbGw9Im5vbmUiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjgiIHI9IjQiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjgiIHI9IjgiIGZpbGw9Im5vbmUiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjgiIHI9IjQiIGZpbGw9IiNmZmYiLz48L3N2Zz4=");
+    border-color: var(--accent-color-border);
+    background-color: accentcolor;    
+}
+
+.browser-style > input[type="radio"]:checked:hover,
+.browser-style.hover > input[type="radio"]:checked:not(:active) {
+    background-color: var(--accent-color-hover-bkgd);
+}
+
+.browser-style > input[type="radio"]:checked:hover:not(:disabled) {
+    border-color: var(--accent-color-hover-border);
+}
+
+.browser-style > input[type="radio"]:checked:hover:active,
+.browser-style.pressed > input[type="radio"]:checked:not(:active) {
+    background-color: var(--accent-color-active-bkgd);
+}
+
+.browser-style > input[type="radio"]:checked:hover:active:not(:disabled) {
+    border-color: var(--accent-color-active-border);
+}

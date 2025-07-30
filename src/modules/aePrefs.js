@@ -18,6 +18,7 @@ export let aePrefs = {
     plchldrDelim: "::",
     autoAdjustWndPos: true,
     defDlgBtnFollowsFocus: false,
+    useAccentColor: true,
   },
   
   getPrefKeys()
@@ -63,6 +64,7 @@ export let aePrefs = {
       plchldrDelim: "::",
       autoAdjustWndPos: true,
       defDlgBtnFollowsFocus: false,
+      useAccentColor: true,
     };
     await this._addPrefs(aPrefs, prefs);
   },

@@ -16,6 +16,13 @@ async function init()
 {
   let prefs = await aePrefs.getAllPrefs();
 
+  if (prefs.useAccentColor) {
+    let linkElt = document.createElement("link");
+    linkElt.rel = "stylesheet";
+    linkElt.href = "../style/accent.css";
+    document.head.appendChild(linkElt);
+  }
+
   setSelectedDlgModeRadioBtn(prefs);
   let dlgModesRadioBtns = document.querySelectorAll(`input[name="dlg-mode"]`);
   dlgModesRadioBtns.forEach(aElt => {
