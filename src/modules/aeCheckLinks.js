@@ -99,7 +99,7 @@ async function openCheckLinksDlg(aWindow, aDlgMode, aComposeTabID)
   }
   url += `?compTabID=${aComposeTabID}`;
 
-  await aWindow.openDialog(url, wndKey, wndPpty, aComposeTabID); 
+  await aWindow.openDlg(url, wndKey, wndPpty, aComposeTabID); 
 }
 
 

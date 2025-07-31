@@ -16,7 +16,7 @@ export class aeWindow
     this._compTabID = aComposeTabID;
   }
 
-  async openDialog(aURL, aWndKey, aWndPpty)
+  async openDlg(aURL, aWndKey, aWndPpty)
   {   
     let isWndOpen = false;
     let prefs = await aePrefs.getAllPrefs();
