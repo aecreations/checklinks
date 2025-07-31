@@ -24,6 +24,15 @@ async function init()
   log("Check Links::linksTable.js: Initializing table view dialog for compose tab " + mCompTabID);
 
   let linksTblData = await messenger.runtime.sendMessage({id: "get-compose-links"});
+
+  // Handle link placeholders, which are set to a special URL to get past
+  // DOMPurify's sanitization.
+  for (let link of linksTblData) {
+    if (link.href.search(new RegExp(`${aeConst.DUMMY_BLANK_URL}`, "g")) != -1) {
+      link.href = "about:blank";
+    }
+  }
+
   mUpdatedTblData = linksTblData.slice();
 
   log("Check Links::linksTable.js: Links table data:");
@@ -136,6 +145,13 @@ async function closeDlg()
 
 async function switchDlgMode()
 {
+  // Escape "about:blank" URLs
+  for (let link of mUpdatedTblData) {
+    if (link.href == "about:blank") {
+      link.href = aeConst.DUMMY_BLANK_URL;
+    }
+  }
+  
   await messenger.runtime.sendMessage({
     id: "switch-dlg-mode",
     dlgMode: aeConst.DLG_MESSAGE_VIEW,

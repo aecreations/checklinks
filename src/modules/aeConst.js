@@ -8,4 +8,6 @@ export const aeConst = Object.freeze({
 
   DLG_MESSAGE_VIEW: 1,
   DLG_TABLE_VIEW: 2,
+
+  DUMMY_BLANK_URL: "https://null.aecreations.io",
 });

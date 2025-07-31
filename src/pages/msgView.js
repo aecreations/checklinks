@@ -3,6 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import DOMPurify from "../lib/purify.es.mjs";
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
 import {aeInterxn} from "../modules/aeInterxn.js";
@@ -38,7 +39,9 @@ async function init()
   dlgBody.querySelector("#msg-subj-line").value = msg.subj;
 
   let msgPreview = dlgBody.querySelector("#msg-content");
-  msgPreview.contentDocument.body.innerHTML = msg.msgBody;
+  let msgBody = DOMPurify.sanitize(msg.msgBody);
+  msgBody = processBlankURLs(msgBody);
+  msgPreview.contentDocument.body.innerHTML = msgBody;
 
   mLinkElts = msgPreview.contentDocument.body.querySelectorAll("a");
 
@@ -101,6 +104,14 @@ function initDialogs()
     log("Check Links::msgView.js: mConfirmMsgBox.onAfterAccept(): Updated link data:");
     log(mUpdatedLinks);
   };  
+}
+
+
+function processBlankURLs(aHTMLStr)
+{
+  let rv = aHTMLStr.replace(new RegExp(`${aeConst.DUMMY_BLANK_URL}`, "g"), "about:blank");
+  
+  return rv;
 }
 
 
@@ -186,6 +197,8 @@ async function revert()
     id: "get-original-msg-body",
     compTabID: mCompTabID,
   });
+  msgBody = DOMPurify.sanitize(msgBody);
+  msgBody = processBlankURLs(msgBody);
 
   let msgPreview = document.querySelector("#msg-content");
   msgPreview.contentDocument.body.innerHTML = msgBody;
