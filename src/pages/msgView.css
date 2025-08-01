@@ -97,11 +97,29 @@ input[type="text"][readonly] {
     order: 1;
     flex: 1 1 auto;
     height: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
     margin-right: 16px;
 }
 
 #ctrl-panel-left input[type="text"] {
     width: 100%;
+}
+
+#ctrl-panel-left-tboxes {
+    order: 1;
+    flex: 0 1 auto;
+    width: 100%;
+}
+
+#ctrl-panel-left-spacer {
+    order: 2;
+    flex: 1 1 auto;
 }
 
 #ctrl-panel-right {
@@ -130,23 +148,26 @@ input[type="text"][readonly] {
 }
 
 #ctrl-panel-btns {
+    order: 3;
+    flex: 0 1 auto;
+
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-content: center;
     align-items: center;
+
+    width: 100%;
 }
 
 #ctrl-panel-btns-left {
     order: 1;
     flex: 1 1 auto;
-    margin-top: 24px;
 }
 
 #ctrl-panel-btns-right {
     order: 2;
     flex: 0 1 auto;
-    margin-top: 23px;
 }
 
 #ctrl-panel-btns button {
