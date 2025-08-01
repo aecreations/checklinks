@@ -42,7 +42,9 @@ messenger.runtime.onMessage.addListener(aMessage => {
   }
   else if (aMessage.id == "update-compose-links") {
     return Promise.resolve(
-      aeCheckLinks.updateComposeLinks(aMessage.compTabID, aMessage.updatedLinksData)
+      aeCheckLinks.updateComposeLinks(
+        aMessage.compTabID, aMessage.updatedLinksData, aMessage.isDirty
+      )
     );
   }
   else if (aMessage.id == "get-original-msg-body") {
@@ -50,8 +52,13 @@ messenger.runtime.onMessage.addListener(aMessage => {
   }
   else if (aMessage.id == "switch-dlg-mode") {
     return Promise.resolve(
-      aeCheckLinks.switchDlgMode(aMessage.dlgMode, aMessage.updatedLinksData, aMessage.compTabID)
+      aeCheckLinks.switchDlgMode(
+        aMessage.dlgMode, aMessage.updatedLinksData, aMessage.compTabID, aMessage.isDirty
+      )
     );
+  }
+  else if (aMessage.id == "get-compose-dirty-flag") {
+    return Promise.resolve(aeCheckLinks.getComposeDirtyState());
   }
 });
 

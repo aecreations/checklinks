@@ -10,6 +10,7 @@ import {aeInterxn} from "../modules/aeInterxn.js";
 import "../modules/aeI18n.js";
 
 let mCompTabID, mUpdatedTblData;
+let mIsDirty = false;
 
 
 async function init()
@@ -87,10 +88,13 @@ async function init()
       let updatedVal = aChangeEvt.util.getValueFromElem(aChangeEvt.inputElem, true);
       node.data[colId] = updatedVal;
       mUpdatedTblData[node._rowIdx].href = updatedVal;
+      mIsDirty = true;
     },
 
     debugLevel: 0,
   });
+
+  mIsDirty = await messenger.runtime.sendMessage({id: "get-compose-dirty-flag"});
 
   document.querySelector("#btn-accept").addEventListener("click", aEvent => {
     accept(aEvent);
@@ -120,6 +124,7 @@ async function accept(aEvent)
     id: "update-compose-links",
     compTabID: mCompTabID,
     updatedLinksData: mUpdatedTblData,
+    isDirty: mIsDirty,
   });
 
   closeDlg();
@@ -157,6 +162,7 @@ async function switchDlgMode()
     dlgMode: aeConst.DLG_MESSAGE_VIEW,
     updatedLinksData: mUpdatedTblData,
     compTabID: mCompTabID,
+    isDirty: mIsDirty,
   });
 
   closeDlg();

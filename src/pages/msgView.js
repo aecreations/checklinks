@@ -12,6 +12,7 @@ import "../modules/aeI18n.js";
 
 let mCompTabID, mOrigLinks, mLinkElts, mCurrLinkIdx;
 let mUpdatedLinks = [];
+let mIsDirty = false;
 let mIsDone = false;
 let mConfirmMsgBox;
 
@@ -32,6 +33,8 @@ async function init()
 
   log("Check Links::msgView.js: Original links data:");
   log(mOrigLinks);
+
+  mIsDirty = await messenger.runtime.sendMessage({id: "get-compose-dirty-flag"});
 
   let msg = await messenger.runtime.sendMessage({id: "get-compose-data"});
   let dlgBody = document.querySelector("#dlg-body");
@@ -156,6 +159,7 @@ function replace()
   let newHref = document.querySelector("#link-href").value;
   mLinkElts[mCurrLinkIdx].href = newHref;
   mUpdatedLinks[mCurrLinkIdx].href = newHref;
+  mIsDirty = true;
   
   nextLink();
 }
@@ -219,6 +223,7 @@ async function accept()
     id: "update-compose-links",
     compTabID: mCompTabID,
     updatedLinksData: mUpdatedLinks,
+    isDirty: mIsDirty,
   });
 
   closeDlg();
@@ -243,6 +248,7 @@ async function switchDlgMode()
     dlgMode: aeConst.DLG_TABLE_VIEW,
     updatedLinksData: mUpdatedLinks,
     compTabID: mCompTabID,
+    isDirty: mIsDirty,
   });
 
   closeDlg();

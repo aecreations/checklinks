@@ -15,15 +15,16 @@ import {aeWindow} from "./aeWindow.js";
 let mLinks = [];
 let mSubject = null;
 let mMsgBody = null;
+let mIsDirty = false;
 
 
 export async function startLinkChecking(aComposeTabID)
 {
-  let win = new aeWindow(aComposeTabID);
-  
   // Reset links data.
   mLinks = [];
+  mIsDirty = false;
   
+  let win = new aeWindow(aComposeTabID);
   let comp = await messenger.compose.getComposeDetails(aComposeTabID);
   mSubject = comp.subject;
 
@@ -126,8 +127,19 @@ export function getComposeData()
 }
 
 
-export async function updateComposeLinks(aComposeTabID, aUpdatedLinksData)
+export function getComposeDirtyState()
 {
+  return mIsDirty;
+}
+
+
+export async function updateComposeLinks(aComposeTabID, aUpdatedLinksData, aIsDirty)
+{
+  if (!aIsDirty) {
+    log("aeCheckLinks.updateComposeLinks(): No changes to hyperlinks were detected.");
+    return;
+  }
+
   let comp = await messenger.compose.getComposeDetails(aComposeTabID);
 
   log("aeCheckLinks.updateComposeLinks(): Updated links data:");
@@ -166,10 +178,11 @@ export async function updateComposeLinks(aComposeTabID, aUpdatedLinksData)
 }
 
 
-export async function switchDlgMode(aDlgMode, aUpdatedLinksData, aComposeTabID)
+export async function switchDlgMode(aDlgMode, aUpdatedLinksData, aComposeTabID, aIsDirty)
 {
   let comp = await messenger.compose.getComposeDetails(aComposeTabID);
   mSubject = comp.subject;
+  mIsDirty = aIsDirty;
 
   // Clone the message body string so that in-progress link checking doesn't
   // immediately overwrite it.
