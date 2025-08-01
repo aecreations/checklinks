@@ -84,8 +84,13 @@ async function openCheckLinksDlg(aWindow, aDlgMode, aComposeTabID)
   if (aDlgMode == aeConst.DLG_TABLE_VIEW) {
     wndKey = "clListView";
     url = messenger.runtime.getURL("../pages/linksTable.html");
-    wndPpty.width = 700;
+    wndPpty.width = 718;
     wndPpty.height = 310;
+
+    let {os} = await messenger.runtime.getPlatformInfo();
+    if (os == "win") {
+      wndPpty.height = 318;
+    }
   }
   else {
     wndKey = "clMsgView";
