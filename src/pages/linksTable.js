@@ -8,6 +8,7 @@ import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
 import {aeInterxn} from "../modules/aeInterxn.js";
 import "../modules/aeI18n.js";
+import aeAutoCorrectURL from "../modules/aeAutoCorrectURL.js";
 
 let mCompTabID, mUpdatedTblData;
 let mIsDirty = false;
@@ -86,6 +87,7 @@ async function init()
       log(`Check Links::linksTable.js: Changed link ${node._rowIdx} `);
 
       let updatedVal = aChangeEvt.util.getValueFromElem(aChangeEvt.inputElem, true);
+      updatedVal = aeAutoCorrectURL(updatedVal);
       node.data[colId] = updatedVal;
       mUpdatedTblData[node._rowIdx].href = updatedVal;
       mIsDirty = true;

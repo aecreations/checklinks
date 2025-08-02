@@ -9,6 +9,7 @@ import {aePrefs} from "../modules/aePrefs.js";
 import {aeInterxn} from "../modules/aeInterxn.js";
 import {aeDialog} from "../modules/aeDialog.js";
 import "../modules/aeI18n.js";
+import aeAutoCorrectURL from "../modules/aeAutoCorrectURL.js";
 
 let mCompTabID, mOrigLinks, mLinkElts, mCurrLinkIdx;
 let mUpdatedLinks = [];
@@ -162,6 +163,8 @@ function replace()
     linkHref.focus();
     return;
   }
+
+  newHref = aeAutoCorrectURL(newHref);
 
   mLinkElts[mCurrLinkIdx].href = newHref;
   mUpdatedLinks[mCurrLinkIdx].href = newHref;
