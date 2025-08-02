@@ -7,6 +7,8 @@ import {aeInterxn} from "../modules/aeInterxn.js";
 import "../modules/aeI18n.js";
 
 const MSG_UNKNOWN = "msgUnavail";
+const MSG_TYPE_ALERT = "alert";
+const MSG_TYPE_INFO = "info";
 const DEFAULT_WND_HEIGHT = 170;
 const MSG_BODY_DEFAULT_HEIGHT = 40;
 
@@ -17,6 +19,11 @@ async function init()
   let msgID = url.searchParams.get("msgid") || MSG_UNKNOWN;
   let msgBody = document.querySelector("#msgbox-content > p");
   msgBody.textContent = messenger.i18n.getMessage(msgID);
+
+  let msgType = url.searchParams.get("type") || MSG_TYPE_ALERT;
+  if (msgType == MSG_TYPE_INFO) {
+    document.querySelector("#msgbox-icon").dataset.type = msgType;
+  }
 
   let compStyles = window.getComputedStyle(msgBody);
   let msgBodyHeight = parseInt(compStyles.getPropertyValue("height"));

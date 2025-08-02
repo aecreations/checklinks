@@ -10,6 +10,8 @@ export class aeWindow
 {
   WND_SIZE_ADJ_LINUX = 60;
 
+  MSG_TYPE_ALERT = "alert";
+  MSG_TYPE_INFO = "info";
   
   constructor(aComposeTabID)
   {
@@ -88,10 +90,14 @@ export class aeWindow
   }
 
   
-  async alert(aMessageKey)
+  async alert(aMessageKey, aMessageType=null)
   {
     let message = messenger.i18n.getMessage(aMessageKey);
     let url = "pages/msgbox.html?msgid=" + aMessageKey;
+
+    if (aMessageType) {
+      url += `&type=${aMessageType}`;
+    }
 
     // Center the common message box popup within originating composer window,
     // both horizontally and vertically.

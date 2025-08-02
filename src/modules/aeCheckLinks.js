@@ -111,7 +111,7 @@ export async function startLinkChecking(aComposeTabID)
 
   if (links.length == 0) {
     info("aeCheckLinks.startLinkChecking(): No hyperlinks found.");
-    win.alert("msgNoLnks");
+    win.alert("msgNoLnks", win.MSG_TYPE_INFO);
     return;
   }
 
