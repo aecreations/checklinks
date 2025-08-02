@@ -141,7 +141,7 @@
     "description": "Checkbox option in the extension preferences page"
   },
 
-  "cbLnkPlchldrs": {
+  "prefLnkPlchldrs": {
     "message": "Check for link placeholders",
     "description": ""
   },
