@@ -68,6 +68,8 @@ async function init()
       gotoURL(aEvent.target.href, ("openInTbWnd" in aEvent.target.dataset));
     });
   }
+
+  messenger.windows.update(messenger.windows.WINDOW_ID_CURRENT, {focused: true});
 }
 
 
@@ -146,4 +148,19 @@ document.addEventListener("contextmenu", aEvent => {
 
 document.addEventListener("keydown", aEvent => {
   aeInterxn.suppressBrowserShortcuts(aEvent, false);
+});
+
+
+messenger.runtime.onMessage.addListener(aMessage => {
+  if (aMessage.id == "focus-ext-prefs-pg") {
+    messenger.windows.update(messenger.windows.WINDOW_ID_CURRENT, {focused: true}).then(aWnd => {
+      return messenger.tabs.getCurrent();
+    }).then(aTab => {
+      messenger.tabs.update(aTab.id, {active: true});
+    });
+  }
+  else if (aMessage.id == "ping-ext-prefs-pg") {
+    let resp = {isOpen: true};
+    return Promise.resolve(resp);
+  }
 });

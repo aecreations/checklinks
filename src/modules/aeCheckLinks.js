@@ -20,9 +20,52 @@ let mIsDirty = false;
 
 export async function init(aPrefs)
 {
+  messenger.menus.create({
+    id: "ae-checklinks-prefs",
+    title: messenger.i18n.getMessage("mnuPrefs"),
+    contexts: ["compose_action"],
+  });
+
+  await setCustomizations(aPrefs);
+
   messenger.alarms.create("cleanup-comp-tab-refs", {
     periodInMinutes: aeConst.COMPOSE_TAB_CLEANUP_DELAY_MINS,
   });
+}
+
+
+export async function setCustomizations(aPrefs)
+{
+  if (aPrefs.showCxtMenu) {
+    messenger.menus.create({
+      id: "ae-checklinks",
+      title: messenger.i18n.getMessage("extName"),
+      contexts: ["compose_body"],
+    });
+  }
+  else {
+    try {
+      messenger.menus.remove("ae-checklinks");
+    }
+    catch {}
+  }
+}
+
+
+export async function openOptionsPage()
+{
+  let resp;
+  try {
+    resp = await messenger.runtime.sendMessage({id: "ping-ext-prefs-pg"});
+  }
+  catch {}
+
+  if (resp) {
+    await messenger.runtime.sendMessage({id: "focus-ext-prefs-pg"});
+  }
+  else {
+    messenger.runtime.openOptionsPage();
+  }
 }
 
 

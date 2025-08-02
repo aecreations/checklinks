@@ -36,6 +36,38 @@ messenger.composeAction.onClicked.addListener(aTab => {
 });
 
 
+messenger.menus.onClicked.addListener((aInfo, aTab) => {
+  switch (aInfo.menuItemId) {
+  case "ae-checklinks":
+    aeCheckLinks.startLinkChecking(aTab.id);
+    break;
+
+  case "ae-checklinks-prefs":
+    aeCheckLinks.openOptionsPage();
+    break;
+
+  default:
+    break;
+  }
+});
+
+
+messenger.alarms.onAlarm.addListener(aAlarm => {
+  log(`Check Links: Alarm "${aAlarm.name}" was triggered.`);
+
+  if (aAlarm.name == "cleanup-comp-tab-refs") {
+    aeCheckLinks.cleanUpComposeTabRefs();
+  }
+});
+
+
+messenger.storage.onChanged.addListener((aChanges, aAreaName) => {
+  if ("showCxtMenu" in aChanges) {
+    aeCheckLinks.setCustomizations({showCxtMenu: aChanges.showCxtMenu.newValue});
+  }
+});
+
+
 messenger.runtime.onMessage.addListener(aMessage => {
   log(`Check Links: Received message "${aMessage.id}"`);
 
@@ -64,15 +96,6 @@ messenger.runtime.onMessage.addListener(aMessage => {
   }
   else if (aMessage.id == "get-compose-dirty-flag") {
     return Promise.resolve(aeCheckLinks.getComposeDirtyState());
-  }
-});
-
-
-messenger.alarms.onAlarm.addListener(aAlarm => {
-  log(`Check Links: Alarm "${aAlarm.name}" was triggered.`);
-
-  if (aAlarm.name == "cleanup-comp-tab-refs") {
-    aeCheckLinks.cleanUpComposeTabRefs();
   }
 });
 

@@ -101,6 +101,11 @@
     "description": ""
   },
 
+  "mnuPrefs": {
+    "message": "Check Links Options…",
+    "description": "Composer toolbar button context menu option for opening the extension preferences page"
+  },
+
   "prefsTitle": {
     "message": "Check Links Options",
     "description": "Extension preferences page title"
