@@ -18,6 +18,14 @@ let mMsgBody = null;
 let mIsDirty = false;
 
 
+export async function init(aPrefs)
+{
+  messenger.alarms.create("cleanup-comp-tab-refs", {
+    periodInMinutes: aeConst.COMPOSE_TAB_CLEANUP_DELAY_MINS,
+  });
+}
+
+
 export async function startLinkChecking(aComposeTabID)
 {
   // Reset links data.
@@ -252,6 +260,28 @@ function processLinkPlaceholders(aComposeHTMLSrc, aPlaceholderDelim)
   rv = rv.replace(new RegExp(`(\\w)${aPlaceholderDelim}`, "g"), `$1</a>`);
 
   return rv;
+}
+
+
+export async function cleanUpComposeTabRefs()
+{
+  let prefs = await aePrefs.getAllPrefs();
+  let compWndIDs = prefs._compWndIDs;
+
+  for (let compTabID in compWndIDs) {
+    compTabID = Number(compTabID);
+    let compTab;
+    try {
+      compTab = await messenger.tabs.get(compTabID);
+    }
+    catch {}
+
+    if (!compTab) {
+      delete compWndIDs[compTabID];
+    }
+  }
+
+  aePrefs.setPrefs({_compWndIDs: compWndIDs});
 }
 
 

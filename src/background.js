@@ -15,6 +15,8 @@ messenger.runtime.onInstalled.addListener(async (aInstall) => {
     let prefs = {};
     await aePrefs.setUserPrefs(prefs);
     await aePrefs.setDefaultBkgdState();
+
+    aeCheckLinks.init(prefs);
   }
 });
 
@@ -22,6 +24,9 @@ messenger.runtime.onInstalled.addListener(async (aInstall) => {
 messenger.runtime.onStartup.addListener(async () => {
   log("Check Links: Initializing extension during browser startup.");
   await aePrefs.setDefaultBkgdState();
+
+  let prefs = await aePrefs.getAllPrefs();
+  aeCheckLinks.init(prefs);
 });
 
 
@@ -59,6 +64,15 @@ messenger.runtime.onMessage.addListener(aMessage => {
   }
   else if (aMessage.id == "get-compose-dirty-flag") {
     return Promise.resolve(aeCheckLinks.getComposeDirtyState());
+  }
+});
+
+
+messenger.alarms.onAlarm.addListener(aAlarm => {
+  log(`Check Links: Alarm "${aAlarm.name}" was triggered.`);
+
+  if (aAlarm.name == "cleanup-comp-tab-refs") {
+    aeCheckLinks.cleanUpComposeTabRefs();
   }
 });
 

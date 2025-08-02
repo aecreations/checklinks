@@ -10,4 +10,6 @@ export const aeConst = Object.freeze({
   DLG_TABLE_VIEW: 2,
 
   DUMMY_BLANK_URL: "https://null.aecreations.io",
+
+  COMPOSE_TAB_CLEANUP_DELAY_MINS: 30,
 });
