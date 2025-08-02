@@ -136,6 +136,11 @@
     "description": "Description of table view"
   },
 
+  "prefCxtMenu": {
+    "message": "Show menu item in the context menu",
+    "description": "Checkbox option in the extension preferences page"
+  },
+
   "cbLnkPlchldrs": {
     "message": "Check for link placeholders",
     "description": ""

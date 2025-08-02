@@ -36,6 +36,12 @@ async function init()
     });
   });
 
+  let cxtMenu = document.querySelector("#add-cxt-menu");
+  cxtMenu.checked = prefs.showCxtMenu;
+  cxtMenu.addEventListener("click", aEvent => {
+    aePrefs.setPrefs({showCxtMenu: aEvent.target.checked});
+  });
+
   let linkPlchldrs = document.querySelector("#link-plchldrs");
   linkPlchldrs.checked = prefs.checkLinkPlchldrs;
   linkPlchldrs.addEventListener("click", aEvent => {
