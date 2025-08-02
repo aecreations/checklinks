@@ -156,7 +156,13 @@ function nextLink()
 
 function replace()
 {
-  let newHref = document.querySelector("#link-href").value;
+  let linkHref = document.querySelector("#link-href");
+  let newHref = linkHref.value;
+  if (newHref == '') {
+    linkHref.focus();
+    return;
+  }
+
   mLinkElts[mCurrLinkIdx].href = newHref;
   mUpdatedLinks[mCurrLinkIdx].href = newHref;
   mIsDirty = true;

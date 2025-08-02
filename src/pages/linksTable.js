@@ -66,7 +66,7 @@ async function init()
 	switch (col.id) {
 	case "href":
 	  if (aRenderEvt.isNew) {
-	    col.elem.innerHTML = '<input type="text" tabindex="-1">';
+	    col.elem.innerHTML = '<input type="text" class="link-href" tabindex="-1">';
 	  }
 	  aRenderEvt.util.setValueToElem(col.elem, val);
 	  break;
@@ -117,6 +117,14 @@ async function init()
 
 async function accept(aEvent)
 {
+  let linkHrefElts = document.querySelectorAll(".link-href");
+  for (let linkHref of linkHrefElts) {
+    if (linkHref.value == '') {
+      linkHref.focus();
+      return;
+    }
+  }
+
   log("Check Links::linksTable.js: accept(): Updated links data:");
   log(mUpdatedTblData);
 
