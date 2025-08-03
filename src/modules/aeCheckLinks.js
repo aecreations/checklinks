@@ -29,7 +29,7 @@ export async function init(aPrefs)
   await setCustomizations(aPrefs);
 
   messenger.alarms.create("cleanup-comp-tab-refs", {
-    periodInMinutes: aeConst.COMPOSE_TAB_CLEANUP_DELAY_MINS,
+    periodInMinutes: aeConst.COMPTAB_REF_CLEANUP_DELAY_MINS,
   });
 }
 

@@ -11,5 +11,5 @@ export const aeConst = Object.freeze({
 
   DUMMY_BLANK_URL: "https://null.aecreations.io",
 
-  COMPOSE_TAB_CLEANUP_DELAY_MINS: 30,
+  COMPTAB_REF_CLEANUP_DELAY_MINS: 30,
 });
