@@ -124,7 +124,7 @@ async function init()
   mHelpDlg = new aeDialog("#help-dlg");
   mHelpDlg.onFirstInit = function ()
   {
-    let hlpHowTo = this._dlgElt.querySelector("#tbl-view-help-howto");
+    let hlpHowTo = this.find("#tbl-view-help-howto");
     hlpHowTo.append(`${messenger.i18n.getMessage("hlpTblVwHowTo")} 
 ${messenger.i18n.getMessage("hlpLinkEg")}`);
   }

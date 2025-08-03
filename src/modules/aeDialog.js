@@ -105,6 +105,11 @@ export class aeDialog
     this._fnDlgCancel = aFnCancel;    
   }
 
+  find(aEltStor)
+  {
+    return this._dlgElt.querySelector(aEltStor);
+  }
+
   setProps(aProperties)
   {
     for (let prop in aProperties) {
