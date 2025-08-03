@@ -21,6 +21,7 @@ label.disabled {
 
 input[type="text"][readonly] {
     background-color: transparent;
+    font-size: 13px;
 }
 
 #dlg-body {
@@ -139,7 +140,8 @@ input[type="text"][readonly] {
 #ctrl-panel input[type="text"] {
     margin-top: 2px;
     margin-bottom: 8px;
-    height: 24px;
+    height: 25px;
+    font-size: 13px;
 }
 
 #btn-help {
@@ -192,26 +194,23 @@ input[type="text"][readonly] {
 
 
 /*
- * Dialogs
+ * Modal dialogs
  */
 
 .lightbox {
-    padding-left: 22px;
-    padding-right: 22px;
-    border-radius: 8px;
-    font-size: 15px;
+    border-radius: 6px;
 }
 
 .lightbox .msgbox-hdg {
     margin-top: 0;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
 }
 
 .lightbox .msgbox-icon {
     float: left;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     margin-top: 4px;
     margin-right: 12px;
 
@@ -220,22 +219,21 @@ input[type="text"][readonly] {
 }
 
 .lightbox > .dlg-btns > button {
-    min-width: 96px;
     height: 32px;
     margin-right: 14px;
     margin-bottom: 4px;
     border-radius: 4px;
-    font-size: 15px !important;
+    font-size: 13px !important;
 }
 
 #finished-msgbox {
-    --width: 320px;
-    --height: 180px;
-    padding-top: 20px;
+    --width: 256px;
+    --height: 160px;
 }
 
 #finished-msgbox .msgbox-content {
-    margin-top: 28px;
+    margin-top: 24px;
+    font-size: 13px;
 }
 
 #help-dlg {

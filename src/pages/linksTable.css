@@ -67,9 +67,26 @@ div.wunderbaum.wb-grid.wb-cell-mode:focus-within div.wb-row:not(.wb-colspan):not
     display: none;
 }
 
+body[data-os="win"] div.wunderbaum div.wb-row {
+    height: 24px;
+}
+
+body[data-os="win"] div.wunderbaum span.wb-col {
+    height: 22px;
+}
+
+div.wunderbaum.wb-grid div.wb-node-list div.wb-row:hover:not(.wb-active):not(.wb-selected),
+div.wunderbaum div.wb-node-list div.wb-row:hover {
+    background-color: revert;
+}
+
 .wunderbaum .wb-node-list > .wb-row > .wb-col > input[type="text"] {
     padding-left: 1px;
     padding-right: 1px;
+}
+
+div.wunderbaum.wb-grid div.wb-node-list div.wb-row span.wb-col > input:focus {
+    border: 1px solid #61b5ffbf;
 }
 
 
@@ -78,25 +95,15 @@ div.wunderbaum.wb-grid.wb-cell-mode:focus-within div.wb-row:not(.wb-colspan):not
  */
 
 .lightbox {
-    padding-left: 22px;
-    padding-right: 22px;
-    border-radius: 8px;
-    font-size: 15px;
-}
-
-.lightbox .msgbox-hdg {
-    margin-top: 0;
-    font-size: 15px;
-    font-weight: bold;
+    border-radius: 6px;
 }
 
 .lightbox > .dlg-btns > button {
-    min-width: 96px;
     height: 32px;
     margin-right: 14px;
     margin-bottom: 4px;
     border-radius: 4px;
-    font-size: 15px !important;
+    font-size: 13px !important;
 }
 
 #help-dlg {
