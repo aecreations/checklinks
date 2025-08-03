@@ -15,6 +15,7 @@
   },
 
   "icons": {
+    "16": "img/composeAction.svg",
     "48": "img/icon.svg"
   },
 
@@ -35,7 +36,7 @@
     "default_label": "",
     "default_title": "__MSG_extName__",
     "default_icon": {
-      "16": "img/composeAction16.svg"
+      "16": "img/composeAction.svg"
     },
     "default_area": "maintoolbar"
   },
