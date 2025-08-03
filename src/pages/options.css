@@ -106,10 +106,44 @@ fieldset input[type="radio"] {
     margin-left: 0;
 }
 
+#plchldr-delim-opts {
+    width: 48px;
+}
+
 
 /*
- * Dialogs
+ * Lightbox dialogs
  */
+
+.lightbox {
+    top: 64px;
+    padding-left: 22px;
+    padding-right: 22px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.lightbox > .dlg-btns {
+    bottom: 24px;
+    right: 14px;
+}
+
+.lightbox > .dlg-btns > button,
+.lightbox button {
+    min-width: 96px;
+    height: 32px;
+    padding: 0 24px 0;
+    border-radius: 4px;
+    font-size: 15px !important;
+}
+
+.lightbox button:-moz-focusring:not(:disabled) {
+    border-color: var(--color-lb-bkgd) !important;
+}
+
+.lightbox .row {
+    margin-left: unset;
+}
 
 #about-dlg {
     top: 72px;

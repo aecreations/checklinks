@@ -56,9 +56,13 @@ async function init()
       break;
     }
   }
+
+  setPlaceholderDelimPreview(prefs.plchldrDelim);
+  
   plchldrDelimSelect.addEventListener("change", aEvent => {
     let plchldrDelim = aEvent.target.selectedOptions[0].value;
     aePrefs.setPrefs({plchldrDelim});
+    setPlaceholderDelimPreview(plchldrDelim);
   });
 
   initDialogs();
@@ -124,6 +128,13 @@ async function setSelectedDlgModeRadioBtn(aPrefs=null)
   let dlgModeRadioBtns = Array.from(document.getElementsByName("dlg-mode"));
   let dlgModeOpt = dlgModeRadioBtns.find(aRadioOpt => aRadioOpt.value == dlgMode);
   dlgModeOpt.checked = true;
+}
+
+
+function setPlaceholderDelimPreview(aDelimiter)
+{
+  let previewTxt = messenger.i18n.getMessage("plchdlrEx", [aDelimiter, aDelimiter]);
+  document.querySelector("#plchldr-delim-eg").innerText = previewTxt;
 }
 
 
