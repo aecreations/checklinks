@@ -116,7 +116,7 @@ function initDialogs()
   mHelpDlg = new aeDialog("#help-dlg");
   mHelpDlg.onFirstInit = function ()
   {
-    let hlpHowTo = this._dlgElt.querySelector("#msg-view-help-howto");
+    let hlpHowTo = this.find("#msg-view-help-howto");
     hlpHowTo.append(`${messenger.i18n.getMessage("hlpMsgVwHowto")} 
 ${messenger.i18n.getMessage("hlpLinkEg")} ${messenger.i18n.getMessage("hlpMsgVwHowToNext")}`);
   }
