@@ -15,7 +15,7 @@ let mCompTabID, mOrigLinks, mLinkElts, mCurrLinkIdx;
 let mUpdatedLinks = [];
 let mIsDirty = false;
 let mIsDone = false;
-let mConfirmMsgBox;
+let mConfirmMsgBox, mHelpDlg;
 
 
 async function init()
@@ -57,28 +57,32 @@ async function init()
 
   initDialogs();
 
-  document.querySelector("#btn-next").addEventListener("click", aEvent => {
+  dlgBody.querySelector("#btn-next").addEventListener("click", aEvent => {
     nextLink();
   });
 
-  document.querySelector("#btn-accept").addEventListener("click", aEvent => {
+  dlgBody.querySelector("#btn-accept").addEventListener("click", aEvent => {
     replace();
   });
 
-  document.querySelector("#btn-restart").addEventListener("click", aEvent => {
+  dlgBody.querySelector("#btn-restart").addEventListener("click", aEvent => {
     restart();
   });
 
-  document.querySelector("#btn-revert").addEventListener("click", aEvent => {
+  dlgBody.querySelector("#btn-revert").addEventListener("click", aEvent => {
     revert();
   });
 
-  document.querySelector("#btn-close").addEventListener("click", aEvent => {
+  dlgBody.querySelector("#btn-close").addEventListener("click", aEvent => {
     accept();
   });
 
-  document.querySelector("#btn-switch-view").addEventListener("click", aEvent => {
+  dlgBody.querySelector("#btn-switch-view").addEventListener("click", aEvent => {
     switchDlgMode();
+  });
+
+  dlgBody.querySelector("#btn-help").addEventListener("click", aEvent => {
+    mHelpDlg.showModal();
   });
 
   let defDlgBtnFollowsFocus = await aePrefs.getPref("defDlgBtnFollowsFocus");
@@ -107,7 +111,15 @@ function initDialogs()
     
     log("Check Links::msgView.js: mConfirmMsgBox.onAfterAccept(): Updated link data:");
     log(mUpdatedLinks);
-  };  
+  };
+
+  mHelpDlg = new aeDialog("#help-dlg");
+  mHelpDlg.onFirstInit = function ()
+  {
+    let hlpHowTo = this._dlgElt.querySelector("#msg-view-help-howto");
+    hlpHowTo.append(`${messenger.i18n.getMessage("hlpMsgVwHowto")} 
+${messenger.i18n.getMessage("hlpLinkEg")} ${messenger.i18n.getMessage("hlpMsgVwHowToNext")}`);
+  }
 }
 
 

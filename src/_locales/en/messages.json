@@ -101,6 +101,51 @@
     "description": ""
   },
 
+  "hlpTitle": {
+    "message": "Check Links Help",
+    "description": ""
+  },
+
+  "hlpMsgVwIntro": {
+    "message": "The Message View dialog lets you review the links in a draft email message one at a time. The currently-selected link is highlighted in the message preview.",
+    "description": ""
+  },
+
+  "hlpMsgVwHowto": {
+    "message": "If you want to change the address of the selected link, edit the text in the Link Address textbox and then click Replace.",
+    "description": ""
+  },
+
+  "hlpMsgVwHowToNext": {
+    "message": "If the link address is correct, click Next Link to review the next link in the message.",
+    "description": ""
+  },
+
+  "hlpMsgVwEnd": {
+    "message": "You can restart link checking at any time by clicking Start Over. To undo all changes, click Revert.",
+    "description": ""
+  },
+
+  "hlpTblVwIntro": {
+    "message": "The Table View dialog lets you review all the links of a draft message in a table.",
+    "description": ""
+  },
+
+  "hlpTblVwHowTo": {
+    "message": "If you want to change the address of a link, click on the table cell for the link address and edit the text.",
+    "description": ""
+  },
+
+  "hlpTblVwEnd": {
+    "message": "When you're done reviewing the links, click Update to apply your changes and close the dialog.",
+    "description": ""
+  },
+
+  "hlpLinkEg": {
+    "message": "Link addresses can be website URLs (for example, https://aecreations.io) or email addresses (for example, mailto:aecreations-help@groups.io).",
+    "description": ""
+  },
+
   "mnuPrefs": {
     "message": "Check Links Options…",
     "description": "Composer toolbar button context menu option for opening the extension preferences page"

@@ -142,6 +142,17 @@ input[type="text"][readonly] {
     height: 24px;
 }
 
+#btn-help {
+    min-width: 32px;
+    width: 32px !important;
+    margin-right: 14px;
+
+    background-image: url("../img/help.svg");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 #btn-close {
     margin-top: 24px;
     margin-bottom: 0 !important;
@@ -160,19 +171,29 @@ input[type="text"][readonly] {
     width: 100%;
 }
 
-#ctrl-panel-btns-left {
+#ctrl-panel-hlp-btn {
     order: 1;
+    flex: 0 1 auto;
+}
+
+#ctrl-panel-btns-left {
+    order: 2;
     flex: 1 1 auto;
 }
 
 #ctrl-panel-btns-right {
-    order: 2;
+    order: 3;
     flex: 0 1 auto;
 }
 
 #ctrl-panel-btns button {
     width: 128px;
 }
+
+
+/*
+ * Dialogs
+ */
 
 .lightbox {
     padding-left: 22px;
@@ -181,10 +202,16 @@ input[type="text"][readonly] {
     font-size: 15px;
 }
 
+.lightbox .msgbox-hdg {
+    margin-top: 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+
 .lightbox .msgbox-icon {
     float: left;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     margin-top: 4px;
     margin-right: 12px;
 
@@ -203,16 +230,28 @@ input[type="text"][readonly] {
 
 #finished-msgbox {
     --width: 320px;
-    --height: 188px;
+    --height: 180px;
     padding-top: 20px;
-}
-
-#finished-msgbox .msgbox-hdg {
-    margin-top: 0;
-    font-size: 15px;
-    font-weight: bold;
 }
 
 #finished-msgbox .msgbox-content {
     margin-top: 28px;
+}
+
+#help-dlg {
+    --width: 600px;
+    --height: 300px;
+}
+
+#help-dlg .dlg-hdg {
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#help-dlg .dlg-content {
+    max-height: 186px;
+    overflow-y: auto;
+    font-size: 13px;
 }

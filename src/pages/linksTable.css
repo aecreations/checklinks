@@ -2,7 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-@import url("../style/dialog.css");
+@import "../style/dialog.css";
+@import "../style/lightbox.css";
 @import url("../lib/wunderbaum/wunderbaum.css");
 
 
@@ -15,6 +16,7 @@
 }
 
 #more-btns {
+    display: flex;
     position: absolute;
     bottom: 18px;
     left: 16px;
@@ -22,6 +24,17 @@
 
 #btn-switch-view {
     width: 140px;
+}
+
+#btn-help {
+    min-width: 32px;
+    width: 32px !important;
+    margin-right: 14px;
+
+    background-image: url("../img/help.svg");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* Wunderbaum grid style overrides */
@@ -57,4 +70,49 @@ div.wunderbaum.wb-grid.wb-cell-mode:focus-within div.wb-row:not(.wb-colspan):not
 .wunderbaum .wb-node-list > .wb-row > .wb-col > input[type="text"] {
     padding-left: 1px;
     padding-right: 1px;
+}
+
+
+/*
+ * Help dialog
+ */
+
+.lightbox {
+    padding-left: 22px;
+    padding-right: 22px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.lightbox .msgbox-hdg {
+    margin-top: 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.lightbox > .dlg-btns > button {
+    min-width: 96px;
+    height: 32px;
+    margin-right: 14px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    font-size: 15px !important;
+}
+
+#help-dlg {
+    --width: 600px;
+    --height: 260px;
+}
+
+#help-dlg .dlg-hdg {
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#help-dlg .dlg-content {
+    max-height: 148px;
+    overflow-y: auto;
+    font-size: 13px;
 }

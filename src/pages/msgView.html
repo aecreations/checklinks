@@ -36,6 +36,9 @@
 	    </div>
 	    <div id="ctrl-panel-left-spacer"></div>
 	    <div id="ctrl-panel-btns" class="row">
+              <div id="ctrl-panel-hlp-btn">
+                <button id="btn-help" class="btn"></button>
+              </div>
 	      <div id="ctrl-panel-btns-left">
 		<button id="btn-switch-view" class="btn" data-i18n="btnTblVw"></button>
 	      </div>
@@ -55,10 +58,23 @@
       </div>  <!-- /ctrl-panel -->
     </div>  <!-- /dlg-body -->
 
+    <!-- Dialog boxes -->
     <div id="finished-msgbox" class="lightbox" role="alertdialog">
       <p class="msgbox-hdg" data-i18n="extName"></p>
       <div class="msgbox-icon" role="presentation"></div>
       <p class="msgbox-content" data-i18n="msgLnkChkConf"></p>
+      <div class="dlg-btns">
+	<button class="dlg-accept default" data-i18n="btnOK"></button>
+      </div>
+    </div>
+
+    <div id="help-dlg" class="lightbox" role="dialog">
+      <p class="dlg-hdg" data-i18n="hlpTitle"></p>
+      <div class="dlg-content">
+        <p data-i18n="hlpMsgVwIntro"></p>
+        <p id="msg-view-help-howto"></p>
+        <p data-i18n="hlpMsgVwEnd"></p>
+      </div>
       <div class="dlg-btns">
 	<button class="dlg-accept default" data-i18n="btnOK"></button>
       </div>

@@ -7,11 +7,13 @@ import {Wunderbaum} from "../lib/wunderbaum/wunderbaum.esm.min.js";
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
 import {aeInterxn} from "../modules/aeInterxn.js";
+import {aeDialog} from "../modules/aeDialog.js";
 import "../modules/aeI18n.js";
 import aeAutoCorrectURL from "../modules/aeAutoCorrectURL.js";
 
 let mCompTabID, mUpdatedTblData;
 let mIsDirty = false;
+let mHelpDlg;
 
 
 async function init()
@@ -110,9 +112,21 @@ async function init()
     switchDlgMode();
   });
 
+  document.querySelector("#btn-help").addEventListener("click", aEvent => {
+    mHelpDlg.showModal();
+  });
+
   let defDlgBtnFollowsFocus = await aePrefs.getPref("defDlgBtnFollowsFocus");
   if (defDlgBtnFollowsFocus) {
     aeInterxn.initDialogButtonFocusHandlers();
+  }
+
+  mHelpDlg = new aeDialog("#help-dlg");
+  mHelpDlg.onFirstInit = function ()
+  {
+    let hlpHowTo = this._dlgElt.querySelector("#tbl-view-help-howto");
+    hlpHowTo.append(`${messenger.i18n.getMessage("hlpTblVwHowTo")} 
+${messenger.i18n.getMessage("hlpLinkEg")}`);
   }
 }
 

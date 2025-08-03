@@ -19,11 +19,25 @@
     </div>  <!-- /dlg-body -->
 
     <div id="more-btns">
+      <button id="btn-help" class="btn"></button>
       <button id="btn-switch-view" class="btn" data-i18n="btnMsgVw"></button>
     </div>
     <div id="dlg-buttons" class="browser-style">
       <button id="btn-accept" class="default btn" data-i18n="btnUpdate"></button>
       <button id="btn-cancel" class="btn" data-i18n="btnCancel"></button>
+    </div>
+
+    <!-- Help dialog -->
+    <div id="help-dlg" class="lightbox" role="dialog">
+      <p class="dlg-hdg" data-i18n="hlpTitle"></p>
+      <div class="dlg-content">
+        <p data-i18n="hlpTblVwIntro"></p>
+        <p id="tbl-view-help-howto"></p>
+        <p data-i18n="hlpTblVwEnd"></p>
+      </div>
+      <div class="dlg-btns">
+	<button class="dlg-accept default" data-i18n="btnOK"></button>
+      </div>
     </div>
 
     <script type="module" src="linksTable.js"></script>
