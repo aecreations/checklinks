@@ -9,6 +9,7 @@ import {aePrefs} from "../modules/aePrefs.js";
 import {aeDialog} from "../modules/aeDialog.js";
 import {aeInterxn} from "../modules/aeInterxn.js";
 import "../modules/aeI18n.js";
+import {aeMozVersion} from "../modules/aeMozVersion.js";
 
 let mAboutDlg;
 
@@ -105,8 +106,9 @@ function initDialogs()
       };
     }
 
+    let extVer = aeMozVersion.getExtendedVersion(this.extInfo.version);
     $("#ext-name").append(this.extInfo.name);
-    $("#ext-ver").append(messenger.i18n.getMessage("aboutExtVer", this.extInfo.version));
+    $("#ext-ver").append(messenger.i18n.getMessage("aboutExtVer", extVer));
     $("#ext-desc").append(this.extInfo.description);
     $("#ext-home-pg-link").setAttribute("href", this.extInfo.homePgURL);
 
