@@ -89,6 +89,8 @@ async function init()
   if (defDlgBtnFollowsFocus) {
     aeInterxn.initDialogButtonFocusHandlers();
   }
+
+  focusLinkAddressTextbox();
 }
 
 
@@ -106,7 +108,10 @@ function initDialogs()
     document.querySelector("#link-title").value = '';
     document.querySelector("#link-href").value = '';
     document.querySelector("#btn-accept").classList.remove("default");
-    document.querySelector("#btn-close").classList.add("default");
+
+    let closeBtn = document.querySelector("#btn-close");
+    closeBtn.classList.add("default");
+    closeBtn.focus();
     mIsDone = true;
     
     log("Check Links::msgView.js: mConfirmMsgBox.onAfterAccept(): Updated link data:");
@@ -164,6 +169,7 @@ function nextLink()
   }
 
   selectLink(++mCurrLinkIdx);
+  focusLinkAddressTextbox();
 }
 
 
@@ -183,6 +189,7 @@ function replace()
   mIsDirty = true;
   
   nextLink();
+  focusLinkAddressTextbox();
 }
 
 
@@ -203,7 +210,8 @@ function restart()
   }
 
   mCurrLinkIdx = 0;
-  selectLink(mCurrLinkIdx);  
+  selectLink(mCurrLinkIdx);
+  focusLinkAddressTextbox();
 }
 
 
@@ -235,6 +243,16 @@ async function revert()
 
   log("Check Links::msgView.js: revert(): Updated links (should be reverted to original links):");
   log(mUpdatedLinks);
+
+  focusLinkAddressTextbox();
+}
+
+
+function focusLinkAddressTextbox()
+{
+  let textbox = document.querySelector("#link-href");
+  textbox.focus();
+  textbox.select();
 }
 
 
