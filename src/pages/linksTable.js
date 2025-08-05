@@ -199,14 +199,47 @@ async function switchDlgMode()
 
 window.addEventListener("DOMContentLoaded", aEvent => { init() });
 
-document.addEventListener("contextmenu", aEvent => {
+window.addEventListener("contextmenu", aEvent => {
   if (aEvent.target.tagName != "INPUT" && aEvent.target.getAttribute("type") != "text") {
     aEvent.preventDefault();
   }
 });
 
-document.addEventListener("keydown", aEvent => {
+
+window.addEventListener("keydown", aEvent => {
   aeInterxn.suppressBrowserShortcuts(aEvent, false);
+
+  if (aEvent.key == "Enter") {
+    if (aEvent.target.tagName == "BUTTON" && aEvent.target.id != "btn-accept"
+        && !aEvent.target.classList.contains("dlg-accept")) {
+      aEvent.preventDefault();
+      aEvent.target.click();
+      return;
+    }
+
+    if (aeDialog.isOpen()) {
+      // Avoid duplicate invocation due to pressing ENTER while OK button
+      // is focused in a modal dialog.
+      if (!aEvent.target.classList.contains("dlg-accept")) {
+        aeDialog.acceptDlgs();
+      }
+      return;
+    }
+
+    if (aEvent.target.id != "btn-accept") {
+      accept(aEvent);
+    }
+  }
+  else if (aEvent.key == "Escape") {
+    if (aeDialog.isOpen()) {
+      aeDialog.cancelDlgs();
+      return;
+    }
+    closeDlg();    
+  }
+  else if (aEvent.key == "F1") {
+    mHelpDlg.showModal();
+  }
 });
 
 
