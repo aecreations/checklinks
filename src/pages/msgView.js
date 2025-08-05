@@ -10,6 +10,7 @@ import {aeInterxn} from "../modules/aeInterxn.js";
 import {aeDialog} from "../modules/aeDialog.js";
 import "../modules/aeI18n.js";
 import aeAutoCorrectURL from "../modules/aeAutoCorrectURL.js";
+import {aeVisual} from "../modules/aeVisual.js";
 
 let mCompTabID, mOrigLinks, mLinkElts, mCurrLinkIdx;
 let mUpdatedLinks = [];
@@ -57,19 +58,23 @@ async function init()
 
   initDialogs();
 
-  dlgBody.querySelector("#btn-next").addEventListener("click", aEvent => {
+  let btnNext = dlgBody.querySelector("#btn-next");
+  btnNext.addEventListener("click", aEvent => {
     nextLink();
   });
 
-  dlgBody.querySelector("#btn-accept").addEventListener("click", aEvent => {
+  let btnReplace = dlgBody.querySelector("#btn-accept");
+  btnReplace.addEventListener("click", aEvent => {
     replace();
   });
 
-  dlgBody.querySelector("#btn-restart").addEventListener("click", aEvent => {
+  let btnRestart = dlgBody.querySelector("#btn-restart");
+  btnRestart.addEventListener("click", aEvent => {
     restart();
   });
 
-  dlgBody.querySelector("#btn-revert").addEventListener("click", aEvent => {
+  let btnRevert = dlgBody.querySelector("#btn-revert");
+  btnRevert.addEventListener("click", aEvent => {
     revert();
   });
 
@@ -84,6 +89,24 @@ async function init()
   dlgBody.querySelector("#btn-help").addEventListener("click", aEvent => {
     mHelpDlg.showModal();
   });
+
+  if (platform.os == "mac") {
+    btnReplace.innerText = messenger.i18n.getMessage("btnReplace");
+    btnNext.innerText = messenger.i18n.getMessage("btnNext");
+    btnRestart.innerText = messenger.i18n.getMessage("btnRestart");
+    btnRevert.innerText = messenger.i18n.getMessage("btnRevert");
+  }
+  else {
+    // Access keys for buttons on Windows and Linux.
+    let blReplace = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnReplace"), "R");
+    let blNext = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnNext"), "N");
+    let blRestart = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnRestart"), "S");
+    let blRevert = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnRevert"), "v");
+    btnReplace.innerHTML = DOMPurify.sanitize(blReplace);
+    btnNext.innerHTML = DOMPurify.sanitize(blNext);
+    btnRestart.innerHTML = DOMPurify.sanitize(blRestart);
+    btnRevert.innerHTML = DOMPurify.sanitize(blRevert);
+  }
 
   let defDlgBtnFollowsFocus = await aePrefs.getPref("defDlgBtnFollowsFocus");
   if (defDlgBtnFollowsFocus) {
