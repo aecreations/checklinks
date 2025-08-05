@@ -165,8 +165,34 @@ document.addEventListener("contextmenu", aEvent => {
   }
 });
 
-document.addEventListener("keydown", aEvent => {
+
+window.addEventListener("keydown", aEvent => {
   aeInterxn.suppressBrowserShortcuts(aEvent, false);
+
+  if (aEvent.key == "Enter") {
+    if (aeDialog.isOpen()) {
+      if (aEvent.target.tagName == "BUTTON" && !aEvent.target.classList.contains("default")) {
+        aEvent.target.click();
+      }
+      else {
+        aeDialog.acceptDlgs();
+      }
+    }
+    else {
+      if (aEvent.target.tagName == "BUTTON") {
+        aEvent.target.click();
+      }
+    }
+    aEvent.preventDefault();
+  }
+  else if (aEvent.key == "Escape" && aeDialog.isOpen()) {
+    aeDialog.cancelDlgs();
+  }
+  else if (aEvent.key == " ") {
+    if (aEvent.target.tagName == "A") {
+      aEvent.target.click();
+    }
+  }
 });
 
 
