@@ -6,6 +6,40 @@
 @import "../style/lightbox.css";
 @import url("../lib/wunderbaum/wunderbaum.css");
 
+:root {
+    --color-table-head-bkgd: #eee;
+
+    /* Wunderbaum grid color overrides */
+    --wb-node-text-color: var(--color-default-text);
+    --wb-header-color: #eee;
+    --wb-hover-color: var(--color-bkgd);
+    --wb-active-color: var(--color-bkgd);
+    --wb-active-cell-color: var(--wb-background-color);
+    --wb-active-column-color: var(--color-bkgd);
+    --wb-active-header-column-color: var(--wb-header-color);
+    
+    --url-help-icon: url("../img/help.svg");
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+	--color-table-head-bkgd: #4a4a4f;
+	
+	/* Wunderbaum grid color overrides for dark mode */
+	--wb-background-color: #202023;
+	--wb-header-color: #4a4a4f;
+	--wb-hover-color: var(--wb-background-color);
+	--wb-focus-border-color: #0a84ff;
+	--wb-grid-color: #b1b1b1;
+	--wb-active-column-color: var(--wb-background-color);
+	--wb-active-color-grayscale: var(--wb-background-color);
+	--wb-active-hover-color-grayscale: var(--wb-background-color);
+	--wb-active-cell-color-grayscale: var(--wb-background-color);
+	--wb-grid-color-grayscale: #b1b1b1;
+	
+	--url-help-icon: url("../img/help-dk.svg");
+    }
+}
 
 #link-table-grid {
     height: 200px;
@@ -23,7 +57,7 @@
 }
 
 #btn-switch-view {
-    width: 140px;
+    width: 128px;
 }
 
 #btn-help {
@@ -31,7 +65,7 @@
     width: 32px !important;
     margin-right: 14px;
 
-    background-image: url("../img/help.svg");
+    background-image: var(--url-help-icon);
     background-size: 24px 24px;
     background-repeat: no-repeat;
     background-position: center;
@@ -41,12 +75,12 @@
 div.wunderbaum {
     border: 1px solid #d7d7db;
     border-radius: 0;
-    color: black;
 }
 
 div.wunderbaum div.wb-header {
     border-bottom: 1px solid #d4d4d4;
-    background-color: #eee;
+    background-color: var(--color-table-head-bkgd);
+    color: var(--wb-node-text-color);
 }
 
 div.wunderbaum div.wb-header span.wb-col {
