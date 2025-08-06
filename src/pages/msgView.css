@@ -6,13 +6,24 @@
 @import "../style/dialog.css";
 @import "../style/lightbox.css";
 
+:root {
+    --color-bkgd: #f9f9fb;
+    --url-help-icon: url("../img/help.svg");
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+	--color-bkgd: #2a2a2e;
+	--url-help-icon: url("../img/help-dk.svg");
+    }
+}
 
 html, body {
     height: 100%;
 }
 
 body {
-    background-color: #f9f9fb;
+    background-color: var(--color-bkgd);
 }
 
 label.disabled {
@@ -149,7 +160,7 @@ input[type="text"][readonly] {
     width: 32px !important;
     margin-right: 14px;
 
-    background-image: url("../img/help.svg");
+    background-image: var(--url-help-icon);
     background-size: 24px 24px;
     background-repeat: no-repeat;
     background-position: center;

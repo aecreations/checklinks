@@ -1,0 +1,41 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+:root {
+    --color-bkgd: #fff;
+    --color-default-text: black;
+    --color-link: rgb(0, 0, 238);
+    --color-link-visited: #6b21a8;
+    --color-selected-link: white;
+    --color-selected-link-bkgd: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+	--color-bkgd: #202023;
+	--color-default-text: #f9f9fa;
+	--color-link: rgb(140, 140, 255);
+	--color-link-visited: #f4a9e8;
+	--color-selected-link: #15141a;
+	--color-selected-link-bkgd: #ffe699;
+    }
+}
+
+body {
+    background-color: var(--color-bkgd);
+    color: var(--color-default-text);
+}
+
+a {
+    color: var(--color-link);
+}
+
+a:visited {
+    color: var(--color-link-visited);
+}
+
+a.ae-selected-link {
+    background-color: var(--color-selected-link-bkgd);
+    color: var(--color-selected-link);
+}
