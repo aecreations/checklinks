@@ -38,57 +38,57 @@
 
   "lblSubj": {
     "message": "Subject:",
-    "description": ""
+    "description": "Label for subject line in Message View dialog"
   },
 
   "lblLnkTxt": {
     "message": "Link text:",
-    "description": ""
+    "description": "Label for text of selected link in Message View dialog"
   },
 
   "lblLnkUrl": {
     "message": "Link address (URL):",
-    "description": ""
+    "description": "Label for URL of selected link in Message View dialog"
   },
 
   "thLnkTxt": {
     "message": "Link Text",
-    "description": ""
+    "description": "Table column header in Table View dialog"
   },
 
   "thLnkUrl": {
     "message": "Link Address (URL)",
-    "description": ""
+    "description": "Table column header in Table View dialog"
   },
 
   "btnUpdate": {
     "message": "Update",
-    "description": ""
+    "description": "Button for applying link changes in the Table View dialog"
   },
 
   "btnReplace": {
     "message": "Replace",
-    "description": ""
+    "description": "Button for changing link URL of selected link in Message View dialog"
   },
 
   "btnNext": {
     "message": "Next Link",
-    "description": ""
+    "description": "Button for selecting the next link in Message View dialog"
   },
 
   "btnRestart": {
     "message": "Start Over",
-    "description": ""
+    "description": "Button for restarting link checking and selecting the first link in Message View dialog"
   },
 
   "btnClose": {
     "message": "Close",
-    "description": ""
+    "description": "Button for closing Message View dialog"
   },
 
   "btnRevert": {
     "message": "Revert",
-    "description": ""
+    "description": "Button for undoing changes to link URLs in the Message View dialog"
   },
 
   "btnMsgVw": {
@@ -103,57 +103,57 @@
 
   "msgLnkChkConf": {
     "message": "Link checking is complete.",
-    "description": ""
+    "description": "Confirmation message box in Message View dialog"
   },
 
   "hlpTitle": {
     "message": "Check Links Help",
-    "description": ""
+    "description": "Help dialog title"
   },
 
   "hlpMsgVwIntro": {
     "message": "The Message View dialog lets you review the links in a draft email message one at a time. The currently-selected link is highlighted in the message preview.",
-    "description": ""
+    "description": "Message View dialog help"
   },
 
   "hlpMsgVwHowto": {
     "message": "If you want to change the address of the selected link, edit the text in the Link Address textbox and then click Replace.",
-    "description": ""
+    "description": "Message View dialog help"
   },
 
   "hlpMsgVwHowToNext": {
     "message": "If the link address is correct, click Next Link to review the next link in the message.",
-    "description": ""
+    "description": "Message View dialog help"
   },
 
   "hlpMsgVwEnd": {
     "message": "You can restart link checking at any time by clicking Start Over. To undo all changes, click Revert.",
-    "description": ""
+    "description": "Message View dialog help"
   },
 
   "hlpTblVwIntro": {
     "message": "The Table View dialog lets you review all the links of a draft message in a table.",
-    "description": ""
+    "description": "Table View dialog help"
   },
 
   "hlpTblVwHowTo": {
     "message": "If you want to change the address of a link, click on the table cell for the link address and edit the text.",
-    "description": ""
+    "description": "Table View dialog help"
   },
 
   "hlpTblVwEnd": {
     "message": "When you're done reviewing the links, click Update to apply your changes and close the dialog.",
-    "description": ""
+    "description": "Table View dialog help"
   },
 
   "hlpLinkEg": {
     "message": "Link addresses can be website URLs (for example, https://aecreations.io) or email addresses (for example, mailto:aecreations-help@groups.io).",
-    "description": ""
+    "description": "Examples of valid URLs that can be used as link addresses, used in help content"
   },
 
   "mnuPrefs": {
     "message": "Check Links Options…",
-    "description": "Composer toolbar button context menu option for opening the extension preferences page"
+    "description": "Composer toolbar button context menu item for opening the extension preferences page"
   },
 
   "prefsTitle": {
@@ -168,7 +168,7 @@
 
   "msgView": {
     "message": "Message view",
-    "description": "User-selectable option in extension preferences page"
+    "description": "Radio button option in extension preferences page"
   },
 
   "msgViewDesc": {
@@ -178,7 +178,7 @@
   
   "tblView": {
     "message": "Table view",
-    "description": "User-selectable option in extension preferences page"
+    "description": "Radio button option in extension preferences page"
   },
 
   "tblViewDesc": {
@@ -193,17 +193,17 @@
 
   "prefLnkPlchldrs": {
     "message": "Check for link placeholders",
-    "description": ""
+    "description": "Checkbox option in the extension preferences page"
   },
   
   "plchldrDelim": {
     "message": "Placeholder delimiter:",
-    "description": ""
+    "description": "Label for placeholder delimiter drop-down menu"
   },
 
   "plchdlrEx": {
     "message": "Example usage: Visit $1the website$2 to learn more.",
-    "description": ""
+    "description": "Example usage of link placeholders"
   },
 
   "aboutBtn": {
