@@ -31,6 +31,11 @@
     "description": "Message that appears when Check Links invoked on a message with zero hyperlinks"
   },
 
+  "msgDraftEdit": {
+    "message": "Links can't be updated because the draft message was modified while the Check Links dialog was open.",
+    "description": "Message that appears when user modified the message draft while Check Links dialog is open"
+  },
+
   "lblSubj": {
     "message": "Subject:",
     "description": ""

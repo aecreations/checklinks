@@ -193,20 +193,12 @@ export async function updateComposeLinks(aComposeTabID, aUpdatedLinksData, aIsDi
 {
   if (!aIsDirty) {
     log("aeCheckLinks.updateComposeLinks(): No changes to hyperlinks were detected.");
-    return;
+    return true;
   }
 
   let comp = await messenger.compose.getComposeDetails(aComposeTabID);
-
-  log("aeCheckLinks.updateComposeLinks(): Updated links data:");
-  log(aUpdatedLinksData);
-  
   let dp = new DOMParser();
   let doc = dp.parseFromString(comp.body, "text/html");
-
-  // TO DO: Check if user had edited the draft message while the Check Links
-  // dialog was opened.  If it was edited, then display a warning to the user
-  // and exit.
 
   // Process link placeholders.
   let prefs = await aePrefs.getAllPrefs();
@@ -216,6 +208,19 @@ export async function updateComposeLinks(aComposeTabID, aUpdatedLinksData, aIsDi
   }
   
   let links = doc.body.querySelectorAll("a");
+
+  log("aeCheckLinks.updateComposeLinks(): Original links in email:");
+  log(links);
+  log("Updated links data from Check Links:");
+  log(aUpdatedLinksData);
+  
+  // Check if user had edited the draft message while the Check Links dialog
+  // was opened.
+  if (links.length != aUpdatedLinksData.length) {
+    let win = new aeWindow(aComposeTabID);
+    win.alert("msgDraftEdit");
+    return false;
+  }
 
   for (let i = 0; i < links.length; i++) {
     links[i].href = aUpdatedLinksData[i].href;
