@@ -117,7 +117,7 @@
   },
 
   "hlpMsgVwHowtoChg": {
-    "message": "If you want to change it, edit the text in the Link Address textbox and then click Replace.",
+    "message": "If you want to change it, type in the new link address and then click Replace.",
     "description": "Message View dialog help"
   },
 
@@ -137,7 +137,7 @@
   },
 
   "hlpTblVwHowTo": {
-    "message": "If you want to change the address of a link, click on the table cell for the link address and edit the text.",
+    "message": "If you want to change the address of a link, click on the table cell and then type in the new address.",
     "description": "Table View dialog help"
   },
 
