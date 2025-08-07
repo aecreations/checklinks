@@ -34,9 +34,13 @@
     "type": "button",
     "default_label": "",
     "default_title": "__MSG_extName__",
-    "default_icon": {
-      "16": "img/composeAction.svg"
-    },
+    "theme_icons": [
+      {
+	"dark": "img/composeAction.svg",
+	"light": "img/composeAction-dk.svg",
+	"size": 16
+      }
+    ],
     "default_area": "maintoolbar"
   },
 
