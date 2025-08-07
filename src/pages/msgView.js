@@ -145,8 +145,8 @@ function initDialogs()
   mHelpDlg.onFirstInit = function ()
   {
     let hlpHowTo = this.find("#msg-view-help-howto");
-    hlpHowTo.append(`${messenger.i18n.getMessage("hlpMsgVwHowto")} 
-${messenger.i18n.getMessage("hlpLinkEg")} ${messenger.i18n.getMessage("hlpMsgVwHowToNext")}`);
+    hlpHowTo.append(`${messenger.i18n.getMessage("hlpMsgVwHowToNext")} 
+${messenger.i18n.getMessage("hlpMsgVwHowtoChg")} ${messenger.i18n.getMessage("hlpLinkEg")}`);
   };
   mHelpDlg.onAfterAccept = function ()
   {

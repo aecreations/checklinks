@@ -116,13 +116,13 @@
     "description": "Message View dialog help"
   },
 
-  "hlpMsgVwHowto": {
-    "message": "If you want to change the address of the selected link, edit the text in the Link Address textbox and then click Replace.",
+  "hlpMsgVwHowtoChg": {
+    "message": "If you want to change it, edit the text in the Link Address textbox and then click Replace.",
     "description": "Message View dialog help"
   },
 
   "hlpMsgVwHowToNext": {
-    "message": "If the link address is correct, click Next Link to review the next link in the message.",
+    "message": "If the web address of the selected link is correct, click Next Link to review the next link in the message.",
     "description": "Message View dialog help"
   },
 
