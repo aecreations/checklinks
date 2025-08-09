@@ -5,8 +5,8 @@
 :root {
     --color-bkgd: #fff;
     --color-default-text: black;
-    --color-link: rgb(0, 0, 238);
-    --color-link-visited: #6b21a8;
+    --color-link: linktext;
+    --color-link-visited: visitedtext;
     --color-selected-link: white;
     --color-selected-link-bkgd: black;
 }
