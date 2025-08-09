@@ -33,16 +33,16 @@ export class aeWindow
     if (isWndOpen) {
       let updWnd;
       try {
-	updWnd = await messenger.windows.update(wndID, {focused: true});
+        updWnd = await messenger.windows.update(wndID, {focused: true});
       }
       catch (e) {
-	// Handle dangling reference to closed window.
-	let openWnds = compWndIDs[this._compTabID];
-	delete openWnds[aWndKey];
+        // Handle dangling reference to closed window.
+        let openWnds = compWndIDs[this._compTabID];
+        delete openWnds[aWndKey];
       }
 
       if (updWnd) {
-	return;
+        return;
       }
     }
 
@@ -122,19 +122,19 @@ export class aeWindow
       wndGeom = await this.#getComposeTabGeometry();
 
       if (wndGeom) {
-	if (wndGeom.w < width) {
+        if (wndGeom.w < width) {
           left = null;
-	}
-	else {
+        }
+        else {
           left = Math.ceil((wndGeom.w - width) / 2) + wndGeom.x;
-	}
+        }
 
-	if ((wndGeom.h) < height) {
+        if ((wndGeom.h) < height) {
           top = null;
-	}
-	else {
+        }
+        else {
           top = Math.ceil((wndGeom.h - height) / 2) + wndGeom.y;
-	}
+        }
       }
     }
 
@@ -219,14 +219,14 @@ let aeWndPos = function () {
       }
       else {
         if (wnd.type == "messageCompose" && wnd.focused) {
-	  wndGeom = {
+          wndGeom = {
             w: wnd.width,
             h: wnd.height,
             x: wnd.left,
             y: wnd.top,
-	  };
-	  rv = wndGeom;
-	  break;
+          };
+          rv = wndGeom;
+          break;
         }
       }
     }
@@ -241,14 +241,14 @@ let aeWndPos = function () {
 
     for (let wnd of msgrWnds) {
       if (["normal", "messageCompose"].includes(wnd.type) && wnd.focused) {
-	let wndGeom = {
+        let wndGeom = {
           w: wnd.width,
           h: wnd.height,
           x: wnd.left,
           y: wnd.top,
-	};
-	rv = wndGeom;
-	break;
+        };
+        rv = wndGeom;
+        break;
       }
     }
 
@@ -271,10 +271,10 @@ let aeWndPos = function () {
 
       let wndGeom;
       if (aWndType == this.WND_MSG_COMPOSE) {
-	wndGeom = await _getComposerWndGeom();
+        wndGeom = await _getComposerWndGeom();
       }
       else {
-	wndGeom = await _getFocusedWndGeom();
+        wndGeom = await _getFocusedWndGeom();
       }
       
       let topOffset = aTopOffset ?? TOP_OFFSET;
@@ -295,13 +295,13 @@ let aeWndPos = function () {
           top = wndGeom.y + topOffset;
         }
 
-	rv = { left, top };
+        rv = { left, top };
       }
       else {
-	rv = {
-	  left: 62,
-	  top: 128,
-	};
+        rv = {
+          left: 62,
+          top: 128,
+        };
       }
       
       return rv;
