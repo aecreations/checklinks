@@ -155,7 +155,8 @@ export class aeWindow
 
   async getComposeWndGeometry()
   {
-    return aeWndPos.getComposerWndGeom();
+    let osName = await this.#getOS();
+    return aeWndPos.getComposerWndGeom(osName == "linux");
   }
 
 
@@ -193,22 +194,40 @@ export class aeWindow
 let aeWndPos = function () {
   let TOP_OFFSET = 200;
   
-  async function _getComposerWndGeom()
+  async function _getComposerWndGeom(aUnfocusedWnds=false)
   {
     let rv = null;
     let msgrTabs = await messenger.tabs.query({});
     
     for (let tab of msgrTabs) {
       let wnd = await messenger.windows.get(tab.windowId);
-      if (wnd.type == "messageCompose" && wnd.focused) {
-	let wndGeom = {
-          w: wnd.width,
-          h: wnd.height,
-          x: wnd.left,
-          y: wnd.top,
-	};
-	rv = wndGeom;
-	break;
+      let wndGeom;
+
+      if (aUnfocusedWnds) {
+        // On Linux, obtaining a focused compose window may not be possible
+        // because focusing a window by calling `messenger.windows.update()`
+        // fails. So just obtain the width and height of any open compose
+        // window, and skip the x/y coordinates.
+        if (wnd.type == "messageCompose") {
+          wndGeom = {
+            w: wnd.width,
+            h: wnd.height,
+          };
+          rv = wndGeom;
+          break;
+        }
+      }
+      else {
+        if (wnd.type == "messageCompose" && wnd.focused) {
+	  wndGeom = {
+            w: wnd.width,
+            h: wnd.height,
+            x: wnd.left,
+            y: wnd.top,
+	  };
+	  rv = wndGeom;
+	  break;
+        }
       }
     }
 
@@ -241,9 +260,9 @@ let aeWndPos = function () {
     WND_MESSENGER: 1,
     WND_MSG_COMPOSE: 2,
 
-    async getComposerWndGeom()
+    async getComposerWndGeom(aUnfocusedWnds=false)
     {
-      return _getComposerWndGeom();
+      return _getComposerWndGeom(aUnfocusedWnds);
     },
     
     async calcPopupWndCoords(aWidth, aHeight, aTopOffset, aWndType)

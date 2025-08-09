@@ -271,6 +271,7 @@ export async function switchDlgMode(aDlgMode, aUpdatedLinksData, aComposeTabID, 
   // After the old dialog is closed, open the new dialog.
   // HACK!! - Need to focus the composer window first in order to calculate its
   // window geometry which is needed when opening the dialog.
+  // This hack does NOT work on Linux!
   let compTab = await messenger.tabs.get(aComposeTabID);
   await messenger.windows.update(compTab.windowId, {focused: true});
   let win = new aeWindow(aComposeTabID);
