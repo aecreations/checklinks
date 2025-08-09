@@ -20,6 +20,17 @@ let mIsDirty = false;
 
 export async function init(aPrefs)
 {
+  let [hostApp, platform] = await Promise.all([
+    messenger.runtime.getBrowserInfo(),
+    messenger.runtime.getPlatformInfo(),
+  ]);
+
+  // On Linux, disable UI accent colors on Thunderbird versions older than 140
+  // due to a bug - see issue #4.
+  if (platform.os == "linux" && parseInt(hostApp.version) < 140) {
+    await aePrefs.setPrefs({useAccentColor: false});
+  }
+
   messenger.menus.create({
     id: "ae-checklinks-prefs",
     title: messenger.i18n.getMessage("mnuPrefs"),
