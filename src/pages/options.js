@@ -4,6 +4,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
+import DOMPurify from "../lib/purify.es.mjs";
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
 import {aeDialog} from "../modules/aeDialog.js";
@@ -112,7 +113,9 @@ function initDialogs()
     $("#ext-desc").append(this.extInfo.description);
     $("#ext-home-pg-link").setAttribute("href", this.extInfo.homePgURL);
 
-    // TO DO: User contribution CTA
+    $("#usr-contrib-cta-txt").innerHTML = DOMPurify.sanitize(
+      messenger.i18n.getMessage("aboutContrib", [aeConst.DONATE_URL, aeConst.L10N_URL])
+    );
   };
 }
 

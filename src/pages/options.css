@@ -177,7 +177,6 @@ fieldset input[type="radio"] {
     padding-left: 22px;
     padding-right: 22px;
     border-radius: 8px;
-    font-size: 15px;
 }
 
 .lightbox > .dlg-btns {
@@ -259,6 +258,7 @@ fieldset input[type="radio"] {
     margin-right: 4px;
 }
 
+#about-dlg #license-link,
 #about-dlg #credits label {
     line-height: 18px;
 }

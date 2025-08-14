@@ -13,4 +13,7 @@ export const aeConst = Object.freeze({
   DUMMY_BLANK_URL: "https://null.aecreations.io",
 
   COMPTAB_REF_CLEANUP_DELAY_MINS: 30,
+
+  DONATE_URL: "https://www.paypal.com/paypalme/aecreations88/4.99cad",
+  L10N_URL: "https://simplelocalize.io/share/?token=62054955840f01d33E444Cb1467F92992a054c39226538Ab",
 });
