@@ -315,9 +315,9 @@ export async function getOriginalMessageBody(aComposeTabID)
 function processLinkPlaceholders(aComposeHTMLSrc, aPlaceholderDelim)
 {
   let rv = aComposeHTMLSrc.replace(
-    new RegExp(`${aPlaceholderDelim}(\\w)`, "g"), `<a href="${aeConst.DUMMY_BLANK_URL}">$1`
+    new RegExp(aPlaceholderDelim + "(\\w)", "g"), `<a href="` + aeConst.DUMMY_BLANK_URL + `">$1`
   );
-  rv = rv.replace(new RegExp(`(\\w)${aPlaceholderDelim}`, "g"), `$1</a>`);
+  rv = rv.replace(new RegExp("(\\w)" + aPlaceholderDelim, "g"), `$1</a>`);
 
   return rv;
 }
