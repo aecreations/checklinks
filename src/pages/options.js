@@ -9,6 +9,7 @@ import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
 import {aeDialog} from "../modules/aeDialog.js";
 import {aeInterxn} from "../modules/aeInterxn.js";
+import {aeVisual} from "../modules/aeVisual.js";
 import "../modules/aeI18n.js";
 import {aeMozVersion} from "../modules/aeMozVersion.js";
 
@@ -22,13 +23,7 @@ async function init()
   aeInterxn.init(platform.os);
 
   let prefs = await aePrefs.getAllPrefs();
-
-  if (prefs.useAccentColor) {
-    let linkElt = document.createElement("link");
-    linkElt.rel = "stylesheet";
-    linkElt.href = "../style/accent.css";
-    document.head.appendChild(linkElt);
-  }
+  aeVisual.enableAccentColor(prefs.useAccentColor);
 
   setSelectedDlgModeRadioBtn(prefs);
   let dlgModesRadioBtns = document.querySelectorAll(`input[name="dlg-mode"]`);

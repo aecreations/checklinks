@@ -43,4 +43,21 @@ export let aeVisual = {
 
     return rv;
   },
+
+  enableAccentColor(aIsEnabled)
+  {
+    let linkElt;
+
+    if (aIsEnabled) {
+      linkElt = document.createElement("link");
+      linkElt.id = "ae-accent-color";
+      linkElt.rel = "stylesheet";
+      linkElt.href = "../style/accent.css";
+      document.head.appendChild(linkElt);      
+    }
+    else {
+      linkElt = document.getElementById("ae-accent-color");
+      !!linkElt && linkElt.remove();
+    }
+  },
 };
