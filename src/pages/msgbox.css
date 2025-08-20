@@ -30,7 +30,6 @@ button {
     background-size: contain;
 }
 
-/***
 body[data-os="win"] #msgbox-icon {
     background-image: url("../img/alert-win.png");
 }
@@ -38,10 +37,14 @@ body[data-os="win"] #msgbox-icon {
 body[data-os="mac"] #msgbox-icon {
     background-image: url("../img/warning-64-mac.png");
 }
-***/
 
-#msgbox-icon[data-type="info"] {
+#msgbox-icon[data-type="info"],
+body[data-os="mac"] #msgbox-icon[data-type="info"] {
     background-image: url("../img/info.svg");
+}
+
+body[data-os="win"] #msgbox-icon[data-type="info"] {
+    background-image: url("../img/info-win.png");
 }
 
 #msgbox-content {

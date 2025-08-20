@@ -229,6 +229,10 @@ input[type="text"][readonly] {
     background-size: contain;
 }
 
+body[data-os="win"] .lightbox .msgbox-icon {
+    background-image: url("../img/info-win.png");
+}
+
 .lightbox > .dlg-btns > button {
     height: 32px;
     margin-right: 14px;
