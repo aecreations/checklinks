@@ -9,15 +9,23 @@ import * as aeCheckLinks from "./modules/aeCheckLinks.js";
 
 
 messenger.runtime.onInstalled.addListener(async (aInstall) => {
+  let prefs = {};
+
   if (aInstall.reason == "install") {
     log("Check Links: Extension installed");
 
-    let prefs = {};
     await aePrefs.setUserPrefs(prefs);
     await aePrefs.setDefaultBkgdState();
-
-    aeCheckLinks.init(prefs);
   }
+  else if (aInstall.reason == "update") {
+    let oldVer = aInstall.previousVersion;
+    let currVer = messenger.runtime.getManifest().version;
+    log(`Check Links: Upgrading from version ${oldVer} to ${currVer}`);
+
+    prefs = await aePrefs.getAllPrefs();
+  }
+
+  aeCheckLinks.init(prefs);
 });
 
 
