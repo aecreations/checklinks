@@ -314,6 +314,10 @@ export async function getOriginalMessageBody(aComposeTabID)
 
 function processLinkPlaceholders(aComposeHTMLSrc, aPlaceholderDelim)
 {
+  if (aPlaceholderDelim == "**") {
+    aPlaceholderDelim = "\\*\\*";   // Escape regexp symbols.
+  }
+
   let rv = aComposeHTMLSrc.replace(
     new RegExp(aPlaceholderDelim + "(\\w)", "g"), `<a href="` + aeConst.DUMMY_BLANK_URL + `">$1`
   );
