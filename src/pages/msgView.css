@@ -137,7 +137,7 @@ input[type="text"][readonly] {
 #ctrl-panel-right {
     order: 2;
     flex: 0 1 auto;
-    width: 128px;
+    width: 120px;
     height: 100%;
 }
 
@@ -200,7 +200,7 @@ input[type="text"][readonly] {
 }
 
 #ctrl-panel-btns button {
-    width: 128px;
+    width: 120px;
 }
 
 
