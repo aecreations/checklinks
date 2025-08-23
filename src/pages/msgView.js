@@ -122,6 +122,11 @@ async function init()
 function initDialogs()
 {
   mConfirmMsgBox = new aeDialog("#finished-msgbox");
+  mConfirmMsgBox.onShow = function ()
+  {
+    document.querySelector("#finished-msgbox > .dlg-btns > .dlg-accept").focus();
+  };
+
   mConfirmMsgBox.onAfterAccept = function ()
   {
     deselectLink(mLinkElts[mCurrLinkIdx]);
@@ -193,7 +198,8 @@ function deselectLink(aLinkElt)
 function nextLink()
 {
   if (mCurrLinkIdx == (mLinkElts.length - 1)) {
-    mConfirmMsgBox.showModal();
+    // Add delay to prevent race condition with key press event handler.
+    setTimeout(() => { mConfirmMsgBox.showModal() }, 1);
     return;
   }
 
