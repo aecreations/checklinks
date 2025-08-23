@@ -7,10 +7,10 @@ import DOMPurify from "../lib/purify.es.mjs";
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
 import {aeInterxn} from "../modules/aeInterxn.js";
+import {aeVisual} from "../modules/aeVisual.js";
 import {aeDialog} from "../modules/aeDialog.js";
 import "../modules/aeI18n.js";
 import aeAutoCorrectURL from "../modules/aeAutoCorrectURL.js";
-import {aeVisual} from "../modules/aeVisual.js";
 
 let mCompTabID, mOrigLinks, mLinkElts, mCurrLinkIdx;
 let mUpdatedLinks = [];
@@ -24,6 +24,9 @@ async function init()
   let platform = await messenger.runtime.getPlatformInfo();
   document.body.dataset.os = platform.os;
   aeInterxn.init(platform.os);
+
+  let prefs = await aePrefs.getAllPrefs();
+  aeVisual.enableAccentColor(prefs.useAccentColor);
 
   let params = new URLSearchParams(window.location.search);
   mCompTabID = Number(params.get("compTabID"));
@@ -108,8 +111,7 @@ async function init()
     btnRevert.innerHTML = DOMPurify.sanitize(blRevert);
   }
 
-  let defDlgBtnFollowsFocus = await aePrefs.getPref("defDlgBtnFollowsFocus");
-  if (defDlgBtnFollowsFocus) {
+  if (prefs.defDlgBtnFollowsFocus) {
     aeInterxn.initDialogButtonFocusHandlers();
   }
 

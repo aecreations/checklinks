@@ -3,7 +3,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import {aePrefs} from "../modules/aePrefs.js";
 import {aeInterxn} from "../modules/aeInterxn.js";
+import {aeVisual} from "../modules/aeVisual.js";
 import "../modules/aeI18n.js";
 
 const MSG_UNKNOWN = "msgUnavail";
@@ -15,6 +17,9 @@ const MSG_BODY_DEFAULT_HEIGHT = 40;
 
 async function init()
 {
+  let useAccentColor = await aePrefs.getPref("useAccentColor");
+  aeVisual.enableAccentColor(useAccentColor);
+
   let url = new URL(window.location.href);
   let msgID = url.searchParams.get("msgid") || MSG_UNKNOWN;
   let msgBody = document.querySelector("#msgbox-content > p");
