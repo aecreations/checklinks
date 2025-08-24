@@ -27,6 +27,7 @@ async function init()
 
   let prefs = await aePrefs.getAllPrefs();
   aeVisual.enableAccentColor(prefs.useAccentColor);
+  aeVisual.preloadMsgBoxIcons();
 
   let params = new URLSearchParams(window.location.search);
   mCompTabID = Number(params.get("compTabID"));
