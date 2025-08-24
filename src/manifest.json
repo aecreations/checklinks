@@ -15,6 +15,7 @@
   },
 
   "icons": {
+    "16": "img/checklinks16.svg",
     "48": "img/icon.svg"
   },
 
