@@ -1,0 +1,11 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+:root {
+    --color-table-textbox-focused: var(--accent-color-focus-outline);
+    --wb-focus-border-color: accentcolor;
+    --wb-active-color: hsl(from accentcolor h s calc(l + 36));
+    --wb-active-border-color: hsl(from accentcolor h s calc(l + 36));
+    --wb-active-hover-border-color: hsl(from accentcolor h s calc(l + 40));
+}

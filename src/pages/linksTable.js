@@ -26,6 +26,14 @@ async function init()
   let prefs = await aePrefs.getAllPrefs();
   aeVisual.enableAccentColor(prefs.useAccentColor);
 
+  // Apply accent color to links table.
+  if (prefs.useAccentColor) {
+    let linkElt = document.createElement("link");
+    linkElt.rel = "stylesheet";
+    linkElt.href = "linksTable-accent.css";
+    document.head.appendChild(linkElt);
+  }
+
   let params = new URLSearchParams(window.location.search);
   mCompTabID = Number(params.get("compTabID"));
 

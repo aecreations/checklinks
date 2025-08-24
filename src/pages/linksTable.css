@@ -8,6 +8,7 @@
 
 :root {
     --color-table-head-bkgd: #eee;
+    --color-table-textbox-focused: #61b5ffbf;
 
     /* Wunderbaum grid color overrides */
     --wb-node-text-color: var(--color-default-text);
@@ -120,7 +121,7 @@ div.wunderbaum div.wb-node-list div.wb-row:hover {
 }
 
 div.wunderbaum.wb-grid div.wb-node-list div.wb-row span.wb-col > input:focus {
-    border: 1px solid #61b5ffbf;
+    border: 1px solid var(--color-table-textbox-focused);
 }
 
 
