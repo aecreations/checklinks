@@ -90,7 +90,9 @@ async function init()
     switchDlgMode();
   });
 
-  dlgBody.querySelector("#btn-help").addEventListener("click", aEvent => {
+  let helpBtn = dlgBody.querySelector("#btn-help");
+  helpBtn.title = messenger.i18n.getMessage("btnHlp");
+  helpBtn.addEventListener("click", aEvent => {
     mHelpDlg.showModal();
   });
 

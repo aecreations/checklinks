@@ -124,7 +124,9 @@ async function init()
     switchDlgMode();
   });
 
-  document.querySelector("#btn-help").addEventListener("click", aEvent => {
+  let helpBtn = document.querySelector("#btn-help");
+  helpBtn.title = messenger.i18n.getMessage("btnHlp");
+  helpBtn.addEventListener("click", aEvent => {
     mHelpDlg.showModal();
   });
 
