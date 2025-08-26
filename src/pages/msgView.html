@@ -59,8 +59,9 @@
     </div>  <!-- /dlg-body -->
 
     <!-- Dialog boxes -->
-    <div id="finished-msgbox" class="lightbox" role="alertdialog">
-      <p class="msgbox-hdg" data-i18n="extName"></p>
+    <div id="finished-msgbox" class="lightbox" role="alertdialog"
+     aria-labelledby="finished-msgbox-hdg">
+      <p id="finished-msgbox-hdg" class="msgbox-hdg" role="heading" data-i18n="extName"></p>
       <div class="msgbox-icon" role="presentation"></div>
       <p class="msgbox-content" data-i18n="msgLnkChkConf"></p>
       <div class="dlg-btns">
@@ -68,8 +69,8 @@
       </div>
     </div>
 
-    <div id="help-dlg" class="lightbox" role="dialog">
-      <p class="dlg-hdg" data-i18n="hlpTitle"></p>
+    <div id="help-dlg" class="lightbox" role="dialog" aria-labelledby="help-dlg-hdg">
+      <p id="help-dlg-hdg" class="dlg-hdg" role="heading" data-i18n="hlpTitle"></p>
       <div class="dlg-content">
         <p data-i18n="hlpMsgVwIntro"></p>
         <p id="msg-view-help-howto"></p>
