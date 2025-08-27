@@ -8,7 +8,8 @@
     --accent-color-border: hsl(from accentcolor h s calc(l - 12));
     --accent-color-hover-border: hsl(from accentcolor h s calc(l - 20));
     --accent-color-active-border: hsl(from accentcolor h s calc(l - 32));
-    --accent-color-focus-outline: hsl(from accentcolor h s calc(l + 32));
+    --accent-color-focus-outline: hsl(from accentcolor h s calc(l + 30));
+    --accent-color-btn-focus-outline: hsl(from accentcolor h s calc(l + 16));
     --accent-color-tbox-border: accentcolor;
 
     /* Override variable */
@@ -79,7 +80,10 @@ button.default:active {
 }
 
 /* BUG!!  Transitions don't work if hsl() function is used for color value. */
-button:-moz-focusring:not(:disabled),
+button:-moz-focusring:not(:disabled) {
+    box-shadow: 0 0 0 2px var(--accent-color-btn-focus-outline);
+}
+
 button.default:-moz-focusring:not(:disabled),
 select.browser-style:-moz-focusring:not([size]):not(:disabled),
 .browser-style > input[type="checkbox"]:-moz-focusring:not(:disabled),
