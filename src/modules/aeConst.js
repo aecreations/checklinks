@@ -4,7 +4,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 export const aeConst = Object.freeze({
-  DEBUG: true,
+  DEBUG: false,
   DEV_BUILD: true,
 
   DLG_MESSAGE_VIEW: 1,
