@@ -83,15 +83,16 @@ body[data-os="mac"] .browser-style > input[type="radio"]:checked {
     border-color: var(--accent-color-active-border);
 }
 
-/* BUG!!  Transitions don't work if hsl() function is used for color value. */
-button:-moz-focusring:not(:disabled) {
+button:-moz-focusring:not(:disabled),
+select.browser-style:-moz-focusring:not([size]):not(:disabled),
+.browser-style > input[type="checkbox"]:-moz-focusring:not(:disabled),
+.browser-style > input[type="radio"]:-moz-focusring:not(:disabled) {
     box-shadow: 0 0 0 2px var(--accent-color-btn-focus-outline);
 }
 
 button.default:-moz-focusring:not(:disabled),
-select.browser-style:-moz-focusring:not([size]):not(:disabled),
-.browser-style > input[type="checkbox"]:-moz-focusring:not(:disabled),
-.browser-style > input[type="radio"]:-moz-focusring:not(:disabled) {
+.browser-style > input[type="checkbox"]:checked:-moz-focusring:not(:disabled),
+.browser-style > input[type="radio"]:checked:-moz-focusring:not(:disabled) {
     box-shadow: 0 0 0 2px var(--accent-color-focus-outline);
 }
 
