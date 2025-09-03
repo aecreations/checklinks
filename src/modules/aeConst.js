@@ -5,7 +5,7 @@
 
 export const aeConst = Object.freeze({
   DEBUG: false,
-  DEV_BUILD: false,
+  DEV_BUILD: true,
 
   DLG_MESSAGE_VIEW: 1,
   DLG_TABLE_VIEW: 2,
