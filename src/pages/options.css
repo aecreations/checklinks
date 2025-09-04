@@ -9,8 +9,8 @@
 
 :root {
     --color-pg-bkgd: linear-gradient(135deg, #f9f9fb 0%, #f0f0f4 35%, #e0e0e6 100%);
-    --color-main-border: #ccc;
-    --color-main-border-shadow: #c8c8c8;
+    --color-main-border: #d9d9d9;
+    --color-main-border-shadow: #d7d7db;
     --color-main-bkgd: #fff;
     --color-pref-body: #fefefe;
     --color-fieldset-border: #d7d7db;
