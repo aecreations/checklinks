@@ -71,14 +71,29 @@
     "description": "Button for changing link URL of selected link in Message View dialog"
   },
 
+  "btnReplace.accesskey": {
+    "message": "R",
+    "description": "Access key for Replace button in Message View dialog (single letter, case sensitive)"
+  },
+
   "btnNext": {
     "message": "Next Link",
     "description": "Button for selecting the next link in Message View dialog"
   },
 
+  "btnNext.accesskey": {
+    "message": "N",
+    "description": "Access key for Next Link button in Message View dialog (single letter, case sensitive)"
+  },
+
   "btnRestart": {
     "message": "Start Over",
     "description": "Button for restarting link checking and selecting the first link in Message View dialog"
+  },
+
+  "btnRestart.accesskey": {
+    "message": "S",
+    "description": "Access key for Restart button in Message View dialog (single letter, case sensitive)"
   },
 
   "btnClose": {
@@ -89,6 +104,11 @@
   "btnRevert": {
     "message": "Revert",
     "description": "Button for undoing changes to link URLs in the Message View dialog"
+  },
+
+  "btnRevert.accesskey": {
+    "message": "v",
+    "description": "Access key for Revert button in Message View dialog (single letter, case sensitive)"
   },
 
   "btnMsgVw": {

@@ -104,10 +104,14 @@ async function init()
   }
   else {
     // Access keys for buttons on Windows and Linux.
-    let blReplace = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnReplace"), "R");
-    let blNext = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnNext"), "N");
-    let blRestart = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnRestart"), "S");
-    let blRevert = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnRevert"), "v");
+    let blReplace = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnReplace"),
+                                             messenger.i18n.getMessage("btnReplace.accesskey"));
+    let blNext = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnNext"),
+                                          messenger.i18n.getMessage("btnNext.accesskey"));
+    let blRestart = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnRestart"),
+                                             messenger.i18n.getMessage("btnRestart.accesskey"));
+    let blRevert = aeVisual.formatAccessKey(messenger.i18n.getMessage("btnRevert"),
+                                            messenger.i18n.getMessage("btnRevert.accesskey"));
     btnReplace.innerHTML = DOMPurify.sanitize(blReplace);
     btnNext.innerHTML = DOMPurify.sanitize(blNext);
     btnRestart.innerHTML = DOMPurify.sanitize(blRestart);
