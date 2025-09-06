@@ -11,6 +11,7 @@
     --accent-color-focus-outline: hsl(from accentcolor h s calc(l + 30));
     --accent-color-btn-focus-outline: hsl(from accentcolor h s calc(l + 16));
     --accent-color-tbox-border: accentcolor;
+    --accent-color-radio-border: accentcolor;
 
     /* Override variable */
     --color-tb-selection: highlight;
@@ -85,8 +86,7 @@ body[data-os="mac"] .browser-style > input[type="radio"]:checked {
 
 button:-moz-focusring:not(:disabled),
 select.browser-style:-moz-focusring:not([size]):not(:disabled),
-.browser-style > input[type="checkbox"]:-moz-focusring:not(:disabled),
-.browser-style > input[type="radio"]:-moz-focusring:not(:disabled) {
+.browser-style > input[type="checkbox"]:-moz-focusring:not(:disabled) {
     box-shadow: 0 0 0 2px var(--accent-color-btn-focus-outline);
 }
 
@@ -94,6 +94,10 @@ button.default:-moz-focusring:not(:disabled),
 .browser-style > input[type="checkbox"]:checked:-moz-focusring:not(:disabled),
 .browser-style > input[type="radio"]:checked:-moz-focusring:not(:disabled) {
     box-shadow: 0 0 0 2px var(--accent-color-focus-outline);
+}
+
+body:not([data-os="mac"]) .browser-style > input[type="radio"]:checked:-moz-focusring:not(:disabled) {
+    border-color: var(--accent-color-radio-border) !important;
 }
 
 input[type="text"]:focus {
