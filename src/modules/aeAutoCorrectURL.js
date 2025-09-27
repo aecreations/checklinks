@@ -13,6 +13,8 @@ export default function aeAutoCorrectURL(aURLString)
   let rv = aURLString;
   let isEmailAddr = false;
 
+  rv = rv.replace(/"/g, "%22");
+  
   // Check if the string is an email address.
   if (aURLString.search(EMAIL_ADDRESS_RE) != -1) {
     isEmailAddr = true;
