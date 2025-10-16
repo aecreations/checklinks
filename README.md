@@ -3,14 +3,18 @@
 
 Never send an email with broken or incorrect links again.  With the Check Links extension for Thunderbird, you can review the web addresses (URLs) of all hyperlinks in a draft email message before sending.
 
+Learn more and install the Thunderbird extension from the [AE Creations website](https://aecreations.io/checklinks/index.php). Check Links is also available from [Add-ons for Thunderbird](https://addons.thunderbird.net/en-US/thunderbird/addon/checklinks/).
 
-## Testers Wanted!
 
-Check Links is currently in the **beta testing** phase, and is being made available to early adopters and enthusiasts interested in trying out the latest and greatest!  If you find a bug, [report it](https://github.com/aecreations/checklinks/issues) in the Issues page.
+## Contribute!
+
+Want to help?  [Make a donation](https://liberapay.com/aecreations/) or [add a translation](https://simplelocalize.io/suggestions/?id=ea1d26ff13464ad1a818732682ab7e3c).
+
 
 
 ---
 
 * [Visit website](https://aecreations.io/checklinks/index.php)
+* [Add-ons for Thunderbird page](https://addons.thunderbird.net/thunderbird/addon/checklinks/)
 * [Help and Support forums](https://groups.io/g/aecreations-help)
 * [AE Creations blog](https://aecreations.blogspot.com/)
