@@ -4,40 +4,16 @@
 
 @import "../style/dialog.css";
 @import "../style/lightbox.css";
-@import url("../lib/wunderbaum/wunderbaum.css");
 
 :root {
     --color-table-head-bkgd: #eee;
     --color-table-textbox-focused: #61b5ffbf;
-
-    /* Wunderbaum grid color overrides */
-    --wb-node-text-color: var(--color-default-text);
-    --wb-header-color: #eee;
-    --wb-hover-color: var(--color-bkgd);
-    --wb-active-color: var(--color-bkgd);
-    --wb-active-cell-color: var(--wb-background-color);
-    --wb-active-column-color: var(--color-bkgd);
-    --wb-active-header-column-color: var(--wb-header-color);
-    
     --url-help-icon: url("../img/help.svg");
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
 	--color-table-head-bkgd: #4a4a4f;
-	
-	/* Wunderbaum grid color overrides for dark mode */
-	--wb-background-color: #202023;
-	--wb-header-color: #4a4a4f;
-	--wb-hover-color: var(--wb-background-color);
-	--wb-focus-border-color: #0a84ff;
-	--wb-grid-color: #b1b1b1;
-	--wb-active-column-color: var(--wb-background-color);
-	--wb-active-color-grayscale: var(--wb-background-color);
-	--wb-active-hover-color-grayscale: var(--wb-background-color);
-	--wb-active-cell-color-grayscale: var(--wb-background-color);
-	--wb-grid-color-grayscale: #b1b1b1;
-	
 	--url-help-icon: url("../img/help-dk.svg");
     }
 }
@@ -70,58 +46,6 @@
     background-size: 24px 24px;
     background-repeat: no-repeat;
     background-position: center;
-}
-
-/* Wunderbaum grid style overrides */
-div.wunderbaum {
-    border: 1px solid #d7d7db;
-    border-radius: 0;
-}
-
-div.wunderbaum div.wb-header {
-    border-bottom: 1px solid #d4d4d4;
-    background-color: var(--color-table-head-bkgd);
-    color: var(--wb-node-text-color);
-}
-
-div.wunderbaum div.wb-header span.wb-col {
-    font-weight: revert;
-}
-
-div.wunderbaum div.wb-header span.wb-col-resizer {
-    border-right: 1px solid #d4d4d4;
-}
-
-div.wunderbaum.wb-grid.wb-cell-mode div.wb-header div.wb-row span.wb-col.wb-active,
-div.wunderbaum.wb-grid.wb-cell-mode:focus-within div.wb-row:not(.wb-colspan):not(.wb-selected) span.wb-col.wb-active {
-    background-color: revert;
-}
-
-.wunderbaum .wb-node-list > .wb-row > .wb-node > .wb-expander,
-.wunderbaum .wb-node-list > .wb-row > .wb-node > .wb-icon {
-    display: none;
-}
-
-body[data-os="win"] div.wunderbaum div.wb-row {
-    height: 24px;
-}
-
-body[data-os="win"] div.wunderbaum span.wb-col {
-    height: 22px;
-}
-
-div.wunderbaum.wb-grid div.wb-node-list div.wb-row:hover:not(.wb-active):not(.wb-selected),
-div.wunderbaum div.wb-node-list div.wb-row:hover {
-    background-color: revert;
-}
-
-.wunderbaum .wb-node-list > .wb-row > .wb-col > input[type="text"] {
-    padding-left: 1px;
-    padding-right: 1px;
-}
-
-div.wunderbaum.wb-grid div.wb-node-list div.wb-row span.wb-col > input:focus {
-    border: 1px solid var(--color-table-textbox-focused);
 }
 
 
