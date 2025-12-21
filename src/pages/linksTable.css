@@ -18,12 +18,23 @@
     }
 }
 
-#link-table-grid {
-    height: 200px;
-    overflow-y: scroll;
-
+#link-table-grid table {
+    width: 100%;
     font: caption;
     font-size: 13px;
+}
+
+#link-table-title {
+    width: 256px;
+    max-width: 256px;
+}
+
+#link-table-href {
+    width: calc(100% - 256px);
+}
+
+#link-table-grid table td > input[type="text"] {
+    width: 100%;
 }
 
 #more-btns {

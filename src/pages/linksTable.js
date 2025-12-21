@@ -45,6 +45,32 @@ async function init()
   log("Check Links::linksTable.js: Links table data:");
   log(linksTblData);
 
+  let tbody = document.querySelector("#link-table-grid > table > tbody");
+  for (let i = 0; i < linksTblData.length; i++) {
+    let link = linksTblData[i];
+    let tdLnkTitle = document.createElement("td");
+    tdLnkTitle.append(link.title);
+    let tdLnkHref = document.createElement("td");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.value = link.href;
+    input.className = "link-href";
+    input.dataset.idx = i;
+    tdLnkHref.appendChild(input);
+    let tr = document.createElement("tr");
+    tr.append(tdLnkTitle, tdLnkHref);
+    tbody.appendChild(tr);
+  }
+
+  let inputHrefs = tbody.querySelectorAll(".link-href");
+  for (let input of inputHrefs) {
+    input.addEventListener("change", aEvent => {
+      let updatedHref = aeAutoCorrectURL(aEvent.target.value);
+      mUpdatedTblData[aEvent.target.dataset.idx].href = updatedHref;
+      mIsDirty = true;
+    });
+  }
+
   mIsDirty = await messenger.runtime.sendMessage({id: "get-compose-dirty-flag"});
 
   document.querySelector("#btn-accept").addEventListener("click", aEvent => {
