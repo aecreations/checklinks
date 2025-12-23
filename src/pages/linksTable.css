@@ -7,12 +7,14 @@
 
 :root {
     --color-table-head-bkgd: #eee;
+    --color-table-border: #d4d4d4;
     --color-table-textbox-focused: #61b5ffbf;
     --url-help-icon: url("../img/help.svg");
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
+	--color-table-border: #737373;
 	--color-table-head-bkgd: #4a4a4f;
 	--url-help-icon: url("../img/help-dk.svg");
     }
@@ -29,12 +31,76 @@
     max-width: 256px;
 }
 
-#link-table-href {
+#link-table-href,
+#link-table-grid table td:nth-child(2) {
     width: calc(100% - 256px);
+}
+
+#link-table-grid table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid var(--color-table-border);
+}
+
+#link-table-grid table th {
+    font-weight: normal;
+    background-color: var(--color-table-head-bkgd);
+}
+
+#link-table-grid table th:nth-child(1) {
+    border-right: 1px solid var(--color-table-border);
+}
+
+#link-table-grid table th,
+#link-table-grid table td:not(.link-url) {
+    padding-left: 2px;
+    padding-right: 2px;
+    border-top: 1px solid var(--color-table-border);
+    border-bottom: 1px solid var(--color-table-border);
+}
+
+#link-table-grid table > tbody {
+    display: block;
+    height: 184px;
+    width: 682px;
+    min-height: 184px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#link-table-grid table td:nth-child(1) {
+    width: 256px;
+    max-width: 256px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-right: 1px solid var(--color-table-border);
+}
+
+#link-table-grid table td:nth-child(2) {
+    width: 415px;
+    max-width: 415px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#link-table-grid table tr:first-of-type > td {
+    border-top: none;
+}
+
+#link-table-grid table tr:last-of-type > td {
+    border-bottom: none;
 }
 
 #link-table-grid table td > input[type="text"] {
     width: 100%;
+    border: 0;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+#link-table-grid table td > input[type="text"]::focus {
+    box-shadow: unset;
 }
 
 #more-btns {
