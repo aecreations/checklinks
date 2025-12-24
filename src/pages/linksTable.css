@@ -6,97 +6,76 @@
 @import "../style/lightbox.css";
 
 :root {
-    --color-table-head-bkgd: #eee;
-    --color-table-border: #d4d4d4;
+    --color-table-outer-border: #b1b1b1;
+    --color-table-border: #e0e0e6;
     --color-table-textbox-focused: #61b5ffbf;
     --url-help-icon: url("../img/help.svg");
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-	--color-table-border: #737373;
-	--color-table-head-bkgd: #4a4a4f;
+	--color-table-outer-border: #737373;
+	--color-table-border: #42414d;
 	--url-help-icon: url("../img/help-dk.svg");
     }
 }
 
+#link-table-labels > label {
+    display: inline-block;
+}
+
 #link-table-grid table {
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    display: block;
     width: 100%;
+    height: 180px;
+    min-height: 180px;
+    margin-top: 4px;
+    border: 1px solid var(--color-table-outer-border);
+    overflow-x: hidden;
+    overflow-y: auto;
+
     font: caption;
     font-size: 13px;
 }
 
 #link-table-title {
     width: 256px;
-    max-width: 256px;
 }
 
-#link-table-href,
-#link-table-grid table td:nth-child(2) {
-    width: calc(100% - 256px);
-}
-
-#link-table-grid table {
-    table-layout: fixed;
-    border-collapse: collapse;
-    border: 1px solid var(--color-table-border);
-}
-
-#link-table-grid table th {
-    font-weight: normal;
-    background-color: var(--color-table-head-bkgd);
-}
-
-#link-table-grid table th:nth-child(1) {
-    border-right: 1px solid var(--color-table-border);
-}
-
-#link-table-grid table th,
-#link-table-grid table td:not(.link-url) {
-    padding-left: 2px;
-    padding-right: 2px;
+#link-table-grid table td {
     border-top: 1px solid var(--color-table-border);
     border-bottom: 1px solid var(--color-table-border);
 }
 
-#link-table-grid table > tbody {
-    display: block;
-    height: 184px;
-    width: 682px;
-    min-height: 184px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
 #link-table-grid table td:nth-child(1) {
-    width: 256px;
+    min-width: 256px;
     max-width: 256px;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-right: 1px solid var(--color-table-border);
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    border-right: 1px solid var(--color-table-border);
 }
 
 #link-table-grid table td:nth-child(2) {
-    width: 415px;
-    max-width: 415px;
-    white-space: nowrap;
-    overflow: hidden;
+    width: 100%;
 }
 
 #link-table-grid table tr:first-of-type > td {
     border-top: none;
 }
 
-#link-table-grid table tr:last-of-type > td {
-    border-bottom: none;
-}
-
 #link-table-grid table td > input[type="text"] {
     width: 100%;
-    border: 0;
+    border: none;
     padding-left: 1px;
     padding-right: 1px;
+    font-size: 13px;
 }
 
 #link-table-grid table td > input[type="text"]::focus {
