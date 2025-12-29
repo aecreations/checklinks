@@ -14,6 +14,6 @@ export const aeConst = Object.freeze({
 
   COMPTAB_REF_CLEANUP_DELAY_MINS: 30,
 
-  DONATE_URL: "https://www.paypal.com/paypalme/aecreations88/4.99cad",
-  L10N_URL: "https://simplelocalize.io/suggestions/?id=ea1d26ff13464ad1a818732682ab7e3c",
+  DONATE_URL: "https://aecreations.io/donate.php",
+  L10N_URL: "https://aecreations.io/checklinks/translate.php",
 });
