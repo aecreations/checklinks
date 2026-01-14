@@ -51,16 +51,6 @@
     "description": "Label for URL of selected link in Message View dialog"
   },
 
-  "thLnkTxt": {
-    "message": "Link Text",
-    "description": "Table column header in Table View dialog"
-  },
-
-  "thLnkUrl": {
-    "message": "Link Address (URL)",
-    "description": "Table column header in Table View dialog"
-  },
-
   "btnUpdate": {
     "message": "Update",
     "description": "Button for applying link changes in the Table View dialog"

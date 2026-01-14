@@ -3,7 +3,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {Wunderbaum} from "../lib/wunderbaum/wunderbaum.esm.min.js";
 import {aeConst} from "../modules/aeConst.js";
 import {aePrefs} from "../modules/aePrefs.js";
 import {aeInterxn} from "../modules/aeInterxn.js";
@@ -26,14 +25,6 @@ async function init()
   let prefs = await aePrefs.getAllPrefs();
   aeVisual.enableAccentColor(prefs.useAccentColor);
 
-  // Apply accent color to links table.
-  if (prefs.useAccentColor) {
-    let linkElt = document.createElement("link");
-    linkElt.rel = "stylesheet";
-    linkElt.href = "linksTable-accent.css";
-    document.head.appendChild(linkElt);
-  }
-
   let params = new URLSearchParams(window.location.search);
   mCompTabID = Number(params.get("compTabID"));
 
@@ -54,61 +45,31 @@ async function init()
   log("Check Links::linksTable.js: Links table data:");
   log(linksTblData);
 
-  let treeGrid = new Wunderbaum({
-    element: document.getElementById("link-table-grid"),
-    id: "link-table",
-    columns: [
-      {
-	id: "*",
-	title: messenger.i18n.getMessage("thLnkTxt"),
-	width: "250px"
-      },
-      {
-	id: "href",
-	title: messenger.i18n.getMessage("thLnkUrl"),
-	width: "400px"
-      },
-    ],
-    source: linksTblData,
+  let tbody = document.querySelector("#link-table-grid > table > tbody");
+  for (let i = 0; i < linksTblData.length; i++) {
+    let link = linksTblData[i];
+    let tdLnkTitle = document.createElement("td");
+    tdLnkTitle.append(link.title);
+    let tdLnkHref = document.createElement("td");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.value = link.href;
+    input.className = "link-href";
+    input.dataset.idx = i;
+    tdLnkHref.appendChild(input);
+    let tr = document.createElement("tr");
+    tr.append(tdLnkTitle, tdLnkHref);
+    tbody.appendChild(tr);
+  }
 
-    render(aRenderEvt)
-    {
-      let node = aRenderEvt.node;
-      
-      for (let col of Object.values(aRenderEvt.renderColInfosById)) {
-	let val = node.data[col.id];
-	
-	switch (col.id) {
-	case "href":
-	  if (aRenderEvt.isNew) {
-	    col.elem.innerHTML = '<input type="text" class="link-href" tabindex="-1">';
-	  }
-	  aRenderEvt.util.setValueToElem(col.elem, val);
-	  break;
-
-        default:
-          col.elem.textContent = node.data[col.id];
-          break;
-	}
-      }
-    },
-
-    change(aChangeEvt)
-    {
-      let node = aChangeEvt.node;
-      let colId = aChangeEvt.info.colId;
-
-      log(`Check Links::linksTable.js: Changed link ${node._rowIdx} `);
-
-      let updatedVal = aChangeEvt.util.getValueFromElem(aChangeEvt.inputElem, true);
-      updatedVal = aeAutoCorrectURL(updatedVal);
-      node.data[colId] = updatedVal;
-      mUpdatedTblData[node._rowIdx].href = updatedVal;
+  let inputHrefs = tbody.querySelectorAll(".link-href");
+  for (let input of inputHrefs) {
+    input.addEventListener("change", aEvent => {
+      let updatedHref = aeAutoCorrectURL(aEvent.target.value);
+      mUpdatedTblData[aEvent.target.dataset.idx].href = updatedHref;
       mIsDirty = true;
-    },
-
-    debugLevel: 0,
-  });
+    });
+  }
 
   mIsDirty = await messenger.runtime.sendMessage({id: "get-compose-dirty-flag"});
 
@@ -146,6 +107,7 @@ ${messenger.i18n.getMessage("hlpLinkEg")}`);
 
 async function accept(aEvent)
 {
+  // Check for empty URLs.
   let linkHrefElts = document.querySelectorAll(".link-href");
   for (let linkHref of linkHrefElts) {
     if (linkHref.value == '') {
