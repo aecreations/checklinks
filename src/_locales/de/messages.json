@@ -1,0 +1,211 @@
+{
+  "extName": {
+    "message": "Check Links",
+    "description": "Name of the extension"
+  },
+  "extDesc": {
+    "message": "Überprüfe die Webadressen aller Links in einem Nachrichtenentwurf.",
+    "description": "Description of the extension"
+  },
+  "btnOK": {
+    "message": "OK"
+  },
+  "btnCancel": {
+    "message": "Abbrechen"
+  },
+  "msgUnavail": {
+    "message": "Die ausgewählte Aktion steht derzeit nicht zur Verfügung."
+  },
+  "msgPlainTxt": {
+    "message": "Die Linkprüfung ist für Reintext-Nachrichten nicht verfügbar.",
+    "description": "Message that appears when Check Links invoked on a plain-text message"
+  },
+  "msgNoLnks": {
+    "message": "Die Link-Prüfung abgeschlossen. Es wurden keine Links gefunden.",
+    "description": "Message that appears when Check Links invoked on a message with zero hyperlinks"
+  },
+  "msgDraftEdit": {
+    "message": "Links können nicht aktualisiert werden, da der Entwurf der Nachricht geändert wurde, während der Dialog »Links prüfen« geöffnet war.",
+    "description": "Message that appears when user modified the message draft while Check Links dialog is open"
+  },
+  "lblSubj": {
+    "message": "Betreff:",
+    "description": "Label for subject line in Message View dialog"
+  },
+  "lblLnkTxt": {
+    "message": "Linktext:",
+    "description": "Label for text of selected link in Message View dialog"
+  },
+  "lblLnkUrl": {
+    "message": "Linkadresse (URL):",
+    "description": "Label for URL of selected link in Message View dialog"
+  },
+  "btnUpdate": {
+    "message": "Aktualisieren",
+    "description": "Button for applying link changes in the Table View dialog"
+  },
+  "btnReplace": {
+    "message": "Ersetzen",
+    "description": "Button for changing link URL of selected link in Message View dialog"
+  },
+  "btnReplace.accesskey": {
+    "message": "E",
+    "description": "Access key for Replace button in Message View dialog (single letter, case sensitive)"
+  },
+  "btnNext": {
+    "message": "Nächster Link",
+    "description": "Button for selecting the next link in Message View dialog"
+  },
+  "btnNext.accesskey": {
+    "message": "N",
+    "description": "Access key for Next Link button in Message View dialog (single letter, case sensitive)"
+  },
+  "btnRestart": {
+    "message": "Neu starten",
+    "description": "Button for restarting link checking and selecting the first link in Message View dialog"
+  },
+  "btnRestart.accesskey": {
+    "message": "s",
+    "description": "Access key for Restart button in Message View dialog (single letter, case sensitive)"
+  },
+  "btnClose": {
+    "message": "Schließen",
+    "description": "Button for closing Message View dialog"
+  },
+  "btnRevert": {
+    "message": "Zurücksetzen",
+    "description": "Button for undoing changes to link URLs in the Message View dialog"
+  },
+  "btnRevert.accesskey": {
+    "message": "Z",
+    "description": "Access key for Revert button in Message View dialog (single letter, case sensitive)"
+  },
+  "btnMsgVw": {
+    "message": "Nachrichtenansicht",
+    "description": "Button in Check Links dialog for switching to message view"
+  },
+  "btnTblVw": {
+    "message": "Tabellenansicht",
+    "description": "Button in Check Links dialog for switching to table view"
+  },
+  "msgLnkChkConf": {
+    "message": "Linkprüfung ist abgeschlossen.",
+    "description": "Confirmation message box in Message View dialog"
+  },
+  "btnHlp": {
+    "message": "Hilfe",
+    "description": "Help button in dialogs"
+  },
+  "hlpTitle": {
+    "message": "Check Links Hilfe",
+    "description": "Help dialog title"
+  },
+  "hlpMsgVwIntro": {
+    "message": "Im Dialogfeld Nachrichtenansicht können Sie die Links in einem E-Mail-Entwurf einzeln einsehen. Der aktuell ausgewählte Link wird in der Nachrichtenvorschau hervorgehoben.",
+    "description": "Message View dialog help"
+  },
+  "hlpMsgVwHowtoChg": {
+    "message": "Wenn Sie den Link ändern möchten, geben Sie die neue Linkadresse ein und klicken dann auf Ersetzen.",
+    "description": "Message View dialog help"
+  },
+  "hlpMsgVwHowToNext": {
+    "message": "Wenn die Webadresse des ausgewählten Links korrekt ist, klicken Sie auf »Nächster Link«, um den nächsten Link in der Nachricht zu überprüfen.",
+    "description": "Message View dialog help"
+  },
+  "hlpMsgVwEnd": {
+    "message": "Sie können die Linkprüfung jederzeit neu starten, indem Sie auf »Neu starten« klicken. Um alle Änderungen rückgängig zu machen, klicken Sie auf »Zurücksetzen«.",
+    "description": "Message View dialog help"
+  },
+  "hlpTblVwIntro": {
+    "message": "In der Tabellenansicht können Sie alle Links einer Nachricht in einer Tabelle einsehen.",
+    "description": "Table View dialog help"
+  },
+  "hlpTblVwHowTo": {
+    "message": "Wenn Sie die Adresse eines Links ändern möchten, klicken Sie auf die Tabellenzelle und geben Sie dann die neue Adresse ein.",
+    "description": "Table View dialog help"
+  },
+  "hlpTblVwEnd": {
+    "message": "Wenn Sie mit der Überprüfung der Links fertig sind, klicken Sie auf »Aktualisieren«, um die Änderungen anzuwenden und schließen Sie den Dialog.",
+    "description": "Table View dialog help"
+  },
+  "hlpLinkEg": {
+    "message": "Link-Adressen können Website-URLs (zum Beispiel https://aecreations.io) oder E-Mail-Adressen (zum Beispiel mailto:aecreations-help@groups.io) sein.",
+    "description": "Examples of valid URLs that can be used as link addresses, used in help content"
+  },
+  "mnuPrefs": {
+    "message": "Check Links Einstellungen …",
+    "description": "Composer toolbar button context menu item for opening the extension preferences page"
+  },
+  "prefsTitle": {
+    "message": "Check Links Einstellungen",
+    "description": "Extension preferences page title"
+  },
+  "prefsHdg": {
+    "message": "Optionen",
+    "description": "Extension preferences page heading"
+  },
+  "msgView": {
+    "message": "Nachrichtenansicht",
+    "description": "Radio button option in extension preferences page"
+  },
+  "msgViewDesc": {
+    "message": "Links in einer Nachrichtenvorschau anzeigen, wo Sie sie einzeln überprüfen können.",
+    "description": "Description of message view"
+  },
+  "tblView": {
+    "message": "Tabellenansicht",
+    "description": "Radio button option in extension preferences page"
+  },
+  "tblViewDesc": {
+    "message": "Links in einer Tabelle anzeigen, wo Sie alle auf einen Blick betrachten können.",
+    "description": "Description of table view"
+  },
+  "prefCxtMenu": {
+    "message": "Zeige Eintrag im Kontextmenü",
+    "description": "Checkbox option in the extension preferences page"
+  },
+  "prefLnkPlchldrs": {
+    "message": "Link-Platzhalter prüfen",
+    "description": "Checkbox option in the extension preferences page"
+  },
+  "plchldrDelim": {
+    "message": "Platzhalter-Trennzeichen:",
+    "description": "Label for placeholder delimiter drop-down menu"
+  },
+  "plchdlrEx": {
+    "message": "Beispiel: Besuchen Sie $1die Webseite$2, um mehr zu erfahren.",
+    "description": "Example usage of link placeholders"
+  },
+  "aboutBtn": {
+    "message": "Über …",
+    "description": "Button in the extension preferences page"
+  },
+  "aboutExtVer": {
+    "message": "Version $1",
+    "description": "Extension version number"
+  },
+  "aboutAuthor": {
+    "message": "Entwickelt von AE Creations."
+  },
+  "aboutHomePgLink": {
+    "message": "Internetseite besuchen"
+  },
+  "aboutCreditsLink": {
+    "message": "Danksagungen",
+    "description": "Link to acknowledgements page"
+  },
+  "aboutLicLink": {
+    "message": "Lizenzinformationen"
+  },
+  "aboutTrans": {
+    "message": "Übersetzungen von Crowdin-Übersetzern."
+  },
+  "aboutContribHdg": {
+    "message": "Wollen Sie helfen?",
+    "description": "About dialog text for encouraging users to donate or help with translation"
+  },
+  "aboutContrib": {
+    "message": "<a href=\"$1\" class=\"hyperlink\">Spenden</a> oder <a href=\"$2\" class=\"hyperlink\">eine Übersetzung hinzufügen</a>.",
+    "description": "Links for making a donation or contributing a translation for Check Links"
+  }
+}
