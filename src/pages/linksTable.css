@@ -124,6 +124,7 @@
 #help-dlg {
     --width: 600px;
     --height: 260px;
+    background-color: #FFFDF0;
 }
 
 #help-dlg .dlg-hdg {
