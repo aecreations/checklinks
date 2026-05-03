@@ -216,7 +216,7 @@ fieldset input[type="radio"] {
 }
 
 body[data-locale="de"] #about-dlg {
-    --height: 290px;
+    --height: 294px;
 }
 
 #about-dlg #ext-icon {
