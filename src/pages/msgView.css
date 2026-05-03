@@ -8,12 +8,14 @@
 
 :root {
     --color-bkgd: #f9f9fb;
+    --color-help-dlg-bkgd: #FFFDF0;
     --url-help-icon: url("../img/help.svg");
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
 	--color-bkgd: #2a2a2e;
+	--color-help-dlg-bkgd: var(--color-lb-bkgd);
 	--url-help-icon: url("../img/help-dk.svg");
     }
 }
@@ -258,7 +260,7 @@ body[data-locale="de"] #finished-msgbox {
 #help-dlg {
     --width: 600px;
     --height: 300px;
-    background-color: #FFFDF0;
+    background-color: var(--color-help-dlg-bkgd);
 }
 
 #help-dlg .dlg-hdg {
