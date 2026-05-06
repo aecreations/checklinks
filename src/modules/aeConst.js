@@ -15,5 +15,5 @@ export const aeConst = Object.freeze({
   COMPTAB_REF_CLEANUP_DELAY_MINS: 30,
 
   DONATE_URL: "https://aecreations.io/donate.php",
-  L10N_URL: "https://aecreations.io/checklinks/translate.php",
+  L10N_URL: "https://crowdin.com/project/checklinks",
 });

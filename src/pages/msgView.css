@@ -246,6 +246,10 @@ body[data-os="win"] .lightbox .msgbox-icon {
     --height: 160px;
 }
 
+body[data-locale="de"] #finished-msgbox {
+    --width: 280px;
+}
+
 #finished-msgbox .msgbox-content {
     margin-top: 24px;
     font-size: 13px;

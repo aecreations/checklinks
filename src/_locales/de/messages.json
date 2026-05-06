@@ -3,262 +3,209 @@
     "message": "Check Links",
     "description": "Name of the extension"
   },
-
   "extDesc": {
-    "message": "Review the web addresses of all links in a draft message.",
+    "message": "Überprüfe die Webadressen aller Links in einem Nachrichtenentwurf.",
     "description": "Description of the extension"
   },
-
   "btnOK": {
     "message": "OK"
   },
-
   "btnCancel": {
-    "message": "Cancel"
+    "message": "Abbrechen"
   },
-
   "msgUnavail": {
-    "message": "The selected action is not available right now."
+    "message": "Die ausgewählte Aktion steht derzeit nicht zur Verfügung."
   },
-
   "msgPlainTxt": {
-    "message": "Link checking is not available for plain-text messages.",
+    "message": "Die Linkprüfung ist für Reintext-Nachrichten nicht verfügbar.",
     "description": "Message that appears when Check Links invoked on a plain-text message"
   },
-
   "msgNoLnks": {
-    "message": "Link checking is complete. No links were found.",
+    "message": "Die Link-Prüfung abgeschlossen. Es wurden keine Links gefunden.",
     "description": "Message that appears when Check Links invoked on a message with zero hyperlinks"
   },
-
   "msgDraftEdit": {
-    "message": "Links can't be updated because the draft message was modified while the Check Links dialog was open.",
+    "message": "Links können nicht aktualisiert werden, da der Entwurf der Nachricht geändert wurde, während der Dialog »Links prüfen« geöffnet war.",
     "description": "Message that appears when user modified the message draft while Check Links dialog is open"
   },
-
   "lblSubj": {
-    "message": "Subject:",
+    "message": "Betreff:",
     "description": "Label for subject line in Message View dialog"
   },
-
   "lblLnkTxt": {
-    "message": "Link text:",
+    "message": "Linktext:",
     "description": "Label for text of selected link in Message View dialog"
   },
-
   "lblLnkUrl": {
-    "message": "Link address (URL):",
+    "message": "Linkadresse (URL):",
     "description": "Label for URL of selected link in Message View dialog"
   },
-
   "btnUpdate": {
-    "message": "Update",
+    "message": "Aktualisieren",
     "description": "Button for applying link changes in the Table View dialog"
   },
-
   "btnReplace": {
-    "message": "Replace",
+    "message": "Ersetzen",
     "description": "Button for changing link URL of selected link in Message View dialog"
   },
-
   "btnReplace.accesskey": {
-    "message": "R",
+    "message": "E",
     "description": "Access key for Replace button in Message View dialog (single letter, case sensitive)"
   },
-
   "btnNext": {
-    "message": "Next Link",
+    "message": "Nächster Link",
     "description": "Button for selecting the next link in Message View dialog"
   },
-
   "btnNext.accesskey": {
     "message": "N",
     "description": "Access key for Next Link button in Message View dialog (single letter, case sensitive)"
   },
-
   "btnRestart": {
-    "message": "Start Over",
+    "message": "Neu starten",
     "description": "Button for restarting link checking and selecting the first link in Message View dialog"
   },
-
   "btnRestart.accesskey": {
-    "message": "S",
+    "message": "s",
     "description": "Access key for Restart button in Message View dialog (single letter, case sensitive)"
   },
-
   "btnClose": {
-    "message": "Close",
+    "message": "Schließen",
     "description": "Button for closing Message View dialog"
   },
-
   "btnRevert": {
-    "message": "Revert",
+    "message": "Zurücksetzen",
     "description": "Button for undoing changes to link URLs in the Message View dialog"
   },
-
   "btnRevert.accesskey": {
-    "message": "v",
+    "message": "Z",
     "description": "Access key for Revert button in Message View dialog (single letter, case sensitive)"
   },
-
   "btnMsgVw": {
-    "message": "Message View",
+    "message": "Nachrichtenansicht",
     "description": "Button in Check Links dialog for switching to message view"
   },
-
   "btnTblVw": {
-    "message": "Table View",
+    "message": "Tabellenansicht",
     "description": "Button in Check Links dialog for switching to table view"
   },
-
   "msgLnkChkConf": {
-    "message": "Link checking is complete.",
+    "message": "Linkprüfung ist abgeschlossen.",
     "description": "Confirmation message box in Message View dialog"
   },
-
   "btnHlp": {
-    "message": "Help",
+    "message": "Hilfe",
     "description": "Help button in dialogs"
   },
-
   "hlpTitle": {
-    "message": "Check Links Help",
+    "message": "Check Links Hilfe",
     "description": "Help dialog title"
   },
-
   "hlpMsgVwIntro": {
-    "message": "The Message View dialog lets you review the links in a draft email message one at a time. The currently-selected link is highlighted in the message preview.",
+    "message": "Im Dialogfeld Nachrichtenansicht können Sie die Links in einem E-Mail-Entwurf einzeln einsehen. Der aktuell ausgewählte Link wird in der Nachrichtenvorschau hervorgehoben.",
     "description": "Message View dialog help"
   },
-
   "hlpMsgVwHowtoChg": {
-    "message": "If you want to change it, type in the new link address and then click Replace.",
+    "message": "Wenn Sie den Link ändern möchten, geben Sie die neue Linkadresse ein und klicken dann auf Ersetzen.",
     "description": "Message View dialog help"
   },
-
   "hlpMsgVwHowToNext": {
-    "message": "If the web address of the selected link is correct, click Next Link to review the next link in the message.",
+    "message": "Wenn die Webadresse des ausgewählten Links korrekt ist, klicken Sie auf »Nächster Link«, um den nächsten Link in der Nachricht zu überprüfen.",
     "description": "Message View dialog help"
   },
-
   "hlpMsgVwEnd": {
-    "message": "You can restart link checking at any time by clicking Start Over. To undo all changes, click Revert.",
+    "message": "Sie können die Linkprüfung jederzeit neu starten, indem Sie auf »Neu starten« klicken. Um alle Änderungen rückgängig zu machen, klicken Sie auf »Zurücksetzen«.",
     "description": "Message View dialog help"
   },
-
   "hlpTblVwIntro": {
-    "message": "The Table View dialog lets you review all the links of a draft message in a table.",
+    "message": "In der Tabellenansicht können Sie alle Links einer Nachricht in einer Tabelle einsehen.",
     "description": "Table View dialog help"
   },
-
   "hlpTblVwHowTo": {
-    "message": "If you want to change the address of a link, click on the table cell and then type in the new address.",
+    "message": "Wenn Sie die Adresse eines Links ändern möchten, klicken Sie auf die Tabellenzelle und geben Sie dann die neue Adresse ein.",
     "description": "Table View dialog help"
   },
-
   "hlpTblVwEnd": {
-    "message": "When you're done reviewing the links, click Update to apply your changes and close the dialog.",
+    "message": "Wenn Sie mit der Überprüfung der Links fertig sind, klicken Sie auf »Aktualisieren«, um die Änderungen anzuwenden und schließen Sie den Dialog.",
     "description": "Table View dialog help"
   },
-
   "hlpLinkEg": {
-    "message": "Link addresses can be website URLs (for example, https://aecreations.io) or email addresses (for example, mailto:aecreations-help@groups.io).",
+    "message": "Link-Adressen können Website-URLs (zum Beispiel https://aecreations.io) oder E-Mail-Adressen (zum Beispiel mailto:aecreations-help@groups.io) sein.",
     "description": "Examples of valid URLs that can be used as link addresses, used in help content"
   },
-
   "mnuPrefs": {
-    "message": "Check Links Options…",
+    "message": "Check Links Einstellungen …",
     "description": "Composer toolbar button context menu item for opening the extension preferences page"
   },
-
   "prefsTitle": {
-    "message": "Check Links Options",
+    "message": "Check Links Einstellungen",
     "description": "Extension preferences page title"
   },
-
   "prefsHdg": {
-    "message": "Options",
+    "message": "Optionen",
     "description": "Extension preferences page heading"
   },
-
   "msgView": {
-    "message": "Message view",
+    "message": "Nachrichtenansicht",
     "description": "Radio button option in extension preferences page"
   },
-
   "msgViewDesc": {
-    "message": "Show links in a message preview, where you can review them one at a time.",
+    "message": "Links in einer Nachrichtenvorschau anzeigen, wo Sie sie einzeln überprüfen können.",
     "description": "Description of message view"
   },
-  
   "tblView": {
-    "message": "Table view",
+    "message": "Tabellenansicht",
     "description": "Radio button option in extension preferences page"
   },
-
   "tblViewDesc": {
-    "message": "Show links in a table, where you can review all of them at a glance.",
+    "message": "Links in einer Tabelle anzeigen, wo Sie alle auf einen Blick betrachten können.",
     "description": "Description of table view"
   },
-
   "prefCxtMenu": {
-    "message": "Show menu item in the context menu",
+    "message": "Zeige Eintrag im Kontextmenü",
     "description": "Checkbox option in the extension preferences page"
   },
-
   "prefLnkPlchldrs": {
-    "message": "Check for link placeholders",
+    "message": "Link-Platzhalter prüfen",
     "description": "Checkbox option in the extension preferences page"
   },
-  
   "plchldrDelim": {
-    "message": "Placeholder delimiter:",
+    "message": "Platzhalter-Trennzeichen:",
     "description": "Label for placeholder delimiter drop-down menu"
   },
-
   "plchdlrEx": {
-    "message": "Example usage: Visit $1the website$2 to learn more.",
+    "message": "Beispiel: Besuchen Sie $1die Webseite$2, um mehr zu erfahren.",
     "description": "Example usage of link placeholders"
   },
-
   "aboutBtn": {
-    "message": "About…",
+    "message": "Über …",
     "description": "Button in the extension preferences page"
   },
-
   "aboutExtVer": {
     "message": "Version $1",
     "description": "Extension version number"
   },
-
   "aboutAuthor": {
-    "message": "Created by AE Creations."
+    "message": "Entwickelt von AE Creations."
   },
-  
   "aboutHomePgLink": {
-    "message": "Visit website"
+    "message": "Internetseite besuchen"
   },
-
   "aboutCreditsLink": {
-    "message": "Credits",
+    "message": "Danksagungen",
     "description": "Link to acknowledgements page"
   },
-
   "aboutLicLink": {
-    "message": "License information"
+    "message": "Lizenzinformationen"
   },
-
   "aboutTrans": {
-    "message": "Localizations contributed by Crowdin translators."
+    "message": "Übersetzungen von Crowdin-Übersetzern."
   },
-
   "aboutContribHdg": {
-    "message": "Want to help?",
+    "message": "Wollen Sie helfen?",
     "description": "About dialog text for encouraging users to donate or help with translation"
   },
-
   "aboutContrib": {
-    "message": "<a href=\"$1\" class=\"hyperlink\">Make a donation</a> or <a href=\"$2\" class=\"hyperlink\">add a translation</a>.",
+    "message": "<a href=\"$1\" class=\"hyperlink\">Spenden</a> oder <a href=\"$2\" class=\"hyperlink\">eine Übersetzung hinzufügen</a>.",
     "description": "Links for making a donation or contributing a translation for Check Links"
   }
 }

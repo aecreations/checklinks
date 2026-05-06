@@ -90,7 +90,7 @@
 }
 
 #btn-switch-view {
-    width: 128px;
+    min-width: 128px;
 }
 
 #btn-help {

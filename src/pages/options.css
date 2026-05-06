@@ -215,6 +215,10 @@ fieldset input[type="radio"] {
     --height: 284px;
 }
 
+body[data-locale="de"] #about-dlg {
+    --height: 294px;
+}
+
 #about-dlg #ext-icon {
     float: left;
     width: 48px;

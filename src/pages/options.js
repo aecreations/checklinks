@@ -22,6 +22,9 @@ async function init()
   document.body.dataset.os = platform.os;
   aeInterxn.init(platform.os);
 
+  let lang = messenger.i18n.getUILanguage();
+  document.body.dataset.locale = lang;
+
   let prefs = await aePrefs.getAllPrefs();
   aeVisual.enableAccentColor(prefs.useAccentColor);
 
