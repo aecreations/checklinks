@@ -9,7 +9,6 @@
     --color-table-outer-border: #b1b1b1;
     --color-table-border: #e0e0e6;
     --color-table-textbox-focused: #61b5ffbf;
-    --color-help-dlg-bkgd: #FFFDF0;
     --url-help-icon: url("../img/help.svg");
 }
 
@@ -17,7 +16,6 @@
     :root {
 	--color-table-outer-border: #737373;
 	--color-table-border: #42414d;
-	--color-help-dlg-bkgd: var(--color-lb-bkgd);
 	--url-help-icon: url("../img/help-dk.svg");
     }
 }
@@ -126,7 +124,6 @@
 #help-dlg {
     --width: 600px;
     --height: 260px;
-    background-color: var(--color-help-dlg-bkgd);
 }
 
 #help-dlg .dlg-hdg {
